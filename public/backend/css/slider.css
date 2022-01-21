@@ -1,0 +1,10 @@
+/****************************/
+/** Imports Plugin css **/
+/****************************/
+
+@import url(../../assets/vendor_components/flexslider/flexslider.css);
+
+@import url(../../assets/vendor_components/ion-rangeSlider/css/ion.rangeSlider.css);
+@import url(../../assets/vendor_components/ion-rangeSlider/css/ion.rangeSlider.skinModern.css);
+
+@import url(../../assets/vendor_plugins/bootstrap-slider/slider.css);
