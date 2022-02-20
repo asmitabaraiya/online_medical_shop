@@ -19,7 +19,7 @@ class IndexController extends Controller
         $categorys = Category::orderBy('category_name_en', 'ASC')->get();
         $slider = Slider::where('status' , 1)->orderBy('id' , 'DESC')->limit(3)->get();
         $products = Product::where('status' , 1)->orderBy('id' , 'DESC')->limit(6)->get();
-        return view('frontend.index' , compact('slider' , 'products' , 'categorys' ));
+        return view('castomer.index' , compact('slider' , 'products' , 'categorys' ));
     }
 
     public function UserLogout(){
@@ -30,7 +30,7 @@ class IndexController extends Controller
     public function UserProfile(){
         $id = Auth::user()->id;
         $user = User::find($id);
-        return view('frontend.profile.user_profile', compact('user'));
+        return view('castomer.profile.user_profile', compact('user'));
     }
 
     public function UserProfileStore(Request $request){
@@ -58,7 +58,7 @@ class IndexController extends Controller
     }
 
     public function UserProfileChangePassword(){
-        return view('frontend.profile.change_password');
+        return view('castomer.profile.change_password');
     }
 
     public function UserPasswordUpdate(Request $request){
@@ -67,7 +67,7 @@ class IndexController extends Controller
 
         $validatedata = $request->validate([
             'oldpassword' => 'required',
-            'password' => 'required|confirmed',
+            'password' => 'required|confirmed|min:8', 
         ]);
         $hashedPassword = Auth::user()->password;
         if(Hash::check($request->oldpassword , $hashedPassword)){
@@ -91,6 +91,8 @@ class IndexController extends Controller
         }
 
     }
+
+    
 
    
 }

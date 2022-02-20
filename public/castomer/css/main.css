@@ -935,6 +935,62 @@ a {
     }
 }
 
+
+/* ============================================================================== */
+
+.carouselme .owl-prev,
+.carouselme .owl-next {
+    width: 40px;
+    height: 40px;
+    background: #f1f6f7;
+}
+.carouselme .owl-prev i,
+.carouselme .owl-prev span,
+.carouselme .owl-next i,
+.carouselme .owl-next span {
+    font-size: 15px;
+    color: #384aeb;
+    line-height: 40px;
+}
+.carouselme .owl-prev:hover,
+.carouselme .owl-next:hover {
+    background: #384aeb;
+}
+.carouselme .owl-prev:hover i,
+.carouselme .owl-prev:hover span,
+.carouselme .owl-next:hover i,
+.carouselme .owl-next:hover span {
+    color: #fff;
+}
+.carouselme .owl-prev {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-30%);
+    left: -20px;
+}
+@media (min-width: 1340px) {
+    .carouselme .owl-prev {
+        left: -105px;
+    }
+}
+.carouselme .owl-next {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-30%);
+    right: -20px;
+}
+@media (min-width: 1340px) {
+    .carouselme .owl-next {
+        right: -105px;
+    }
+}
+
+
+
+/* ==================================================================================== */
+
+
+
 .card-blog {
     border: 0;
 }

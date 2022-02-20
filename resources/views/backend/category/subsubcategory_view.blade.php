@@ -19,7 +19,7 @@
                                 <tr class="text-white">
                                     <th>Category </th>
                                     <th>SubCategory </th>
-                                    <th>SubSubCategory En</th>
+                                    <th>SubSubCategory </th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -66,21 +66,27 @@
                                                 <div class="form-group">
                                                     <h5> Category  <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                            <select name="category_id" id="select" required="" class="form-control" aria-invalid="false">
+                                                            <select name="category_id" id="select"    class="form-control" aria-invalid="false">
                                                                 <option value="">Select  Category</option>
                                                                 @foreach($category as $item)
                                                                     <option value="{{ $item->id }}">{{ $item->category_name_en }}</option>
                                                                 @endforeach()
                                                             </select>
+                                                            @error('category_id')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     <div class="help-block"></div></div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <h5> SubCategory  <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                            <select name="subcategory_id"  required="" class="form-control" aria-invalid="false">
+                                                            <select name="subcategory_id"     class="form-control" aria-invalid="false">
                                                                 <option value="" selected="" disable="" >Select SubCategory</option>                                                               
                                                             </select>
+                                                            @error('subcategory_id')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                                
 
                                                     <div class="help-block"></div></div>
@@ -89,7 +95,7 @@
                                                 <div class="form-group">
                                                     <h5> SubSubCategory Name English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="subsubcategory_name_en" class="form-control" required="" >
+                                                        <input type="text"  name="subsubcategory_name_en" class="form-control"    >
                                                         @error('subsubcategory_name_en')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -100,7 +106,7 @@
                                                 <div class="form-group">
                                                     <h5> SubSubCategory Name Hindi <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="subsubcategory_name_hin" class="form-control" required="" >
+                                                        <input type="text"  name="subsubcategory_name_hin" class="form-control"    >
                                                         @error('subsubcategory_name_hin')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -111,7 +117,7 @@
                                                
                                                                                                                                 
                                         <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-success mb-5 " value="Add SubSubCategory" >
+                                        <input type="submit" class="btn btn-success mb-5 " value="Add Sub-SubCategory" >
                                        
                                         </div>
                                     </div>

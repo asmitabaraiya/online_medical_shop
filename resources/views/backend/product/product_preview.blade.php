@@ -27,7 +27,7 @@
                                     <div class="row"> <!-- Start 1st row -->
                                         <div class="col-md 4"> 
                                             <div class="form-group">
-                                                        <h5> Brand  <span class="text-danger">*</span></h5>
+                                                        <h5> Brand    </h5>
                                                         <div class="controls">
                                                                 <select name="brand_id" id="select" required=""  class="form-control" aria-invalid="false" disabled>
                                                                     <option value="" >Select  Brand</option>
@@ -41,7 +41,7 @@
 
                                         <div class="col-md 4"> 
                                                     <div class="form-group">
-                                                        <h5> Category  <span class="text-danger">*</span></h5>
+                                                        <h5> Category    </h5>
                                                         <div class="controls">
                                                                 <select name="category_id" id="select" required="" class="form-control" aria-invalid="false" disabled>
                                                                     <option value="" >Select  Category</option>
@@ -56,7 +56,7 @@
 
                                         <div class="col-md 4"> 
                                                     <div class="form-group">
-                                                        <h5> SubCategory  <span class="text-danger">*</span></h5>
+                                                        <h5> SubCategory    </h5>
                                                         <div class="controls">
                                                                 <select name="subcategory_id" id="select" required="" class="form-control" aria-invalid="false" disabled>
                                                                 <option value="" selected="" disable="" >Select SubCategory</option>
@@ -73,7 +73,7 @@
                                     <div class="row"> <!-- Start 2st row -->
                                         <div class="col-md 4"> 
                                             <div class="form-group">
-                                                <h5> SubCategory  <span class="text-danger">*</span></h5>
+                                                <h5> SubCategory    </h5>
                                                     <div class="controls">
                                                         <select name="subsubcategory_id" id="select" required="" class="form-control" aria-invalid="false" disabled>
                                                             <option value="" selected="" disable="" >Select SubSubCategory</option>  
@@ -87,7 +87,7 @@
 
                                         <div class="col-md 4">
                                             <div class="form-group">
-                                                <h5>Product Name En <span class="text-danger">*</span></h5>
+                                                <h5>Product Name En   </h5>
                                                 <div class="controls">
                                                     <input  disabled type="text" name="product_name_en" class="form-control" required value="{{$product->product_name_en}}"
                                                         data-validation-required-message="This field is required">
@@ -97,7 +97,7 @@
 
                                         <div class="col-md 4">
                                             <div class="form-group">
-                                                <h5>Product Name Hin <span class="text-danger">*</span></h5>
+                                                <h5>Product Name Hin   </h5>
                                                 <div class="controls">
                                                     <input disabled type="text" name="product_name_hin" class="form-control" required  value="{{$product->product_name_hin}}"
                                                         data-validation-required-message="This field is required">
@@ -110,7 +110,7 @@
                                     <div class="row"> <!-- Start 3st row -->
                                         <div class="col-md 4">
                                             <div class="form-group">
-                                                <h5>Product Code <span class="text-danger">*</span></h5>
+                                                <h5>Product Code   </h5>
                                                 <div class="controls">
                                                     <input disabled type="text" name="product_code" class="form-control" required   value="{{$product->product_code}}"
                                                         data-validation-required-message="This field is required">
@@ -120,7 +120,7 @@
 
                                         <div class="col-md 4">
                                             <div class="form-group">
-                                                <h5>Product Quantity <span class="text-danger">*</span></h5>
+                                                <h5>Product Quantity   </h5>
                                                 <div class="controls">
                                                     <input disabled type="text" name="product_qty" class="form-control" required  value="{{$product->product_qty}}"
                                                         data-validation-required-message="This field is required">
@@ -133,7 +133,7 @@
                                     <div class="row"> <!-- Start 4st row -->
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Tags En <span class="text-danger">*</span></h5>
+                                                <h5>Product Tags En   </h5>
                                                 <div class="controls">     
                                                     <input disabled  type="text" name="product_tags_en" class="form-control"  value="{{$product->product_tags_en}}"   data-role="tagsinput"  >                                       
                                         
@@ -143,7 +143,7 @@
 
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Tags Hin <span class="text-danger">*</span></h5>
+                                                <h5>Product Tags Hin   </h5>
                                                 <div class="controls">     
                                                     <input disabled  type="text" name="product_tags_hin" class="form-control"  value="{{$product->product_tags_hin}}" required=""  data-role="tagsinput"  >                                       
                                         
@@ -157,7 +157,7 @@
 
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Size En <span class="text-danger">*</span></h5>
+                                                <h5>Product Size En   </h5>
                                                 <div class="controls">     
                                                     <input disabled type="text" name="product_size_en" class="form-control"  value="{{$product->product_size_en}}" required=""  data-role="tagsinput"  >                                       
                                         
@@ -167,7 +167,7 @@
 
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Size Hin <span class="text-danger">*</span></h5>
+                                                <h5>Product Size Hin   </h5>
                                                 <div class="controls">     
                                                     <input disabled type="text" name="product_size_hin" class="form-control"  value="{{$product->product_size_hin}}" required=""  data-role="tagsinput"  >                                       
                                         
@@ -180,7 +180,7 @@
                                     <div class="row"> <!-- Start 6st row -->
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Color En <span class="text-danger">*</span></h5>
+                                                <h5>Product Color En   </h5>
                                                 <div class="controls">     
                                                     <input disabled type="text" name="product_color_en" class="form-control"  value="{{$product->product_color_en}}" required=""  data-role="tagsinput"  >                                       
                                         
@@ -190,7 +190,7 @@
 
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Color Hin <span class="text-danger">*</span></h5>
+                                                <h5>Product Color Hin   </h5>
                                                 <div class="controls">     
                                                     <input disabled type="text" name="product_color_hin" class="form-control"  value="{{$product->product_color_hin}}" required=""  data-role="tagsinput"  >                                       
                                         
@@ -203,7 +203,7 @@
                                     <div class="row">  <!-- Start 7st row -->
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Selling Price <span class="text-danger">*</span></h5>
+                                                <h5>Product Selling Price   </h5>
                                                 <div class="controls">
                                                     <input disabled type="text" name="selling_price" class="form-control" required="" value="{{$product->selling_price}}"  data-validation-required-message="This field is required" aria-invalid="false"> 
                                                     <div class="help-block"></div>
@@ -213,7 +213,7 @@
 
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Discount Price <span class="text-danger">*</span></h5>
+                                                <h5>Product Discount Price   </h5>
                                                 <div class="controls">
                                                     <input disabled type="text" name="discount_price" class="form-control" required="" value="{{$product->discount_price}}" data-validation-required-message="This field is required" aria-invalid="false"> 
                                                     <div class="help-block"></div>
@@ -227,7 +227,7 @@
                                     <div class="row"> <!-- Start 9st row -->
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Short Description English <span class="text-danger">*</span></h5>
+                                                <h5>Short Description English   </h5>
                                                 <div class="controls">
                                                     <textarea  name="short_descp_en" id="textarea" class="form-control"   required  data-validation-required-message="This field is required"> {{$product->short_descp_en}} </textarea>   
                                                 <div class="help-block"></div>
@@ -237,7 +237,7 @@
 
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Short Description Hindi <span class="text-danger">*</span></h5>
+                                                <h5>Short Description Hindi   </h5>
                                                 <div class="controls">
                                                 <textarea  name="short_descp_hin" id="textarea" class="form-control"  required  data-validation-required-message="This field is required"> {{$product->short_descp_hin}} </textarea> 
                                                     <div class="help-block"></div>
@@ -251,7 +251,7 @@
                                         <div class="col-md 6">
                                             <div class="box">
                                                 <div class="box-header">
-                                                  <h5>Long Description English <span class="text-danger">*</span></h5>
+                                                  <h5>Long Description English   </h5>
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
@@ -265,7 +265,7 @@
                                         <div class="col-md 6">
                                             <div class="box">
                                                 <div class="box-header">
-                                                  <h5>Long Description Hindi <span class="text-danger">*</span></h5>
+                                                  <h5>Long Description Hindi   </h5>
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">                                                   

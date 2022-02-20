@@ -1,41 +1,41 @@
-@extends('frontend.main_master')
-@section('content')
+@extends('castomer.main_master')
+@section('title')
 
-<div class="breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-inner">
-				<ul class="list-inline list-unstyled">
-					<li><a href="home.html">Home</a></li>
-					<li class='active'>Forget Password</li>
-				</ul>
-			</div><!-- /.breadcrumb-inner -->
-		</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+@if(session()->get('language') == 'hindi')  Forget password  @else Forget password @endif     
+@endsection
+
+@section('body')
+
+
+<section class="login_box_area section-margin">
 
 	<div class="body-content">
+	
 		<div class="container">
 			<div class="sign-in-page">
 				<div class="row">
 					<!-- Sign-in -->
-					<div class="col-md-6 col-sm-6 sign-in">
-						<h4 class="">Forgot Password</h4>
-						<p class="">Hello, Welcome to reset your password.</p>
+					<div class="col-md-6 col-sm-6 ">
 						
+						<h4 class="my-4">Forgot Password</h4>
+						<br><br>
 
-            <!-- form==================================================================                         -->
-                        <form method="POST" action="{{ route('password.email') }}">
+           					 <!-- form==================================================================                         -->
+                        <form method="POST" class="row login_form" action="{{ route('password.email') }}"  id="contactForm">
                                  @csrf
                             
-							<div class="form-group">
-								<label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-								<input type="email" class="form-control unicase-form-control text-input"
-                                id="exampleInputEmail2" name="email" >
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">  <strong>{{ $message }}</storng></span>
-                                @enderror
+							
+
+							<div class="col-md-12 form-group ">
+								<input type="email" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+								@error('email')
+								<span style="color:Tomato;"> {{ $message }}  </span>
+								@enderror
+							
 							</div>
 
-							<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Email Password Reset Link</button>
+
+							<button type="submit" class="button button-login w-50">Password Reset Link</button>
 						</form>
 					</div>
 					<!-- Sign-in -->
@@ -43,86 +43,8 @@
 					
 				</div><!-- /.row -->
 			</div><!-- /.sigin-in-->
-			<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-			<div id="brands-carousel" class="logo-slider wow fadeInUp">
-
-				<div class="logo-slider-inner">
-					<div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-						<div class="item m-t-15">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item m-t-10">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-					</div><!-- /.owl-carousel #logo-slider -->
-				</div><!-- /.logo-slider-inner -->
-
-			</div><!-- /.logo-slider -->
-			<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
+			
 		</div><!-- /.container -->
 	</div><!-- /.body-content -->
-
+</section>
     @endsection

@@ -54,7 +54,7 @@
                                             <div class="form-group">
                                                     <h5>File Input Field <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file" name="profile_photo_path" class="form-control"  id="image">
+                                                        <input type="file" accept="image/*" name="profile_photo_path" class="form-control"  id="image">
                                                         <div class="help-block"></div>
                                                     </div>
                                             </div>
@@ -87,7 +87,7 @@
         <!-- /.box -->
 
     </section>
-</div>
+</div> 
 
 <script type="text/javascript">
 

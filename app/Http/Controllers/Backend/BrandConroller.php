@@ -42,6 +42,7 @@ class BrandConroller extends Controller
     }
 
     public function BrandEdit($id){
+      
         $brand = Brand::findOrFail($id);
         //echo $brand->id;
         return view('backend.brand.brand_edit' , compact('brand'));
@@ -49,6 +50,12 @@ class BrandConroller extends Controller
 
     
     public function BrandUpdate(Request $request){
+        $request->validate([
+            'brand_name_en' => 'required',
+            'brand_name_hin' => 'required',
+            'brand_image' => 'required'
+        ]);
+        
         $brand_id = $request->id;
         echo $brand_id;
         $old_image = $request->old_image;

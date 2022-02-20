@@ -166,7 +166,7 @@
                                             <div class="form-group">
                                                 <h5>Main Thumbnail <span class="text-danger">*</span></h5>
                                                 <div class="controls">     
-                                                    <input type="file" name="medicine_thumbnail" class="form-control" onChange="mainThamUrl(this)"   required="" >                                                                           
+                                                    <input type="file" accept="image/*" name="medicine_thumbnail" class="form-control" onChange="mainThamUrl(this)"   required="" >                                                                           
                                                     <img src="" class="my-1" id="mainThumb">
                                                 </div>
                                             </div>
@@ -176,7 +176,7 @@
                                             <div class="form-group">
                                                 <h5>Multipale Images <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="file" name="multi_image[]" id="multiImg" class="form-control" required=""  multiple=""> 
+                                                    <input type="file" accept="image/*" name="multi_image[]" id="multiImg" class="form-control" required=""  multiple=""> 
                                                     <div class="help-block"></div>
                                                 </div>
                                                 <div class="row my-2" id="preview_img">

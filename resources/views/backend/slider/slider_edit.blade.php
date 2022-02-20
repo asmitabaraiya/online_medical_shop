@@ -17,8 +17,8 @@
                     <form method="POST" action="{{route('slider.update')}}" enctype="multipart/form-data" >
                                 @csrf
                                
-                                <input type= "hidden"  name="id" class="form-control" required="" value="{{$slider->id}}">
-                                <input type= "hidden"  name="old_image" class="form-control" required="" value="{{$slider->slider_img}}">
+                                <input type= "hidden"  name="id" class="form-control"    value="{{$slider->id}}">
+                                <input type= "hidden"  name="old_image" class="form-control"    value="{{$slider->slider_img}}">
 
                                 <div class="row">
                                     <div class="col-12">                                   
@@ -26,7 +26,7 @@
                                                 <div class="form-group">
                                                     <h5> Slider Title <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="title" class="form-control" required="" value="{{$slider->title}}">
+                                                        <input type="text"  name="title" class="form-control"    value="{{$slider->title}}">
                                                         @error('title')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -37,7 +37,7 @@
                                                 <div class="form-group">
                                                     <h5> Slider Description  <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="description" class="form-control" required="" value="{{$slider->description}}" >
+                                                        <input type="text"  name="description" class="form-control"    value="{{$slider->description}}" >
                                                         @error('description')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -48,7 +48,7 @@
                                                 <div class="form-group">
                                                     <h5> Slider Image <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file"  name="slider_img" class="form-control"   >
+                                                        <input type="file" accept="image/*" accept="image/*"  name="slider_img" class="form-control"   >
                                                         @error('slider_img')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -57,7 +57,7 @@
                                                 </div>
                                                                                                                                 
                                         <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-primary mb-5 " value="Update" >
+                                        <input type="submit" class="btn btn-success mb-5 " value="Update Slider" >
                                        
                                         </div>
                                     </div>

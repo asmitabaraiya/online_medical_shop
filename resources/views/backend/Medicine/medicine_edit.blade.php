@@ -281,7 +281,7 @@
                                             <a href="{{route('medicine.multiImage' , $img->id)}}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"> <i class = "fa fa-trash"></i> </a>
                                             <div class="card-text">
                                                 <label  class="form-control-label"> Change Image <span class="tx-danger">*</span></label>
-                                                <input type="file" name="multi_img[{{ $img->id }}]" class="form-group">
+                                                <input type="file" accept="image/*" name="multi_img[{{ $img->id }}]" class="form-group">
                                             </div>
                                         </div> 
                                     </div>
@@ -322,7 +322,7 @@
                                                     <div class="card-body">
                                                         <div class="card-text">
                                                             <label  class="form-control-label"> Change Image <span class="tx-danger">*</span></label>
-                                                            <input type="file" name="medicine_thumbnail" class="form-group">
+                                                            <input type="file" accept="image/*" name="medicine_thumbnail" class="form-group">
                                                             <img src="" class="my-1" id="mainThumb">
                                                         </div>
                                                     </div> 

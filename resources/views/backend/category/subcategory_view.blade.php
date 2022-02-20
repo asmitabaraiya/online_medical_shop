@@ -62,19 +62,22 @@
                                                 <div class="form-group">
                                                     <h5> Category  <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                            <select name="category_id" id="select" required="" class="form-control" aria-invalid="false">
+                                                            <select name="category_id" id="select"   class="form-control" aria-invalid="false">
                                                                 <option value="">Select  Category</option>
                                                                 @foreach($category as $item)
                                                                     <option value="{{ $item->id }}">{{ $item->category_name_en }}</option>
                                                                 @endforeach()
                                                             </select>
+                                                            @error('category_id')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     <div class="help-block"></div></div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <h5> SubCategory Name English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="subcategory_name_en" class="form-control" required="" >
+                                                        <input type="text"  name="subcategory_name_en" class="form-control"   >
                                                         @error('subcategory_name_en')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -85,7 +88,7 @@
                                                 <div class="form-group">
                                                     <h5> SubCategory Name Hindi <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="subcategory_name_hin" class="form-control" required="" >
+                                                        <input type="text"  name="subcategory_name_hin" class="form-control"   >
                                                         @error('subcategory_name_hin')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror

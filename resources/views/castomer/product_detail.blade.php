@@ -21,7 +21,7 @@
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
-                    <h3>@if(session()->get('language') == 'hindi')  {{ $product->product_name_hin }}  @else {{ $product->product_name_en }} @endif</h3>
+                    <h3 id="pname">@if(session()->get('language') == 'hindi')  {{ $product->product_name_hin }}  @else {{ $product->product_name_en }} @endif</h3>
                     <p>
                         @if( $product->discount_price != NULL )
                             <del>₹{{$product->selling_price}}.00 </del> &nbsp; <strong class="h4">₹{{$product->discount_price}}.00 </strong>
@@ -32,17 +32,28 @@
                     
                    
                     <ul class="list">
-                        @if ($product->product_qty == NULL)
-                            <li><a href="#"><span>Availibility</span> : In Stock</a></li>
+                        @if ($product->product_qty != NULL)
+                            <li><a href="#"><span>@if(session()->get('language') == 'hindi')  उपलब्धता  @else Availibility @endif</span> <span>  @if(session()->get('language') == 'hindi') : स्टॉक में  @else : In Stock @endif </span> </a></li>
                         @else
-                            <li><a href="#"><span>Availibility</span> : Out of Stock</a></li>                            
+                            <li><a href="#"><span>@if(session()->get('language') == 'hindi')  उपलब्धता  @else Availibility @endif </span><span> @if(session()->get('language') == 'hindi'): आउट ऑफ स्टॉक  @else : Out of Stock @endif </span> </a></li>                            
                         @endif
                     </ul>
                     <p>
                         @if(session()->get('language') == 'hindi')  {!! $product->short_descp_hin !!}  @else {!! $product->short_descp_en !!} @endif 
                     </p>
+                    <input type="hidden" id="product_id" value="{{$product->id}}">
+                    <div  id="colorArea">
+                        <select class="form-select" aria-label="Default select example" id="color" name="color" >
+                            @foreach ($product_color_en as $color )
+                                <option value=" {{$color}}"> {{$color}} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class = "form-group">
+                        <input class="form-control form-control-sm" id="qty" value="1"  type="number" placeholder="Quantity" aria-label="Quantity" min="1">
+                    </div>
                     <div class="product_count">
-                        <a class="button primary-btn" href="#">@if(session()->get('language') == 'hindi')  कार्ट में डालें  @else Add To Cart @endif</a>               
+                        <a class="button" onclick="addToCart()"  >@if(session()->get('language') == 'hindi')  कार्ट में डालें  @else Add To Cart @endif</a>               
                     </div>
                 </div>
             </div>

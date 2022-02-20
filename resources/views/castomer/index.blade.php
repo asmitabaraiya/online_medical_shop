@@ -1,3 +1,5 @@
+@include('castomer.comman.product_modal')
+
 @extends('castomer.main_master')
 
 @section('title')
@@ -5,6 +7,8 @@
 @endsection
 
 @section('body')
+
+
 
 <main class="site-main">
     
@@ -83,9 +87,9 @@
                 <div class="card-product__img">
                   <img class="card-img" src="{{asset($product->product_thumbnail)}}" alt="">
                   <ul class="card-product__imgOverlay">
-                    <li><button><i class="ti-search"></i></button></li>
-                    <li><button><i class="ti-shopping-cart"></i></button></li>
-                    <li><button><i class="ti-heart"></i></button></li>
+                    <li><button ><i class="ti-pencil"></i></button></li>
+                    <li><button   data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"  ><i class="ti-shopping-cart"></i></button></li>
+                    <li><button  id="{{$product->id}}" onclick="addToWishList(this.id)"><i class="ti-heart"  ></i></button></li>
                   </ul>
                 </div>
                 <div class="card-body">
@@ -95,8 +99,8 @@
                 </div>
               </div>
             </div>
-          @endforeach
-          
+          @endforeach          
+                    
          
         </div>
       </div>
@@ -113,7 +117,7 @@
           @foreach ($brands as $brand )
               <div class="card text-center card-product">
                 <div class="card-product__img">
-                  <img class="img-fluid" src="{{asset($brand->brand_image)}}" style="height: 50%; width: 50%" alt="">
+                <a href="{{url('brands/all/'.$brand->id.'/'.$brand->brand_slug_en)}}">  <img class="img-fluid"  src="{{asset($brand->brand_image)}}" style="height: 50%; width: 50%" alt=""> </a>
                 </div>
                 {{-- <div class="card-body">
                   <h4 class="card-product__title"><a href="single-product.html"> @if(session()->get('language') == 'hindi')  {{$brand->brand_name_hin}}  @else  {{$brand->brand_name_en}} @endif </a> </h4>
@@ -150,18 +154,18 @@
           {{-- <p>Popular Item in the market</p> --}}
           <h2> <span class="section-intro__style">@if(session()->get('language') == 'hindi')  {{$active_cat->category_name_hin}}  @else  {{$active_cat->category_name_en}} @endif </span></h2>
         </div>
-        <div class="owl-carousel owl-theme" id="bestSellerCarousel">
+        <div class="owl-carousel owl-theme carouselme" >
 
 
-@foreach ( $active_products as $product )
+  @foreach ( $active_products as $product )
   
           <div class="card text-center card-product">
             <div class="card-product__img">
               <img class="img-fluid" src="{{asset($product->product_thumbnail)}}" alt="">
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
-                <li><button><i class="ti-shopping-cart"></i></button></li>
-                <li><button><i class="ti-heart"></i></button></li>
+                <li><button  data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"><i class="ti-shopping-cart"></i></button></li>                
+                <li><button  id="{{$product->id}}" onclick="addToWishList(this.id)"><i class="ti-heart"  ></i></button></li>
               </ul>
             </div>
             <div class="card-body">
@@ -169,7 +173,7 @@
               <p class="card-product__price">₹{{ $product->selling_price }}</p>
             </div>
           </div>
-@endforeach
+  @endforeach
          
 
         </div>
@@ -178,62 +182,10 @@
     <!-- ================ Best Selling item  carousel end ================= --> 
 
 
-    {{-- section of desplaing medicines --}}
-
-<!-- Latest Product Section Begin -->
-<section class="latest-product spad">
-  <div class="container">
-      <div class="row">
-@foreach ($active_medicine_cat as $medicine_cat )
-  
-
-@php
-  $medicines = App\Models\Medicine::where('medicine_category_id' , $medicine_cat->id)->where('status' , 1)->orderBy('id' , 'DESC')->limit(6)->get();  
-  $medicine_no = count($medicines)/3;  
-@endphp
-           
-             
-           
-                      <div class="col-lg-4 col-md-6">
-                          <div class="latest-product__text">
-                              <h4>@if(session()->get('language') == 'hindi')  {{$medicine_cat->medicine_category_name_hin}}  @else  {{$medicine_cat->medicine_category_name_en}} @endif</h4>                                
-                               
-                                  <div class="latest-product__slider owl-carousel" >
-                                  @for ($i = 1 ; $i<=$medicine_no ; $i++)
-                                    @foreach ($medicines as $medicine )
-                                                
-                                                <div class="latest-prdouct__slider__item">
-                                                    <a href="#" class="latest-product__item">
-                                                      <div class="latest-product__item__pic">
-                                                          <img src="{{asset($medicine->medicine_thumbnail)}}" alt="">
-                                                      </div>
-                                                      <div class="latest-product__item__text">
-                                                          <h6>@if(session()->get('language') == 'hindi')  {{$medicine->medicine_name_hin}}  @else  {{$medicine->medicine_name_en}} @endif</h6>
-                                                          <span>₹{{$medicine->medicine_selling_price}}</span>
-                                                      </div>
-                                                    </a>                                                    
-                                                </div> 
-                                    @endforeach  
-                                  @endfor                                               
-                                  </div>
-                                
-
-                          </div>
-                      </div>
-            
-@endforeach
-         
-      </div>
-  </div>
-</section>
-<!-- Latest Product Section End -->
-
-
-
-
      {{-- end section of desplaing medicines --}}
 
     <!-- ================ Blog section start ================= -->  
+<br><br>    
     <section class="blog">
       <div class="container">
         <div class="section-intro pb-60px">
@@ -325,4 +277,6 @@
     
 
   </main>
+ 
+
 @endsection

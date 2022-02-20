@@ -1,60 +1,111 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('castomer.main_master')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('title')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+@if(session()->get('language') == 'hindi') Pharmative - रजिस्ट्रेशन   @else Pharmative - Registration  @endif     
+@endsection
+@section('body')
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
+<!-- ================ start banner area ================= -->	
+<div class="main_menu ">
 
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{url('/')}}">@if(session()->get('language') == 'hindi')  घर @else Home @endif</a></li>
+      <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi') रजिस्ट्रेशन  @else Registration  @endif     
+    </li>
+    </ol>      
+</div>
+<!-- ================ end banner area ================= -->
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
 
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <div class="hover">
+                        <h4>Already have an account?</h4>
+                        <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+                        <a class="button button-account" href="{{route('login')}}">Login Now</a>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            <div class="col-lg-6">
+                <div class="login_form_inner register_form_inner">
+                    <h3>Create an account</h3>
+                    
+                    <form class="row login_form" id="contactForm" method="POST" action="{{ route('register') }}">
+                        @csrf   
+                            <div style="text-align: left;">
+                        
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                                    @error('name')
+                                        <span style="color:Tomato;"> {{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
+                                    @error('email')
+                                        <span style="color:Tomato;">  {{ $message }}</span>
+                                    @enderror
+                                
+                                </div>
+
+                                <div class="col-md-12 form-group">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                                    @error('password')
+                                        <span style="color:Tomato;" >  {{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 form-group">
+                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
+                                    @error('password_confirmation')
+                                        <span style="color:Tomato;">  {{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone no" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone no'">
+                                    @error('phone')
+                                        <span style="color:Tomato;" > {{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                
+
+                                <div class="col-md-12 form-group">
+                                    <div class="creat_account">
+                                        <input type="checkbox" id="f-option2" name="terms">
+                                        <label for="f-option2">Accept terms and Condditions</label>
+                                    </div>
+                                    @error('terms')
+                                        <span style="color:Tomato;">  {{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                        <div class="col-md-12 form-group">
+                            <button type="submit" value="submit" class="button button-login w-100">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Login Box Area =================-->
+
+
+
+@endsection
+
+
+
+

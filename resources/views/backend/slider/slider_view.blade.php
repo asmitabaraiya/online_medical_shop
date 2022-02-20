@@ -41,7 +41,7 @@
                                     
                                     <td width="30%">
                                         <a href="{{route('slider.edit' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info" ><i class="fa fa-pencil" title="Edit"></i></a>
-                                        <a href="{{route('slider.delete' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info"  id="delete"><i class="fa fa-trash" title="delete"></i></a>
+                                        <a href="{{route('slider.delete' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info" data-toggle="modal" data-target="#modal-center" id="myDelete"><i class="fa fa-trash" title="delete"></i></a>
                                         @if($item->status == 1)
                                             <a href="{{route('slider.inactive' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info" title="Inactive Now"><i class="fa fa-arrow-down"></i></a>
                                         @else
@@ -79,7 +79,7 @@
                                                 <div class="form-group">
                                                     <h5> Slider Title <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="title" class="form-control" required="" >
+                                                        <input type="text"  name="title" class="form-control"    >
                                                         @error('title')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -90,7 +90,7 @@
                                                 <div class="form-group">
                                                     <h5> Slider Description <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="description" class="form-control" required="" >
+                                                        <input type="text"  name="description" class="form-control"    >
                                                         @error('description')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -101,7 +101,7 @@
                                                 <div class="form-group">
                                                     <h5> Slider Image <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file"  name="slider_img" class="form-control" required="" >
+                                                        <input type="file" accept="image/*" name="slider_img" class="form-control"    >
                                                         @error('slider_img')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -110,7 +110,7 @@
                                                 </div>
                                                                                                                                 
                                         <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-primary mb-5 " value="Add Slider" >
+                                        <input type="submit" class="btn btn-success mb-5 " value="Add Slider" >
                                        
                                         </div>
                                     </div>

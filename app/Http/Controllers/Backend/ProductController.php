@@ -35,6 +35,25 @@ class ProductController extends Controller
 
     public function ProductStore(Request $request){
 
+        $request->validate([
+            'brand_id' => 'required',
+            'category_id' => 'required',
+            'subsubcategory_id' => 'required',
+            'subcategory_id' => 'required',
+            'product_name_en' => 'required',
+            'product_name_hin' => 'required',
+            'product_code' => 'required',
+            'product_qty' => 'required',
+            'product_size_en' => 'required',
+            'product_size_hin' => 'required',
+            'discount_price' => 'numeric',
+            'selling_price' => 'required|numeric',
+            'product_thumbnail' => 'required',
+            'short_descp_en' => 'required',
+            'short_descp_hin' => 'required',
+        ]);
+
+
         $image = $request->file('product_thumbnail');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(917,1000)->save('upload/product/thambnail/'.$name_gen);
@@ -121,6 +140,25 @@ class ProductController extends Controller
 
    
     public function ProductUpdate(Request $request){
+
+        $request->validate([
+            'brand_id' => 'required',
+            'category_id' => 'required',
+            'subsubcategory_id' => 'required',
+            'subcategory_id' => 'required',
+            'product_name_en' => 'required',
+            'product_name_hin' => 'required',
+            'product_code' => 'required',
+            'product_qty' => 'required',
+            'product_size_en' => 'required',
+            'product_size_hin' => 'required',
+            'discount_price' => 'numeric|numeric',
+            'selling_price' => 'required|numeric',
+            'product_thumbnail' => 'required',
+            'short_descp_en' => 'required',
+            'short_descp_hin' => 'required',
+        ]);
+
         $id = $request->id;
         Product::findOrFail($id)->update([
             'brand_id' => $request->brand_id,

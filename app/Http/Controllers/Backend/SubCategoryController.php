@@ -46,6 +46,11 @@ class SubCategoryController extends Controller
     }
 
     public function SubCategoryUpdate(Request $request){
+        $request->validate([
+            'subcategory_name_en' => 'required',
+            'subcategory_name_hin' => 'required',
+            'category_id' => 'required'
+        ]);
       
         $id = $request->id;       
         SubCategory::findOrFail($id)->update([
@@ -129,6 +134,12 @@ class SubCategoryController extends Controller
     }
 
     public function SubSubCategoryUpdate(Request $request){
+        $request->validate([
+            'subsubcategory_name_en' => 'required',
+            'subsubcategory_name_hin' => 'required',
+            'category_id' => 'required',
+            'subcategory_id' => 'required'
+        ]);
         $id = $request->id;
         
         SubSubCategory::findOrFail($id)->update([

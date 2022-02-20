@@ -68,7 +68,7 @@
                                                 <div class="form-group">
                                                     <h5> Category Name English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="category_name_en" class="form-control" required="" >
+                                                        <input type="text"  name="category_name_en" class="form-control" >
                                                         @error('category_name_en')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -79,7 +79,7 @@
                                                 <div class="form-group">
                                                     <h5> Category Name Hindi <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="category_name_hin" class="form-control" required="" >
+                                                        <input type="text"  name="category_name_hin" class="form-control"  >
                                                         @error('category_name_hin')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -90,7 +90,7 @@
                                                 <div class="form-group">
                                                     <h5> Category Icon <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="category_icon" class="form-control" required="" >
+                                                        <input type="text"  name="category_icon" class="form-control"  >
                                                         @error('category_icon')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror

@@ -1,36 +1,38 @@
-@extends('frontend.main_master')
-@section('content')
+@extends('castomer.main_master')
 
-<div class="body-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2 my-4"><br><br>
-                <img class="card-img-top " style="border-radius: 50%"  width= "100px" height="100px"  src="{{ (!empty(Auth::user()->profile_photo_path))?url('upload/user_images/'.Auth::user()->profile_photo_path):url('upload/no_image.jpg') }}">
-                <ul class="list-group list-group-flush"><br><br>
-                    <a href="{{route('dashboard')}}" class="btn btn-primary btn-sm btn-block">Home</a>
-                    <a href="{{ route('user.profile')}}" class="btn btn-primary btn-sm btn-block">Profile Update</a>
-                    <a href=" {{route('user.changePassword')}}" class="btn btn-primary btn-sm btn-block">Change Password</a>
-                    <a href=" {{ route('user.logout') }} " class="btn btn-danger btn-sm btn-block">Logout</a>
-                </ul> 
-            </div>
+@section('title')
 
-            <div class="col-md-2 my-4">
-                
-            </div>
+@if(session()->get('language') == 'hindi') Pharmative - डैशबोर्ड   @else Pharmative - Dashboard  @endif     
+@endsection
+@section('body')
 
-            <div class="col-md-6">
-                <div class="card">
-                    <h3 class="text-center">
-                        <span class="text-danger">
-                            Hi.......  </span>
-                            <strong>{{ Auth::user()->name }}</strong> Wellcome To Easy Online Shop
-                      
-                    </h3>
-                </div>
-                
-            </div>
-        </div>
-    </div>
+<!-- ================ start banner area ================= -->	
+<div class="main_menu">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{url('/')}}">@if(session()->get('language') == 'hindi')  घर @else Home @endif</a></li>
+      <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi') डैशबोर्ड  @else Dashbord  @endif     
+    </li>
+    </ol>      
 </div>
+<!-- ================ end banner area ================= -->
+
+
+
+  <!--================Blog Area =================-->
+  <section  class="section-margin calc-60px">
+      <div class="container">
+          <div class="row">
+            
+            @include('castomer.comman.profile_banner')
+            
+            <div class="col-lg-8">
+
+            </div>
+          </div>
+      </div>
+  </section>
+
+ 
 
 @endsection

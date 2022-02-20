@@ -31,7 +31,7 @@
                                     </td>
                                     <td>
                                         <a href="{{route('brand.edit' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info" ><i class="fa fa-pencil" title="Edit"></i></a>
-                                        <a href="{{route('brand.delete' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info"  id="delete"><i class="fa fa-trash" title="delete"></i></a>
+                                        <a href="{{route('brand.delete' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info" data-toggle="modal" data-target="#modal-center" type="button"  id="delete"><i class="fa fa-trash" title="delete"></i></a>
                                           
                                     </td>
                                 </tr>
@@ -65,7 +65,7 @@
                                                 <div class="form-group">
                                                     <h5> Brand Name English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="brand_name_en" class="form-control" required="" >
+                                                        <input type="text"  name="brand_name_en" class="form-control"  >
                                                         @error('brand_name_en')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -76,7 +76,7 @@
                                                 <div class="form-group">
                                                     <h5> Brand Name Hindi <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="brand_name_hin" class="form-control" required="" >
+                                                        <input type="text"  name="brand_name_hin" class="form-control" >
                                                         @error('brand_name_hin')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -87,7 +87,7 @@
                                                 <div class="form-group">
                                                     <h5> Brand Image <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file"  name="brand_image" class="form-control" required="" >
+                                                        <input type="file" accept="image/*"  name="brand_image" class="form-control"  >
                                                         @error('brand_image')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -96,7 +96,7 @@
                                                 </div>
                                                                                                                                 
                                         <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-primary mb-5 " value="Add" >
+                                        <input type="submit" class="btn btn-success mb-5 " value="Add Brand" >
                                        
                                         </div>
                                     </div>

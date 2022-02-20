@@ -1,209 +1,97 @@
-@extends('frontend.main_master')
-@section('content')
+@extends('castomer.main_master')
 
-<div class="breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-inner">
-				<ul class="list-inline list-unstyled">
-					<li><a href="home.html">Home</a></li>
-					<li class='active'>Login</li>
-				</ul>
-			</div><!-- /.breadcrumb-inner -->
-		</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+@section('title')
 
-	<div class="body-content">
-		<div class="container">
-			<div class="sign-in-page">
-				<div class="row">
-					<!-- Sign-in -->
-					<div class="col-md-6 col-sm-6 sign-in">
-						<h4 class="">Sign in</h4>
-						<p class="">Hello, Welcome to your account.</p>
-						<div class="social-sign-in outer-top-xs">
-							<a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with
-								Facebook</a>
-							<a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
-						</div><br><br>
+@if(session()->get('language') == 'hindi') Pharmative - लॉगिन   @else Pharmative - Login @endif     
+@endsection
+@section('body')
 
-            <!-- form==================================================================                         -->
-						<form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }} " >
-                            @csrf
-                            
-							<div class="form-group">
-								<label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-								<input type="email" class="form-control unicase-form-control text-input"
-                                id="exampleInputEmail2" name="email" >
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">  <strong>{{ $message }}</storng></span>
-                                @enderror
-							</div>
 
-							<div class="form-group">
-								<label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
-								<input type="password" class="form-control unicase-form-control text-input"
-                                id="exampleInputEmail2" name="password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">  <strong>{{ $message }}</storng></span>
-                                @enderror
-							</div>
+<!-- ================ start banner area ================= -->	
+<div class="main_menu container">
 
-							<div class="radio outer-xs">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2"
-										value="option2">Remember me!
-								</label>
-								<a href="{{ route('password.request') }}" class="forgot-password pull-right">Forgot your Password?</a>
-							</div>
-							<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
-						</form>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{url('/')}}"> @if(session()->get('language') == 'hindi')  घर @else Home @endif </a></li>
+      <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi') लॉगिन   @else Login  @endif     
+    </li>
+    </ol>      
+</div>
+<!-- ================ end banner area ================= -->
+
+
+
+
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section-margin">
+    <div class="container">
+        <div class="row">
+			<div class="col-lg-6">
+				<div class="login_box_img">
+					<div class="hover">
+						<h4>New to our website?</h4>
+						<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+						<a class="button button-account" href="register.html">Create an Account</a>
 					</div>
-					<!-- Sign-in -->
+				</div>
+			</div>
 
-					<!-- create a new account -->
-					<div class="col-md-6 col-sm-6 create-new-account">
-						<h4 class="checkout-subtitle">Create a new account</h4>
-						<p class="text title-tag-line">Create your new account.</p>
+            <div class="col-lg-6">
+                <div class="login_form_inner">
+                    <h3>Log in to enter</h3>
+                    <form class="row login_form" method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }} " id="contactForm" 	 >
+						@csrf
+						
+						<div style="text-align: left;">
 
-                        <form method="POST" action="{{ route('register') }}">
-                             @csrf
-							<div class="form-group">
-								<label class="info-title" for="exampleInputEmail2">Email Address <span>*</span></label>
-								<input type="email" class="form-control unicase-form-control text-input" name="email"
-									id="exampleInputEmail2">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">  <strong>{{ $message }}</storng></span>
-                                @enderror
-							</div>
-							<div class="form-group">
-								<label class="info-title" for="exampleInputEmail1">Name <span>*</span></label>
-								<input type="text" class="form-control unicase-form-control text-input" name="name"
-									id="exampleInputEmail1">
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">  <strong>{{ $message }}</storng></span>
-                                @enderror
-							</div>
-							<div class="form-group">
-								<label class="info-title" for="exampleInputEmail1">Phone Number <span>*</span></label>
-								<input type="text" class="form-control unicase-form-control text-input" name="phone"
-									id="exampleInputEmail1">
-                                @error('phone')
-                                <span class="invalid-feedback" role="alert">  <strong>{{ $message }}</storng></span>
-                                @enderror
-							</div>
-							<div class="form-group">
-								<label class="info-title" for="exampleInputEmail1">Password <span>*</span></label>
-								<input type="password" class="form-control unicase-form-control text-input" name="password"
-									id="exampleInputEmail1">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">  <strong>{{ $message }}</storng></span>
-                                @enderror
-							</div>
-							<div class="form-group">
-								<label class="info-title" for="exampleInputEmail1">Confirm Password
-									<span>*</span></label>
-								<input type="password" class="form-control unicase-form-control text-input" name="password_confirmation"
-									id="exampleInputEmail1">
-                                @error('password_confirmation')
-                                <span class="invalid-feedback" role="alert">  <strong>{{ $message }}</storng></span>
-                                @enderror
-							</div>
+						
+								<div class="col-md-12 form-group ">
+									<input type="email" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+									@error('email')
+									<span style="color:Tomato;"> {{ $message }}  </span>
+									@enderror
+								
+								</div>
 
-							<div class="form-group">
-								<label class="info-title" for="exampleInputEmail1"> User Image <span>*</span></label>
-								<input type="file" class="form-control unicase-form-control text-input" 
-                                id="image" name="profile_photo_path" >
-							</div>
-							
-							<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign
-								Up</button>
-						</form>
+								
 
+								<div class="col-md-12 form-group ">
+									<input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+									@error('password')
+									<span style="color:Tomato;">  {{ $message }}  </span>
+									@enderror
+								
+								</div>
 
-					</div>
-					<!-- create a new account -->
-				</div><!-- /.row -->
-			</div><!-- /.sigin-in-->
-			<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-			<div id="brands-carousel" class="logo-slider wow fadeInUp">
+								<div class="col-md-12 form-group">
+									<div class="creat_account">
+										<input type="checkbox" id="f-option2" name="selector">
+										<label for="f-option2">Keep me logged in</label>
+									</div>
+								</div>
 
-				<div class="logo-slider-inner">
-					<div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-						<div class="item m-t-15">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-							</a>
+								<div class="col-md-12 form-group">
+									<button type="submit" value="submit" class="button button-login w-100 ">Log In</button>
+									<a  href="{{ route('password.request') }}">Forgot Password?</a>
+								</div>
 						</div>
-						<!--/.item-->
+						
+                    </form>
+                </div>
+            </div>
 
-						<div class="item m-t-10">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
+			
 
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
+        </div>
+    </div>
+</section>
+<!--================End Login Box Area =================-->
 
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
+@endsection
 
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
 
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
 
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
+{{-- ====================================================================================================== --}}
 
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
 
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
 
-						<div class="item">
-							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
-							</a>
-						</div>
-						<!--/.item-->
-					</div><!-- /.owl-carousel #logo-slider -->
-				</div><!-- /.logo-slider-inner -->
-
-			</div><!-- /.logo-slider -->
-			<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
-		</div><!-- /.container -->
-	</div><!-- /.body-content -->
-
-    @endsection

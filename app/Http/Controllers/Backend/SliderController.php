@@ -16,6 +16,12 @@ class SliderController extends Controller
     }
 
     public function SliderStore(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'slider_img' => 'required'
+        ]);
+
         $image = $request->file('slider_img');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(917,1000)->save('upload/slider/'.$name_gen);
@@ -66,6 +72,12 @@ class SliderController extends Controller
     }
 
     public function SliderUpdate(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'slider_img' => 'required'
+        ]);
+        
         $id = $request->id;
 
         if($request->file('slider_img')){

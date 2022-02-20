@@ -16,8 +16,8 @@
                                 <tr class="text-white">
                                     <th>Product Image</th>
                                     <th>Product En</th>
-                                    <th>Product Hin</th>
-                                    <th>Product Price</th>
+                                    <th>Product Name Hin</th>
+                                    <th>Product Name Price</th>
                                     <th>Quantity</th>
                                     <th>Discount</th>
                                     <th>Status</th>

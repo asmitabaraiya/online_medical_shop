@@ -17,10 +17,9 @@
                     <form method="POST" action="{{route('brand.update')}}" enctype="multipart/form-data" >
                                 @csrf
 
-                                <!-- <input name="id" type="text" class="form-control" required="" vlaue="{{$brand->id}}" >
-                                <input name="old_image" type="text" class="form-control" required="" vlaue="{{$brand->brand_image}}" > -->
+                               
 
-                                <input type= "hidden"  name="id" class="form-control" required="" value="{{$brand->id}}">
+                                <input type= "hidden"  name="id" class="form-control" value="{{$brand->id}}">
                                 <input type= "hidden"  name="old_image" class="form-control" required="" value="{{$brand->brand_image}}">
 
                                 <div class="row">
@@ -29,7 +28,7 @@
                                                 <div class="form-group">
                                                     <h5> Brand Name English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="brand_name_en" class="form-control" required="" value="{{$brand->brand_name_en}}">
+                                                        <input type="text"  name="brand_name_en" class="form-control" value="{{$brand->brand_name_en}}">
                                                         @error('brand_name_en')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -40,7 +39,7 @@
                                                 <div class="form-group">
                                                     <h5> Brand Name Hindi <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text"  name="brand_name_hin" class="form-control" required="" value="{{$brand->brand_name_hin}}" >
+                                                        <input type="text"  name="brand_name_hin" class="form-control"  value="{{$brand->brand_name_hin}}" >
                                                         @error('brand_name_hin')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -51,7 +50,7 @@
                                                 <div class="form-group">
                                                     <h5> Brand Image <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file"  name="brand_image" class="form-control"  >
+                                                        <input type="file" accept="image/*"  name="brand_image" class="form-control"  >
                                                         @error('brand_image')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -60,7 +59,7 @@
                                                 </div>
                                                                                                                                 
                                         <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-primary mb-5 " value="Update" >
+                                        <input type="submit" class="btn btn-success mb-5  " value="Update Brand" >
                                        
                                         </div>
                                     </div>

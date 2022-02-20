@@ -17,7 +17,7 @@ class CategoryConroller extends Controller
         $request->validate([
             'category_name_en' => 'required',
             'category_name_hin' => 'required',
-            'category_icon' => 'required'
+           
         ]);
         Category::insert([
             'category_name_en' => $request->category_name_en,
@@ -40,6 +40,11 @@ class CategoryConroller extends Controller
     }
 
     public function CategoryUpdate(Request $request){
+        $request->validate([
+            'category_name_en' => 'required',
+            'category_name_hin' => 'required',
+           
+        ]);
         $category_id = $request->id;
         echo $category_id;
             Category::findOrFail($category_id)->update([
