@@ -1,8 +1,7 @@
 @extends('castomer.main_master')
 
 @section('title')
-
-@if(session()->get('language') == 'hindi') Pharmative - प्रोफ़ाइल अपडेट    @else Pharmative - Profile Update  @endif     
+ Pharmative - Profile Update       
 @endsection
 @section('body')
 
@@ -12,8 +11,8 @@
 <div class="main_menu ">
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{url('/')}}">@if(session()->get('language') == 'hindi')  घर @else Home @endif</a></li>
-      <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi') प्रोफ़ाइल अपडेट   @else Profile Update  @endif     
+      <li class="breadcrumb-item"><a href="{{url('/')}}"> Home </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> Profile Update       
     </li>
     </ol>      
 </div>
@@ -60,7 +59,7 @@
                         
 
                         <div class="col-md-12 form-group">
-                            <button type="submit" value="submit" class="button button-login w-100">@if(session()->get('language') == 'hindi') अपडेट    @else Update  @endif     
+                            <button type="submit" value="submit" class="button button-login w-100">Update       
                             </button>
                         </div>
                 </form>

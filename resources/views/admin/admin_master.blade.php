@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+   
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
 
     <title>Easy Ecommerce Admin - Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Vendors Style-->
     <link rel="stylesheet" href=" {{ asset('backend/css/vendors_css.css') }} ">
@@ -21,11 +23,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     
+    
    
 </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
-@include('backend.common_model.delete_modal')
+
     <div class="wrapper">
 
       
@@ -83,7 +86,7 @@
     <script src="{{ asset('backend/js/pages/toastr.js') }}"></script>
     <script src="{{ asset('backend/js/pages/notification.js') }}"></script> 
 
-     <!-- Validation form JS -->') }}
+     <!-- Validation form JS -->
     <script src="{{ asset('backend/js/pages/validation.js') }}"></script>
     <script src="{{ asset('backend/js/pages/form-validation.js') }}"></script>
 
@@ -104,7 +107,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
    
 	
+    {{-- Comment Js --}}
+    <script src="{{ asset('../assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('../assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
+    <script src="{{ asset('../assets/vendor_components/perfect-scrollbar-master/perfect-scrollbar.jquery.min.js')}}"></script>
+	<script src="{{ asset('backend/js/pages/app-chat.js')}}"></script>
+	<script src="{{ asset('assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
+	<script src="{{ asset('assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 
+
+    
+    
 
     <script>
         @if(Session::has('message'))
@@ -131,13 +144,13 @@
     </script>
 
 
-<script>
-$(document).ready(function(){
-  $("#modalClick").click(function(){
-   		document.getElementById('myDelete1').click();
-   });
-});
-</script>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    
+
+
+
 
 </body>
 

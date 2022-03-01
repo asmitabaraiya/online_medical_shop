@@ -14,6 +14,11 @@ use App\Models\MultiImg;
 use App\Models\Brand;
 use App\Models\MedicinCategory;
 use App\Models\Medicine;
+use App\Models\Review;
+use App\Models\BlogPost;
+use App\Models\Contact;
+use Auth;
+use Carbon\Carbon;
 
 class UserIndexController extends Controller
 {
@@ -21,42 +26,59 @@ class UserIndexController extends Controller
         
         $categorys = Category::orderBy('category_name_en', 'ASC')->get();
         $slider = Slider::where('status' , 1)->orderBy('id' , 'DESC')->limit(3)->get();
-        $products = Product::where('status' , 1)->where('special_deals' , 1)->orderBy('id' , 'DESC')->limit(8)->get();
+        $products = Product::where('status' , 1)->where('special_deals' , 1)->orderBy('id' , 'DESC')->limit(4)->get();
         $brands = Brand::orderBy('brand_name_en', 'ASC')->get();
+        $blogs = BlogPost::latest()->limit(3)->get();
 
-    //    $active_medicine_cat = MedicinCategory::orderBy('id' , 'DESC')->limit(3)->get();
-
-        $active_medicine_cat = MedicinCategory::inRandomOrder()->limit(3)->get();
-
-        $active_cat = Category::where('category_status' , 1)->get()->first();  
-        $active_products = Product::where('category_id' , $active_cat->id)->get();
-        return view('castomer.index' , compact('slider' , 'products' , 'categorys' ,'brands' , 'active_products' , 'active_cat' , 'active_medicine_cat'));
+        $medicines = Product::where('category_id' ,12 )->where('status' , 1)->get();
+        return view('castomer.index' , compact('slider' , 'blogs' ,'products' , 'categorys' ,'brands' , 'medicines' ));
     }
 
     public function ProductDetail($id , $slug){
 
+        $reviews = Review::where('product_id' , $id)->where('status' , 1)->latest()->get();
         $product = Product::findOrFail($id);
         $multiImg = MultiImg::where('product_id' , $product->id)->get();
         $color = $product->product_color_en;
         $product_color_en = explode(',' , $color);           
-        return view('castomer.product_detail' , compact('product' , 'multiImg' , 'product_color_en') );
+        return view('castomer.product_detail' , compact('product' , 'multiImg' , 'product_color_en' , 'reviews') );
         
     }
 
-    public function ProductCatwise($id){
-        $title = Category::findOrFail($id);
+    public function ProductCatwise(Request $request ,  $id){
+        $products = Product::query();
+        if(!empty($_GET['category'])){
+            $slug = $_GET['category'];
+            $cat = Category::where('category_slug_en' , $slug)->first()->get();
+            $products = Product::where('category_id' , $cat->id)->where('status' , 1)->orderBy('id' , 'DESC')->paginate(3);
+        }
+        
+        
+        $title = Category::findOrFail($id);        
        // $brands = Product::where('category_id' , $id)->orderBy('id' , 'DESC')->get();
         $subcat = SubCategory::where('category_id' , $id)->orderBy('id' , 'DESC')->get();
         //$subsubcat = SubSubCategory::where('category_id' , $id)->orderBy('id' , 'DESC')->get();
-        $products = Product::where('category_id' , $id)->orderBy('id' , 'DESC')->paginate(9);
+        $products = Product::where('category_id' , $id)->where('status' , 1)->orderBy('id' , 'DESC')->paginate(3);
+
+        // load more with ajax
+        if($request->ajax()){
+            $product_view = view('castomer.product_loadmore_with_ajax' , compact('products'))->render();
+            return response()->json(['product_view' => $product_view]);
+        }
+
+
         return view('castomer.categorywise_product' , compact('products' , 'title' , 'subcat'  ));
     }
 
     public function ProductSubCatwise($id){
+
+       
+
+
          $sub_id = SubCategory::findOrFail($id);
          $title = Category::findOrFail($sub_id->category_id);
          $subcat = SubCategory::where('category_id' , $sub_id->category_id)->orderBy('id' , 'DESC')->get();
-         $products = Product::where('subcategory_id' , $id)->orderBy('id' , 'DESC')->paginate(9);
+         $products = Product::where('subcategory_id' , $id)->where('status' , 1)->orderBy('id' , 'DESC')->paginate(3);
          return view('castomer.categorywise_product' , compact('products' , 'title' , 'subcat'  ));
     
     }
@@ -92,4 +114,71 @@ class UserIndexController extends Controller
 
     }
 
+    public function ProductSearch(Request $request){
+        $request->validate([
+            "search" => "required"
+        ]);
+        $item = $request->search;
+        $product = Product::where('product_name_en' , 'LIKE' ,"%$item%")->get()->first();
+        $products = Product::where('product_name_en' , 'LIKE' ,"%$item%")->get();
+        $title = Category::findOrFail($product->category_id);
+        $subcat = SubCategory::where('category_id' , $product->category_id)->orderBy('id' , 'DESC')->get();
+
+        return view('castomer.product_search',compact('products' , 'title' , 'subcat'));
+
+    }
+
+    public function AdvanceProductSearch(Request $request){
+        $request->validate([
+            "search" => "required"
+        ]);
+        $item = $request->search;
+        $product = Product::where('product_name_en' , 'LIKE' ,"%$item%")->get()->first();
+        $products = Product::where('product_name_en' , 'LIKE' ,"%$item%")->select('product_name_en' , 'product_thumbnail')->limit(7)->get();
+        $title = Category::findOrFail($product->category_id);
+        $subcat = SubCategory::where('category_id' , $product->category_id)->orderBy('id' , 'DESC')->get();
+
+        return view('castomer.product_search_product',compact('products' , 'title' , 'subcat'));
+    }
+
+    public function shopFilter(Request $request){
+        $data = $request->all();
+
+        //filter Category
+        $catUrl = "";
+        if(!empty($data['category'])){
+            foreach($data['category'] as $category ) {
+                if(empty($catUrl)){
+                    $catUrl .= '$category='.$category;
+                }
+                else{
+                    $catUrl .= ','.$category;
+                }
+            }
+        }//end if condition
+
+        return redirect()->back();
+    }
+
+    public function contactPage(){
+        return view('castomer.contact');
+    }
+
+    public function contactStore(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+
+        Contact::insert([
+            'user_id' => Auth::id(),
+            'name' => $request->name,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'created_at' => Carbon::now(),
+        ]);
+
+        return redirect('/');
+    }
 }

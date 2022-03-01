@@ -2,18 +2,17 @@
 
 @section('title')
 
-@if(session()->get('language') == 'hindi') Pharmative - लॉगिन   @else Pharmative - Login @endif     
+ Pharmative - Login 
 @endsection
 @section('body')
 
 
 <!-- ================ start banner area ================= -->	
-<div class="main_menu container">
+<div class="main_menu ">
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{url('/')}}"> @if(session()->get('language') == 'hindi')  घर @else Home @endif </a></li>
-      <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi') लॉगिन   @else Login  @endif     
-    </li>
+      <li class="breadcrumb-item"><a href="{{url('/')}}">  Home  </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> Login </li>
     </ol>      
 </div>
 <!-- ================ end banner area ================= -->

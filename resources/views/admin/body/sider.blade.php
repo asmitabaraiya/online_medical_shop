@@ -74,34 +74,6 @@
                         </ul>
                     </li>
 
-                    <li class="treeview  {{ ($prefix == '/medicine_category') ? 'active' : '' }}">
-                        <a href="#">
-                            <i data-feather="file"></i>
-                            <span>Medicine Category</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class=" {{ ($route == 'all.medicine_category') ? 'active' : '' }}"><a href="{{route('all.medicine_category')}}"><i class="ti-more"></i>All Medicine Category</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="treeview  {{ ($prefix == '/medicine') ? 'active' : '' }}">
-                        <a href="#">
-                            <i data-feather="file"></i>
-                            <span>Medicines</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class=" {{ ($route == 'add.medicine') ? 'active' : '' }}"><a href="{{route('add.medicine')}}"><i class="ti-more"></i>Add Medicine </a></li>
-                            <li class=" {{ ($route == 'medicine.manage') ? 'active' : '' }}"><a href="{{route('medicine.manage')}}"><i class="ti-more"></i>Manage Medicine</a></li>
-                           
-                           
-                        </ul>
-                    </li>
 
                     
 
@@ -152,7 +124,7 @@
                             <li class=" {{ ($route == 'orders.shippedOrder') ? 'active' : '' }}"><a href="{{route('orders.shippedOrder')}}"><i class="ti-more"></i>Shipped Orders</a></li>
                             <li class=" {{ ($route == 'orders.deliveredOrder') ? 'active' : '' }}"><a href="{{route('orders.deliveredOrder')}}"><i class="ti-more"></i>Delivered Orders</a></li>
                             <li class=" {{ ($route == 'orders.cancelOrder') ? 'active' : '' }}"><a href="{{route('orders.cancelOrder')}}"><i class="ti-more"></i>Cancel Orders</a></li>
-                            
+                            <li class=" {{ ($route == 'orders.return') ? 'active' : '' }}"><a href="{{route('orders.return')}}"><i class="ti-more"></i>Return Orders</a></li>                            
                         </ul>
                     </li>
 
@@ -222,51 +194,53 @@
 
                         <ul class="treeview-menu">
                             <li class=" {{ ($route == 'blog.post') ? 'active' : '' }}"><a href="{{route('blog.post')}}"><i class="ti-more"></i>Add Blog Post </a></li>                                                                               
-                        </ul>
-                                                
+                        </ul>                                                                        
                     </li>
 
 
-                    <li class="header nav-small-cap">User Interface</li>
 
-                    <li class="treeview">
+                    <li class="treeview  {{ ($prefix == '/contact') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="grid"></i>
-                            <span>Components</span>
+                            <i data-feather="file"></i>
+                            <span>Contact</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-                            <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-                            <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
+                            <li class=" {{ ($route == 'manage.contact') ? 'active' : '' }}"><a href="{{route('manage.contact')}}"><i class="ti-more"></i>Manage Contact</a></li>
+                           
                         </ul>
                     </li>
 
-                    <li class="treeview">
-                        <a href="#">
-                            <i data-feather="grid"></i>
-                            <span>Cards</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-                            <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-                            <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
-                        </ul>
-                    </li>
 
                     
+                    <li class="treeview  {{ ($prefix == '/settings') ? 'active' : '' }}">
+                        <a href="#">
+                            <i data-feather="file"></i>
+                            <span>Settings</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+
+                        <ul class="treeview-menu">
+                            <li class=" {{ ($route == 'setting.manage') ? 'active' : '' }}"><a href="{{route('setting.manage')}}"><i class="ti-more"></i>Site Settings</a></li>                                                                               
+                        </ul>
+
+                        <ul class="treeview-menu">
+                            <li class=" {{ ($route == 'setting.seo') ? 'active' : '' }}"><a href="{{route('setting.seo')}}"><i class="ti-more"></i>SEO Settings </a></li>                                                                               
+                        </ul>
+
+                                                                        
+                    </li>
                  
                 </ul>
             </section>
 
             <div class="sidebar-footer">
                 <!-- item-->
-                <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings"
+                <a href="{{route('setting.manage')}}" class="link" data-toggle="tooltip" title="" data-original-title="Settings"
                     aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
                 <!-- item-->
                 <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i

@@ -24,7 +24,9 @@ use App\Http\Controllers\Frontend\AllUserController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\RepotsController;
 use App\Http\Controllers\Backend\BlogController;
-
+use App\Http\Controllers\Frontend\ViewBlogController;
+use App\Http\Controllers\Backend\SiteSettingController;
+use App\Http\Controllers\Frontend\ReviewController;
 
 
 
@@ -153,36 +155,21 @@ Route::middleware(['auth:admin'])->group(function(){
                     
     });
 
-            
-    // Admin  Medicine Category route ===================================================================================
+    Route::prefix('contact')->group(function(){
+        Route::get('/view' , [SliderController::class , 'ContactView'])->name('contact.slider');
+        // Route::post('/store' , [SliderController::class , 'SliderStore'])->name('slider.store');
+        // Route::get('/edit/{id}' , [SliderController::class , 'SliderEdit'])->name('slider.edit');
+        // Route::post('/update' , [SliderController::class , 'SliderUpdate'])->name('slider.update');   
+        // Route::get('/delete/{id}' , [SliderController::class , 'SliderDelete'])->name('slider.delete');
+        //
+        // Route::get('/inactive/{id}' , [SliderController::class , 'SliderInactive'])->name('slider.inactive');
+        // Route::get('/active/{id}' , [SliderController::class , 'SliderActive'])->name('slider.active');
 
-    Route::prefix('medicine_category')->group(function(){
-        Route::get('/medicine/view' , [MedicinCategoryController::class , 'MedicinCategoryView'])->name('all.medicine_category');
-        Route::post('/medicine/store' , [MedicinCategoryController::class , 'MedicineCategoryStore'])->name('medicine_category.store');
-        Route::get('/medicine/edit/{id}' , [MedicinCategoryController::class , 'MedicineCategoryEdit'])->name('medicine_category.edit');
-        Route::post('/medicine/update' , [MedicinCategoryController::class , 'MedicineCategoryUpdate'])->name('medicine_category.update');   
-        Route::get('/medicine/delete/{id}' , [MedicinCategoryController::class , 'MedicineCategoryDelete'])->name('medicine_category.delete');
+                    
     });
 
-    // Admin Medicine product route =======================================================================================
-
-    Route::prefix('medicines')->group(function(){
-
-        Route::get('/medicine/add' , [MedicinCategoryController::class , 'AddMedicine'])->name('add.medicine');
-        Route::post('/medicine/store' , [MedicinCategoryController::class , 'MedicineStore'])->name('medicine.store');
-        Route::get('/medicine/manage' , [MedicinCategoryController::class , 'MedicineManage'])->name('medicine.manage');     
-        Route::get('/medicine/edit/{id}' , [MedicinCategoryController::class , 'MedicineEdit'])->name('medicine.edit');
-        Route::post('/medicine/update' , [MedicinCategoryController::class , 'MedicineUpdate'])->name('medicine.update');   
-        Route::post('/medicine/update/image' , [MedicinCategoryController::class , 'MedicineMultiImgUpdate'])->name('medicine.imageUpdate');  
-        Route::post('/medicine/update/ThumbImage' , [MedicinCategoryController::class , 'MedicineThumbImgUpdate'])->name('medicine_mainThamb.imageUpdate');      
-        Route::get('/medicine/multiple/delete/{id}' , [MedicinCategoryController::class , 'MedicineMultiImgDelete'])->name('medicine.multiImage');
-
-        Route::get('/medicine/inactive/{id}' , [MedicinCategoryController::class , 'MedicineInactive'])->name('medicine.inactive');
-        Route::get('/medicine/active/{id}' , [MedicinCategoryController::class , 'MedicineActive'])->name('medicine.active');
-        Route::get('/medicine/delete/{id}' , [MedicinCategoryController::class , 'MedicineDelete'])->name('medicine.delete');
-        Route::get('/medicine/preview/{id}' , [MedicinCategoryController::class , 'MedicinePreview'])->name('medicine.preview');
+            
     
-    }); 
 
         
     // Coupon All Coupon manage==================================================================================
@@ -244,6 +231,11 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/shippedOrder/view' , [OrderController::class , 'shippedOrderView'])->name('orders.shippedOrder');
         Route::get('/deliveredOrder/view' , [OrderController::class , 'deliveredOrderView'])->name('orders.deliveredOrder');
         Route::get('/cancelOrder/view' , [OrderController::class , 'cancelOrderView'])->name('orders.cancelOrder');
+        Route::get('/return/view' , [OrderController::class , 'returnOrderView'])->name('orders.return');
+        Route::get('/return/aprove/{id}' , [OrderController::class , 'returnOrderAprove'])->name('order.return.approve');
+        Route::get('/return/aprove' , [OrderController::class , 'AprovedView'])->name('order.aprove.view');
+        
+        
         
         Route::get('/pending-comfirm/{id}' , [OrderController::class , 'PandingToComfirm'])->name('pending-comfirm');
         Route::get('/comfirm-process/{id}' , [OrderController::class , 'comfirmToprocess'])->name('comfirm-process');
@@ -253,13 +245,19 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/delivered-cancel/{id}' , [OrderController::class ,  'deliveredTocancel'])->name('delivered-cancel');
         
         Route::get('/invoice-download/{id}' , [OrderController::class ,  'OrderInvoiceDownlod'])->name('order.invoice.download');                                            
-    });
+    }); 
 
     Route::prefix('repots')->group(function(){
         Route::get('/all-repots/view' , [RepotsController::class , 'RepotsView'])->name('all.repots');  
         Route::post('/all-repots/serch/date' , [RepotsController::class , 'RepotsByDate'])->name('search-by-name');  
         Route::post('/all-repots/serch/month' , [RepotsController::class , 'RepotsByMonth'])->name('search-by-month');  
-        Route::post('/all-repots/serch/year' , [RepotsController::class , 'RepotsByYear'])->name('search-by-year');  
+        Route::post('/all-repots/serch/year' , [RepotsController::class , 'RepotsByYear'])->name('search-by-year'); 
+        
+        Route::get('/all-repots/dashbord/date/{id}' , [RepotsController::class , 'RepotsDashByDate'])->name('dashbord-by-date');  
+        Route::get('/all-repots/dashbord/month/{id}' , [RepotsController::class , 'RepotsDashByMonth'])->name('dashbord-by-month');  
+        Route::get('/all-repots/dashbord/year/{id}' , [RepotsController::class , 'RepotsDashByYear'])->name('dashbord-by-year'); 
+        
+
 
     });
 
@@ -279,18 +277,34 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::post('/blog-post/store' , [BlogController::class , 'BlogPostStore'])->name('blog.post.store');
 
         Route::get('/blog-post/edit/{id}' , [BlogController::class , 'BlogPostEdit'])->name('blogPost.edit');
-        Route::post('/blog-post/update' , [BlogController::class , 'BlogPostUpdate'])->name('blog.category.update');   
-        Route::get('/blog-post/delete/{id}' , [BlogController::class , 'BlogPostDelete'])->name('blog.category.delete');
+        Route::post('/blog-post/update' , [BlogController::class , 'BlogPostUpdate'])->name('blogPost.update');   
+        Route::get('/blog-post/delete/{id}' , [BlogController::class , 'BlogPostDelete'])->name('blogPost.delete');
+        Route::get('/blog-post/comment/view/{id}' , [BlogController::class , 'BlogPostCommentView'])->name('blog.post.comment'); 
+        Route::get('/comment/view/{id}/{b_id}' , [BlogController::class , 'CommentView'])->name('comment.view'); 
+        Route::post('/comment/ReplyAdd' , [BlogController::class , 'ReplyAdd'])->name('reply.add');   
+        Route::get('/comment/delete/{id}' , [BlogController::class , 'CommentDelete'])->name('comment.delete');
         
-
+        
     });   
+    
+    Route::prefix('settings')->group(function(){
+        Route::get('/site-setting' , [SiteSettingController::class , 'SettingUpdate'])->name('setting.manage');         
+        Route::post('/setting/edit' , [SiteSettingController::class , 'SettingEdit'])->name('settings.store');  
+        Route::get('/SEO' , [SiteSettingController::class , 'SettingSEO'])->name('setting.seo');     
+        Route::post('/seo/edit' , [SiteSettingController::class , 'SEOEdit'])->name('seo.store');  
 
-
-
-
+    });    
+    
+    Route::get('/view/review/{id}' , [RepotsController::class , 'reviewView'])->name('review.view');     
+    Route::get('/review/approve/{id}' , [RepotsController::class , 'reviewApprove'])->name('review.approve');     
+    Route::get('/review/delete/{id}' , [RepotsController::class , 'reviewDelete'])->name('review.delete');     
+    
+    Route::get('/admin/chart' , [AdminController::class , 'chatJS']);     
 
     
-}); // end admin protect meddilwere  
+}); 
+
+// end admin protect meddilwere  
 
 
 
@@ -300,18 +314,18 @@ Route::middleware(['auth:admin'])->group(function(){
 
 
 // may change *********************************************************
-Route::middleware(['auth:sanctum,web', 'verified'])->get('/web/dashboard', function () {
+Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+// Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
+// 	$id = Auth::user()->id;
+//     $user = User::find($id);
+//     return view('dashboard',compact('user'));
+// })->name('dashboard');
 
 // =================================================== Frontend All Route =============================================================
 
-
-// multi language route==================================================
-
-Route::get('/language/english' , [LanguageController::class , 'English'])->name('english.language');
-Route::get('/language/hindi' , [LanguageController::class , 'Hindi'])->name('hindi.language');
 
 
 
@@ -409,10 +423,20 @@ function(){
      
     Route::get('/profile/myOrder/return-view' , [AllUserController::class , 'ReturnMyOrderView'])->name('order.return.view');
 
+    // blog comment
+    Route::post('/blog/comment' , [ViewBlogController::class , 'PostComment'])->name('blog.comment');
 
-   
+    // Review Addd 
+    Route::post('/review/store' , [ReviewController::class , 'ReviewStore'])->name('review.store');
     
-});
+     // Order Track
+     Route::post('/order/track' , [AllUserController::class , 'OrderTrack'])->name('order.track');
+    
+    // contact
+    Route::post('/contact/store' , [UserIndexController::class , 'contactStore'])->name('contact.store');
+
+    
+});  //user protected route
 
 //==================================================================================================
   
@@ -447,5 +471,23 @@ Route::get('/coupon-remove' , [MyCartController::class , 'couponRemove']);
 
 Route::get('/checkOut' , [MyCartController::class , 'CheckOutCreate'])->name('checkOut');
 Route::post('/checkOut/store' , [checkOutController::class , 'CheckOuteStore'])->name('checkOute.store');  
+
+
+// frontend Blog All route=====================================================================
+
+Route::get('/blog' , [ViewBlogController::class , 'BlogView'])->name('blogPage.view');  
+Route::get('/blog/detail/{id}' , [ViewBlogController::class , 'BlogDetailView'])->name('blogPage.detail.view');
+Route::get('/blog/category/{id}' , [ViewBlogController::class , 'BlogCategoryView'])->name('blogPage.category.view');
+
+// Serch product route 
+
+Route::post('/product/saerch' , [UserIndexController::class , 'ProductSearch'])->name('product.search');  
+Route::post('/advance-saerch' , [UserIndexController::class , 'AdvanceProductSearch']);  
+
+// filter
+Route::post('/filter-category' , [UserIndexController::class , 'shopFilter'])->name('shope.filter');  
+
+// contact
+Route::get('/contact' , [UserIndexController::class , 'contactPage'])->name('contact.page');
 
 

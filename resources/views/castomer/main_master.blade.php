@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+  @php
+    $seo = App\Models\SEOsetting::find(1);
+  @endphp
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{csrf_token()}}">
+
+  <meta name="description" content="{{$seo->meta_description}}">
+  <meta name="author" content="{{$seo->meta_author}}">
+  <meta name="keywords" content="{{$seo->meta_keyword}}">
+  
+  <script>
+    {{$seo->google_analytics}}
+  </script>
 
   <title> @yield('title') </title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -45,7 +56,7 @@
   <!--================ Start Header Menu Area =================-->
     @include('castomer.body.header')
 	<!--================ End Header Menu Area =================-->
-
+  @include('castomer.comman.order_track')
     {{-- bodysection --}}
     
     @yield('body')
@@ -65,6 +76,7 @@
   <script src="{{asset('castomer')}}/vendors/jquery.ajaxchimp.min.js"></script>
   <script src="{{asset('castomer')}}/vendors/mail-script.js"></script>
   <script src="{{asset('castomer')}}/js/main.js"></script>
+  <script src="{{asset('castomer/js/search.js')}}"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -72,14 +84,14 @@
   
   {{-- js of oragani --}}
   <!-- Js Plugins -->
-      <script src="{{asset('castomer/assets_new')}}/js/jquery-3.3.1.min.js"></script>
+      {{-- <script src="{{asset('castomer/assets_new')}}/js/jquery-3.3.1.min.js"></script>
       <script src="{{asset('castomer/assets_new')}}/js/bootstrap.min.js"></script>
-      {{-- <script src="{{asset('castomer/assets_new')}}/js/jquery.nice-select.min.js"></script> --}}
-      <script src="{{asset('castomer/assets_new')}}/js/jquery-ui.min.js"></script>
+      <script src="{{asset('castomer/assets_new')}}/js/jquery.nice-select.min.js"></script>
+       <script src="{{asset('castomer/assets_new')}}/js/jquery-ui.min.js"></script>
       <script src="{{asset('castomer/assets_new')}}/js/jquery.slicknav.js"></script>
       <script src="{{asset('castomer/assets_new')}}/js/mixitup.min.js"></script>
-      <script src="{{asset('castomer/assets_new')}}/js/owl.carousel.min.js"></script>
-      <script src="{{asset('castomer/assets_new')}}/js/main.js"></script>
+      <script src="{{asset('castomer/assets_new')}}/js/owl.carousel.min.js"></script> 
+      <script src="{{asset('castomer/assets_new')}}/js/main.js"></script>  --}}
  {{-- js of oragani --}}
 
 
@@ -197,7 +209,7 @@ function addToCart(){
       url: '/product/mini/cart',
       dataType: 'json',
       success:function(response){
-       // console.log(response);
+       console.log();
         var miniCart = ""
         $.each(response.carts, function(key , value){
           miniCart += `<li class="nav-item">
@@ -222,6 +234,7 @@ function addToCart(){
           
         });
         $('#miniCart').html(miniCart);
+        $('#cart_qty').text(response.cartQty);
       }
     })
   }
@@ -588,8 +601,8 @@ function couponCalculation(){
                 $('#couponCalField').html(
                     `
                     <ul class="list list_2">
-                      <li><a >Subtotal <span>₹${data.total}.00</span></a></li>
-                      <li><a >Grand Total <span>₹${data.total}.00</span></a></li>                     
+                      <li><a >Subtotal <span>₹${data.total}</span></a></li>
+                      <li><a >Grand Total <span>₹${data.total}</span></a></li>                     
                     </ul>
                     
                     `
@@ -600,10 +613,10 @@ function couponCalculation(){
                     
                    
                     <ul class="list list_2">
-                      <li><a >Subtotal <span>₹${data.subtotal}.00</span></a></li>
+                      <li><a >Subtotal <span>₹${data.subtotal}</span></a></li>
                       <li><a >Coupon <span>${data.coupon_name} <button  aria-label="Close" class="btn-close" type="submit" onclick="couponRemove()"></button></span></a></li>
-                      <li><a >Discount Amount <span>₹${data.discount_amount}.00</span></a></li>
-                      <li><a >Grand Total <span>₹${data.total_amount}.00</span></a></li>
+                      <li><a >Discount Amount <span>₹${data.discount_amount}</span></a></li>
+                      <li><a >Grand Total <span>₹${data.total_amount}</span></a></li>
                     </ul>
                     `
             )

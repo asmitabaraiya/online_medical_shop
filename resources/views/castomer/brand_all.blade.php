@@ -2,15 +2,15 @@
 
 @section('title')
 
-@if(session()->get('language') == 'hindi')  {{ $brand->brand_name_hin }}  @else {{ $brand->brand_name_en }} @endif     
+ {{ $brand->brand_name_en }}      
 @endsection
 @section('body')
 <!-- ================ start banner area ================= -->	
-<div class="main_menu container">
+<div class="main_menu ">
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi')  {{ $brand->brand_name_hin }}  @else {{ $brand->brand_name_en }} @endif     
+      <li class="breadcrumb-item active" aria-current="page"> {{ $brand->brand_name_en }}      
     </li>
     </ol>      
 </div>
@@ -43,14 +43,16 @@
                         </ul>
                       </div>
                       <div class="card-body">
-                        <h4 class="card-product__title"><a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug_en  )}}">@if(session()->get('language') == 'hindi')  {{$product->product_name_hin}}  @else  {{$product->product_name_en}} @endif</a></h4>
+                        <h4 class="card-product__title"><a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug_en  )}}">   {{$product->product_name_en}} </a></h4>
                         <p class="card-product__price">₹{{ $product->selling_price }}</p>
                       </div>
                     </div>
                 @endif
               @endforeach
-          </div>
-        </div>
+          </div>          
+          <a href="{{url('/product/categorywise/'.$category->id.'/'.$category->category_slug_en)}}" style="float: right;"> View All {{$category->category_name_en}} </a> 
+        
+        </div>        
       </section>
 @endif
 

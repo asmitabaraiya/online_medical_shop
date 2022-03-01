@@ -16,14 +16,11 @@ class CategoryConroller extends Controller
     public function CategoryStore(Request $request){
         $request->validate([
             'category_name_en' => 'required',
-            'category_name_hin' => 'required',
            
         ]);
         Category::insert([
             'category_name_en' => $request->category_name_en,
-            'category_name_hin' => $request->category_name_hin,
             'category_slug_en' => strtolower(str_replace(' ' , '-' , $request->category_name_en)) ,
-            'category_slug_hin' => str_replace(' ' , '-' , $request->category_name_hin) ,
             'category_icon' => $request->category_icon,
         ]);
         $notification = array(
@@ -42,16 +39,13 @@ class CategoryConroller extends Controller
     public function CategoryUpdate(Request $request){
         $request->validate([
             'category_name_en' => 'required',
-            'category_name_hin' => 'required',
            
         ]);
         $category_id = $request->id;
         echo $category_id;
             Category::findOrFail($category_id)->update([
                 'category_name_en' => $request->category_name_en,
-                'category_name_hin' => $request->category_name_hin,
                 'category_slug_en' => strtolower(str_replace(' ' , '-' , $request->category_name_en)) ,
-                'category_slug_hin' => str_replace(' ' , '-' , $request->category_name_hin) ,
                 'category_icon' => $request->category_icon
             ]);
             $notification = array(

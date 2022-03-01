@@ -17,12 +17,9 @@ class CreateBlogPostsTable extends Migration
             $table->id();
             $table->integer('category_id');
             $table->string('poast_title_en');
-            $table->string('poast_title_hin');
             $table->string('poast_slug_en');
-            $table->string('poast_slug_hin');
             $table->string('post_image');
             $table->text('poast_details_en');
-            $table->text('poast_details_hin');
             $table->timestamps();
         });
     }

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
-
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Image;
+use App\Models\BlogComment;
 
 class BlogController extends Controller
 {
@@ -19,15 +20,13 @@ class BlogController extends Controller
 
         $request->validate([
             'blog_category_name_en' => 'required',
-            'blog_category_name_hin' => 'required',
+          
            
         ]);
 
         BlogCategory::insert([
             'blog_category_name_en' => $request->blog_category_name_en,
-            'blog_category_name_hin' => $request->blog_category_name_hin,
             'blog_category_slug_en' => strtolower(str_replace(' ' , '-' , $request->blog_category_name_en)) ,
-            'blog_category_slug_hin' => str_replace(' ' , '-' , $request->blog_category_name_hin) ,          
         ]);
         $notification = array(
             'message' => 'Category inserted Successfully',
@@ -46,16 +45,13 @@ class BlogController extends Controller
 
         $request->validate([
             'blog_category_name_en' => 'required',
-            'blog_category_name_hin' => 'required',
            
         ]);
         $category_id = $request->id;
         echo $category_id;
         BlogCategory::findOrFail($category_id)->update([
                 'blog_category_name_en' => $request->blog_category_name_en,
-                'blog_category_name_hin' => $request->blog_category_name_hin,
                 'blog_category_slug_en' => strtolower(str_replace(' ' , '-' , $request->blog_category_name_en)) ,
-                'blog_category_slug_hin' => str_replace(' ' , '-' , $request->blog_category_name_hin) ,               
             ]);
             $notification = array(
                 'message' => 'Category update Successfully',
@@ -88,38 +84,36 @@ class BlogController extends Controller
         $request->validate([
             'category_id' => 'required',
             'poast_title_en' => 'required',
-            'poast_title_hin' => 'required',
             'poast_details_en' => 'required',
-            'poast_details_hin' => 'required',  
             'post_image' => 'required',                      
         ]);
 
         $image = $request->file('post_image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(917,1000)->save('upload/blogPost/'.$name_gen);
+        Image::make($image)->resize(730,340.66)->save('upload/blogPost/'.$name_gen);
         $save_url = 'upload/blogPost/'.$name_gen;
 
         BlogPost::insert([
             'category_id' => $request->category_id,
             'poast_title_en' => $request->poast_title_en,
-            'poast_title_hin' => $request->poast_title_hin,
             'poast_slug_en' => strtolower(str_replace(' ' , '-' , $request->poast_title_en)) ,
-            'poast_slug_hin' => str_replace(' ' , '-' , $request->poast_title_hin) , 
             'post_image' => $save_url, 
-            'poast_details_en' => $request->poast_title_en,
-            'poast_details_hin' => $request->poast_title_hin,        
+            'poast_details_en' => $request->poast_details_en,
+            'created_at' => Carbon::now()        
         ]);
         $notification = array(
             'message' => 'Category inserted Successfully',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('blog.post.view')->with($notification);
     }
 
     public function BlogPostStoreView(){
+
+        $comments = BlogComment::get();
         $blogs = BlogPost::latest()->get();
-        return view('backend.Blogs.blog_post_view' , compact('blogs'));
+        return view('backend.Blogs.blog_post_view' , compact('blogs' , 'comments'));
     }
 
 
@@ -138,9 +132,7 @@ class BlogController extends Controller
         $request->validate([
             'category_id' => 'required',
             'poast_title_en' => 'required',
-            'poast_title_hin' => 'required',
             'poast_details_en' => 'required',
-            'poast_details_hin' => 'required',                                    
         ]);
         
         $blog_id = $request->id;
@@ -151,17 +143,14 @@ class BlogController extends Controller
             @unlink($old_image);
             $image = $request->file('post_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(300,300)->save('upload/blogPost/'.$name_gen);
+            Image::make($image)->resize(730,340.66)->save('upload/blogPost/'.$name_gen);
             $save_url = 'upload/blogPost/'.$name_gen;
 
-            BlogPost::findOrFail($brand_id)->update([
+            BlogPost::findOrFail($blog_id)->update([
                 'category_id' => $request->category_id,
                 'poast_title_en' => $request->poast_title_en,
-                'poast_title_hin' => $request->poast_title_hin,
                 'poast_slug_en' => strtolower(str_replace(' ' , '-' , $request->poast_title_en)) ,
-                'poast_slug_hin' => str_replace(' ' , '-' , $request->poast_title_hin) ,
                 'poast_details_en' => $request->poast_details_en,
-                'poast_details_hin' => $request->poast_details_hin,
                 'post_image' => $save_url
             ]);
             $notification = array(
@@ -174,14 +163,11 @@ class BlogController extends Controller
         }
         else{
 
-            BlogPost::findOrFail($brand_id)->update([
+            BlogPost::findOrFail($blog_id)->update([
                 'category_id' => $request->category_id,
                 'poast_title_en' => $request->poast_title_en,
-                'poast_title_hin' => $request->poast_title_hin,
                 'poast_slug_en' => strtolower(str_replace(' ' , '-' , $request->poast_title_en)) ,
-                'poast_slug_hin' => str_replace(' ' , '-' , $request->poast_title_hin) ,
                 'poast_details_en' => $request->poast_details_en,
-                'poast_details_hin' => $request->poast_details_hin,
                
                
             ]);
@@ -208,4 +194,41 @@ class BlogController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    public function BlogPostCommentView($id){
+        $comments = BlogComment::where('blog_post_id' , $id)->latest()->get();
+        //print_r($comments);
+        
+        return view('backend.Blogs.blog_comment_view', compact('comments'));
+    }
+
+    public function CommentView($id , $b_id){
+        $comments = BlogComment::where('blog_post_id' , $b_id)->latest()->get();
+        $Commentitem = BlogComment::findOrFail($id);
+        return view('backend.Blogs.blog_comment_view', compact(  'comments' , 'Commentitem'));
+    }
+
+    public function ReplyAdd(Request $request){
+
+        $request->validate([
+            'reply' => 'required'           
+        ]);
+        $cid = $request->id;
+        BlogComment::findOrFail($cid)->update([
+            'reply' => $request->reply,
+            'reply_date' =>  Carbon::now() 
+        ]);
+
+        $Commentitem = BlogComment::findOrFail($request->id);
+        $comments = BlogComment::where('blog_post_id' , $Commentitem->blog_post_id)->latest()->get();
+
+        return redirect()->back()->with( compact('comments' , 'Commentitem'));
+    }
+
+    public function CommentDelete($id){
+        $Commentitem = BlogComment::findOrFail($id);
+        BlogComment::findOrFail($id)->delete();       
+        $comments = BlogComment::where('blog_post_id' , $Commentitem->blog_post_id)->latest()->get();
+
+        return redirect()->route('blog.post.comment' , $comments);
+    }
 }

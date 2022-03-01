@@ -20,15 +20,12 @@ class SubCategoryController extends Controller
     public function SubCategoryStore(Request $request){
             $request->validate([
                 'subcategory_name_en' => 'required',
-                'subcategory_name_hin' => 'required',
                 'category_id' => 'required'
             ]);
            
             SubCategory::insert([
                 'subcategory_name_en' => $request->subcategory_name_en,
-                'subcategory_name_hin' => $request->subcategory_name_hin,
                 'subcategory_slug_en' => strtolower(str_replace(' ' , '-' , $request->subcategory_name_en)) ,
-                'subcategory_slug_hin' => str_replace(' ' , '-' , $request->subcategory_name_hin) ,
                 'category_id' => $request->category_id
             ]);
             $notification = array(
@@ -48,7 +45,6 @@ class SubCategoryController extends Controller
     public function SubCategoryUpdate(Request $request){
         $request->validate([
             'subcategory_name_en' => 'required',
-            'subcategory_name_hin' => 'required',
             'category_id' => 'required'
         ]);
       
@@ -56,9 +52,7 @@ class SubCategoryController extends Controller
         SubCategory::findOrFail($id)->update([
             'category_id' => $request->category_id,
             'subcategory_name_en' =>  $request->subcategory_name_en,
-            'subcategory_name_hin' => $request->subcategory_name_hin,
             'subcategory_slug_en' =>  strtolower(str_replace(' ' , '-' , $request->subcategory_name_en)) ,
-            'subcategory_slug_hin' => str_replace(' ' , '-' , $request->subcategory_name_hin) ,
         ]);
         $notification = array(
             'message' => 'Category update Successfully',
@@ -98,16 +92,13 @@ class SubCategoryController extends Controller
     public function SubSubCategoryStore(Request $request){
         $request->validate([
             'subsubcategory_name_en' => 'required',
-            'subsubcategory_name_hin' => 'required',
             'category_id' => 'required',
             'subcategory_id' => 'required'
         ]);
        
         SubSubCategory::insert([
             'subsubcategory_name_en' => $request->subsubcategory_name_en,
-            'subsubcategory_name_hin' => $request->subsubcategory_name_hin,
             'subsubcategory_slug_en' => strtolower(str_replace(' ' , '-' , $request->subsubcategory_name_en)) ,
-            'subsubcategory_slug_hin' => str_replace(' ' , '-' , $request->subsubcategory_name_hin) ,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id
         ]);
@@ -136,7 +127,6 @@ class SubCategoryController extends Controller
     public function SubSubCategoryUpdate(Request $request){
         $request->validate([
             'subsubcategory_name_en' => 'required',
-            'subsubcategory_name_hin' => 'required',
             'category_id' => 'required',
             'subcategory_id' => 'required'
         ]);
@@ -146,9 +136,7 @@ class SubCategoryController extends Controller
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'subsubcategory_name_en' =>  $request->subsubcategory_name_en,
-            'subsubcategory_name_hin' => $request->subsubcategory_name_hin,
             'subsubcategory_slug_en' =>  strtolower(str_replace(' ' , '-' , $request->subsubcategory_name_en)) ,
-            'subsubcategory_slug_hin' => str_replace(' ' , '-' , $request->subsubcategory_name_hin) ,
             
         ]);
         $notification = array(

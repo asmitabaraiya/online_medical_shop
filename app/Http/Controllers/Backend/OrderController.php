@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\OrderItem;
 use App\Models\Order;
-
+use App\Models\Product;
 use PDF;
+use DB;
 
 
 class OrderController extends Controller
@@ -43,6 +44,7 @@ class OrderController extends Controller
 
     public function shippedOrderView(){
         $orders = Order::where('status' , 'shipped')->orderBy('id' , 'DESC')->get();
+
         return view('backend.order.shippedOrder_view' , compact('orders'));
     }
 
@@ -54,6 +56,23 @@ class OrderController extends Controller
     public function cancelOrderView(){
         $orders = Order::where('status' , 'cancel')->orderBy('id' , 'DESC')->get();
         return view('backend.order.cancelOrder_view' , compact('orders'));
+    }
+
+    public function returnOrderView(){
+        $orders = Order::where('return_order' , 1)->orderBy('id' , 'DESC')->get();
+        return view('backend.order.returnOrder_view' , compact('orders'));
+    }
+
+    public function returnOrderAprove($id){
+        Order::findOrFail($id)->update([
+            'return_order' => 2
+        ]);
+        return redirect()->route('orders.return');
+    }
+
+    public function AprovedView(){
+        $orders = Order::where('return_order' , 2)->orderBy('id' , 'DESC')->get();
+        return view('backend.order.aprove_view' , compact('orders'));
     }
 
     public function PandingToComfirm($id){
@@ -85,10 +104,16 @@ class OrderController extends Controller
     }
 
     public function shippedTodelivered($id){
+        $product = OrderItem::where('order_id' , $id)->get();
+        foreach ($product as $item) {
+            Product::where('id' , $item->product_id)->update([
+                'product_qty' => DB::raw('product_qty-'.$item->qty)
+            ]);
+        }
         Order::findOrFail($id)->update([
             'status' => 'delivered'
         ]);
-        return redirect()->route('orders.delivered');
+        return redirect()->route('orders.deliveredOrder');
     }
 
     public function deliveredTocancel($id){

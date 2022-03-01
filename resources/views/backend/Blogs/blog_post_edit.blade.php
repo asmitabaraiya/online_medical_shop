@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col">
                         
-                        <form method="post" action="{{route('blog.category.update')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('blogPost.update')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
@@ -39,7 +39,7 @@
                                                                 <select name="category_id" id="select"    class="form-control" aria-invalid="false">
                                                                     <option value="" >Select Blog  Category</option>
                                                                    @foreach ($blogcategory as $item)
-                                                                        <option value="{{$item->id}}" >{{$item->blog_category_name_en}}</option>
+                                                                        <option {{ $item->id == $blogPost->category_id ? 'selected' : '' }}  value="{{$item->id}}" >{{$item->blog_category_name_en}}</option>
                                                                    @endforeach
                                                                 </select>
                                                                 @error('category_id')
@@ -59,7 +59,7 @@
 
                                         <div class="col-md 6"> 
                                             <div class="form-group">
-                                                <h5>Blog Post Title En <span class="text-danger">*</span></h5>
+                                                <h5>Blog Post Title  <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <input type="text"  name="poast_title_en" class="form-control" value="{{$blogPost->poast_title_en}}" >
                                                     @error('poast_title_en')
@@ -70,18 +70,7 @@
                                             </div>
                                         </div>                
 
-                                        <div class="col-md 6">
-                                        <div class="form-group">
-                                            <h5>Blog Post Title Hin <span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="text"  name="poast_title_hin" class="form-control" value="{{$blogPost->poast_title_hin}}" >
-                                                @error('poast_title_hin')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                                <div class="help-block"></div>
-                                            </div>
-                                        </div>
-                                        </div>
+                                        
                                       
 
                                     </div> <!--end 4 -->
@@ -114,11 +103,11 @@
                                         <div class="col-md 6">
                                             <div class="box">
                                                 <div class="box-header">
-                                                  <h5>Long Description English</h5>
+                                                  <h5>Long Description </h5>
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
-                                                        <textarea id="editor1" class="form-control" placeholder="Long Description English" name="poast_details_en" value="{{$blogPost->poast_details_en}}"   rows="10" cols="80"></textarea>  
+                                                        <textarea id="editor1" class="form-control" placeholder="Long Description " name="poast_details_en"   rows="10" cols="80">{{$blogPost->poast_details_en}}</textarea>  
                                                                                                         
                                                 </div>
                                                 @error('poast_details_en')
@@ -128,21 +117,7 @@
                                             <!-- /.box -->
                                         </div>
 
-                                        <div class="col-md 6">
-                                            <div class="box">
-                                                <div class="box-header">
-                                                  <h5>Long Description Hindi </h5>
-                                                </div>
-                                                <!-- /.box-header -->
-                                                <div class="box-body">                                                   
-                                                        <textarea id="editor2" class="form-control" placeholder="Long Description Hindi" name="poast_details_hin"  vlaue="{{$blogPost->poast_details_hin}}"  rows="10" cols="80"> </textarea>                                            
-                                                </div>
-                                                @error('poast_details_hin')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            </div>
-                                            <!-- /.box -->
-                                        </div>
+                                        
 
                                     </div> <!--end 8 -->
                                                                  

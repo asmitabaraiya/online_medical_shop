@@ -1,6 +1,5 @@
 @extends('admin.admin_master')
 @section('admin')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <div class="container-full">
@@ -26,7 +25,7 @@
                                 <div class="col-12">
 
                                     <div class="row"> <!-- Start 1st row -->
-                                        <div class="col-md 4"> 
+                                        <div class="col-md 6"> 
                                             <div class="form-group">
                                                         <h5> Brand  <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -43,7 +42,7 @@
                                                     </div>            
                                         </div> 
 
-                                        <div class="col-md 4"> 
+                                        <div class="col-md 6"> 
                                                     <div class="form-group">
                                                         <h5> Category  <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -61,24 +60,25 @@
 
                                         </div> 
 
-                                        <div class="col-md 4"> 
-                                                    <div class="form-group">
-                                                        <h5> SubCategory  <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                                <select name="subcategory_id" id="select"    class="form-control" aria-invalid="false">
-                                                                <option value="" selected="" disable="" >Select SubCategory</option>
-                                                                
-                                                                </select>
-                                                                @error('subcategory_id')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
-                                                        <div class="help-block"></div></div>
-                                                    </div> 
-                                        </div>                                                                           
+                                                                                                                 
                                     </div> <!--end 1 -->
 
                                     <div class="row"> <!-- Start 2st row -->
-                                        <div class="col-md 4"> 
+                                        <div class="col-md 6"> 
+                                            <div class="form-group">
+                                                <h5> SubCategory  <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                        <select name="subcategory_id" id="select"    class="form-control" aria-invalid="false">
+                                                        <option value="" selected="" disable="" >Select SubCategory</option>
+                                                        
+                                                        </select>
+                                                        @error('subcategory_id')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                <div class="help-block"></div></div>
+                                            </div> 
+                                        </div>  
+                                        <div class="col-md 6"> 
                                             <div class="form-group">
                                                 <h5> Sub-SubCategory  <span class="text-danger">*</span></h5>
                                                     <div class="controls">
@@ -92,9 +92,16 @@
                                             </div> 
                                         </div>  
 
-                                        <div class="col-md 4">
+                                        
+
+                                        
+
+                                    </div> <!--end 2 -->
+
+                                    <div class="row"> <!-- Start 3st row -->
+                                        <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Name En <span class="text-danger">*</span></h5>
+                                                <h5>Product Name  <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <input type="text" name="product_name_en" class="form-control" 
                                                     data-validation-required-message="This field is required">
@@ -105,23 +112,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 4">
-                                            <div class="form-group">
-                                                <h5>Product Name Hin <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="text" name="product_name_hin" class="form-control" 
-                                                        data-validation-required-message="This field is required">
-                                                        @error('product_name_hin')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>    
-                                        </div>
-
-                                    </div> <!--end 2 -->
-
-                                    <div class="row"> <!-- Start 3st row -->
-                                        <div class="col-md 4">
+                                        <div class="col-md 6">
                                             <div class="form-group">
                                                 <h5>Product Code <span class="text-danger">*</span></h5>
                                                 <div class="controls">
@@ -134,46 +125,18 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 4">
-                                            <div class="form-group">
-                                                <h5>Product Quantity <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="text" name="product_qty" class="form-control" 
-                                                        data-validation-required-message="This field is required">
-                                                        @error('product_qty')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
 
-                                        <div class="col-md 4">
-                                            <div class="form-group">
-                                                <h5>Product Tags En </h5>
-                                                <div class="controls">     
-                                                    <input type="text" name="product_tags_en" class="form-control"  value=""   data-role="tagsinput"  >                                       
                                         
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div> <!--end 3 -->
 
 
-                                    <div class="row"> <!-- Start 4st row -->
-                                        <div class="col-md 4">
-                                            <div class="form-group">
-                                                <h5>Product Tags Hin</h5>
-                                                <div class="controls">     
-                                                    <input type="text" name="product_tags_hin" class="form-control"  value=""   data-role="tagsinput"  >                                       
+                                    <div class="row" id="SizeColor"> <!-- Start 4st row -->
                                         
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-md 4">
+                                        <div class="col-md 6" >
                                             <div class="form-group">
-                                                <h5>Product Size En <span class="text-danger">*</span></h5>
+                                                <h5>Product Size  <span class="text-danger">*</span></h5>
                                                 <div class="controls">     
                                                     <input type="text" name="product_size_en" class="form-control"  value=""     data-role="tagsinput"  >                                       
                                                     @error('product_size_en')
@@ -183,24 +146,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 4">
+                                        <div class="col-md 6" id="color">
                                             <div class="form-group">
-                                                <h5>Product Size Hin <span class="text-danger">*</span></h5>
-                                                <div class="controls">     
-                                                    <input type="text" name="product_size_hin" class="form-control"  value=""     data-role="tagsinput"  >                                       
-                                                    @error('product_size_hin')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div> <!--end 4 -->
-
-                                    <div class="row"> <!-- Start 5st row -->
-                                        <div class="col-md 4">
-                                            <div class="form-group">
-                                                <h5>Product Color En </h5>
+                                                <h5>Product Color  </h5>
                                                 <div class="controls">     
                                                     <input type="text" name="product_color_en" class="form-control"  value=""     data-role="tagsinput"  >                                       
                                         
@@ -208,12 +156,21 @@
                                             </div>
                                         </div>
 
+                                        
+                                    </div> <!--end 4 -->
+
+                                    <div class="row"> <!-- Start 5st row -->
+                                        
+
                                         <div class="col-md 4">
                                             <div class="form-group">
-                                                <h5>Product Color En </h5>
-                                                <div class="controls">     
-                                                    <input type="text" name="product_color_hin" class="form-control"  value=""     data-role="tagsinput"  >                                       
-                                        
+                                                <h5>Product Quantity <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="text" name="product_qty" class="form-control" 
+                                                        data-validation-required-message="This field is required">
+                                                        @error('product_qty')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -231,10 +188,6 @@
                                             </div>
                                         </div>
 
-                                    </div> <!--end 5 -->
-                                    
-
-                                    <div class="row"> <!-- Start 6st row -->
                                         <div class="col-md 4">
                                             <div class="form-group">
                                                 <h5>Product Discount Price <span class="text-danger">*</span></h5>
@@ -249,7 +202,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 4">
+                                    </div> <!--end 5 -->
+                                    
+
+                                    <div class="row"> <!-- Start 6st row -->
+                                        
+
+                                        <div class="col-md 6">
                                             <div class="form-group">
                                                 <h5>Main Thumbnail <span class="text-danger">*</span></h5>
                                                 <div class="controls">     
@@ -262,7 +221,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 4">
+                                        <div class="col-md 6">
                                             <div class="form-group">
                                                 <h5>Multipale Images <span class="text-danger">*</span></h5>
                                                 <div class="controls">
@@ -278,61 +237,39 @@
                                     </div> <!--end 6 -->
 
                                     <div class="row"> <!-- Start 7st row -->
-                                        <div class="col-md 6">
+                                        <div class="col-md 12">
                                             <div class="form-group">
-                                                <h5>Short Description English <span class="text-danger">*</span></h5>
+                                                <h5>Short Description  <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <textarea  name="short_descp_en" id="textarea" class="form-control"    data-validation-required-message="This field is required"></textarea>   
-                                                    @error('short_descp_en')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
+                                                    <textarea  name="short_descp_en"  class="form-control"    data-validation-required-message="This field is required"></textarea>   
+                                                   
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md 6">
-                                            <div class="form-group">
-                                                <h5>Short Description Hindi <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                <textarea  name="short_descp_hin" id="textarea" class="form-control"    data-validation-required-message="This field is required"></textarea> 
-                                                @error('short_descp_hin')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror    
-                                                <div class="help-block"></div>
-                                                </div>
-                                            </div>   
-                                        </div>
-
+                                        
+                                        @error('short_descp_en')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                     </div> <!--end 7 -->
 
                                     <div class="row"> <!-- Start 8t row -->
-                                        <div class="col-md 6">
+                                        <div class="col-md 12">
                                             <div class="box">
                                                 <div class="box-header">
-                                                  <h5>Long Description English</h5>
+                                                  <h5>Long Description </h5>
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
-                                                        <textarea id="editor1" class="form-control" placeholder="Long Description English" name="long_descp_en"    rows="10" cols="80"></textarea>  
+                                                        <textarea id="editor1" class="form-control" placeholder="Long Description " name="long_descp_en"    rows="10" cols="80"></textarea>  
                                                                                                         
                                                 </div>
                                             </div>
                                             <!-- /.box -->
                                         </div>
 
-                                        <div class="col-md 6">
-                                            <div class="box">
-                                                <div class="box-header">
-                                                  <h5>Long Description Hindi </h5>
-                                                </div>
-                                                <!-- /.box-header -->
-                                                <div class="box-body">                                                   
-                                                        <textarea id="editor2" class="form-control" placeholder="Long Description Hindi" name="long_descp_hin"    rows="10" cols="80"> </textarea>                                            
-                                                </div>
-                                            </div>
-                                            <!-- /.box -->
-                                        </div>
+                                       
 
                                     </div> <!--end 8 -->
                                                                  
@@ -390,17 +327,32 @@
     <!-- /.content -->
 </div>
 
+
+<script type="text/javascript">
+
+    // $('select[name="category_id"]').on('change' , function(){
+    //     var category_id = $(this).val();
+    //     if(category_id == 12){
+    //         document.getElementById("SizeColor").style.visibility = "hidden";
+          
+           
+    //     }
+    // })
+
+</script>
+
 <!-- Sub category  -->
 <script type="text/javascript">
       $(document).ready(function() {
         $('select[name="category_id"]').on('change', function(){
             var category_id = $(this).val();
+           
             if(category_id) {
                 $.ajax({
-                    url: "{{  url('/product/subcategory/ajax') }}/"+category_id,
+                    url: "{{url('/product/subcategory/ajax') }}/"+category_id,
                     type:"GET",
-                    dataType:"json",
-                    success:function(data) {
+                    dataType:"json",                   
+                    success:function(data) {                     
                        var d =$('select[name="subcategory_id"]').empty();
                           $.each(data, function(key, value){
                               $('select[name="subcategory_id"]').append('<option value="'+ value.id +'">' + value.subcategory_name_en + '</option>');

@@ -1,12 +1,8 @@
-
-
-
-
 $(document).ready(function () {
     $(".tst1").on("click", function () {
         $.toast({
             heading: 'Welcome to my Sunny Admin',
-            text: 'Data inserted successfuly',
+            text: 'Use the predefined ones, or specify a custom position object.',
             position: 'top-right',
             loaderBg: '#ff6849',
             icon: 'info',

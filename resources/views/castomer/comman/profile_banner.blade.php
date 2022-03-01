@@ -19,35 +19,35 @@
 
                     <li >
                         <a  href="{{route('dashboard')}}" class="d-flex justify-content-between">
-                            <p style="{{ ($route == 'dashboard') ? 'color: blue;' : '' }}"  >@if(session()->get('language') == 'hindi') डैशबोर्ड   @else Dashbord  @endif     </p>
+                            <p style="{{ ($route == 'dashboard') ? 'color: blue;' : '' }}"  > Dashbord       </p>
                             <p style="{{ ($route == 'dashboard') ? 'color: blue;' : '' }}"><i class="ti-home"></i></i></p>
                         </a>
                     </li>
 
                     <li >
                         <a  href="{{route('myOrder')}}" class="d-flex justify-content-between">
-                            <p style="{{ ($route == 'myOrder') ? 'color: blue;' : '' }}"  >@if(session()->get('language') == 'hindi') ऑर्डर   @else My Order  @endif     </p>
+                            <p style="{{ ($route == 'myOrder') ? 'color: blue;' : '' }}"  >My Order       </p>
                             <p style="{{ ($route == 'myOrder') ? 'color: blue;' : '' }}"><i class="ti-bag"></i></i></p>
                         </a>
                     </li>
 
                     <li >
                         <a href="{{ route('user.profile')}}" class="d-flex justify-content-between">
-                            <p style="{{ ($route == 'user.profile') ? 'color: blue;' : '' }}">@if(session()->get('language') == 'hindi') प्रोफ़ाइल अपडेट    @else Profile Update @endif  </p>
+                            <p style="{{ ($route == 'user.profile') ? 'color: blue;' : '' }}"> Profile Update   </p>
                             <p style="{{ ($route == 'user.profile') ? 'color: blue;' : '' }}"> <i class="ti-user"></i> </p>
                         </a>
                     </li>
 
                     <li >
                         <a  href="{{route('user.changePassword')}}" class="d-flex justify-content-between">
-                            <p style="{{ ($route == 'user.changePassword') ? 'color: blue;' : '' }}" >@if(session()->get('language') == 'hindi') पासवर्ड चैनेज    @else Change Password  @endif  </p>
+                            <p style="{{ ($route == 'user.changePassword') ? 'color: blue;' : '' }}" > Change Password  </p>
                             <p style="{{ ($route == 'user.changePassword') ? 'color: blue;' : '' }}" > <i class="ti-key"></i> </p>
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('user.logout') }}" class="d-flex justify-content-between">
-                            <p> @if(session()->get('language') == 'hindi') लॉगआउट   @else Logout  @endif  </p>
+                            <p>  Logout   </p>
                             <p> <i class="ti-lock"></i> </p>
                         </a>
                     </li>

@@ -16,8 +16,7 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-white">
-                                    <th>Brand En</th>
-                                    <th>Brand Hin</th>
+                                    <th>Brand </th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
@@ -26,12 +25,40 @@
                                 @foreach($brands as $item)
                                 <tr class="text-white">
                                     <td>{{$item->brand_name_en}}</td>
-                                    <td>{{$item->brand_name_hin}}</td>
                                     <td style="background-color:#e9dcdc;"> <img src="{{ asset($item->brand_image) }}" style="width: 70px; height: 40px">
                                     </td>
                                     <td>
                                         <a href="{{route('brand.edit' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info" ><i class="fa fa-pencil" title="Edit"></i></a>
-                                        <a href="{{route('brand.delete' , $item->id)}}" class="waves-effect waves-light btn  btn-circle mx-5  btn-info" data-toggle="modal" data-target="#modal-center" type="button"  id="delete"><i class="fa fa-trash" title="delete"></i></a>
+                                       
+                                       	
+  <!-- Modal -->
+  <div class="modal center-modal fade" id="modal-center{{$item->id}}" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+            <h1 class="text-center"><i class="fa fa-trash fa-3x "></i><h1>  <h2 class="text-center"> Are you sure to Delete It !</h2>
+        </div>
+        <div class="modal-footer modal-footer-uniform">
+          <button type="button" class="btn btn-rounded btn-secondary" data-dismiss="modal">Cancel</button>
+          <a href="{{route('brand.delete' , $item->id)}}" id="modalClick" class="btn btn-rounded btn-danger float-right">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /.modal -->
+
+<a  class="waves-effect waves-light btn  btn-circle mx-5  btn-info" data-toggle="modal" data-target="#modal-center{{$item->id}}" ><i class="fa fa-trash" title="delete"></i></a>
+
+                                       
+                                       
+                                       
                                           
                                     </td>
                                 </tr>
@@ -63,7 +90,7 @@
                                     <div class="col-12">                                   
                                                 <!-- name=========================================================-->
                                                 <div class="form-group">
-                                                    <h5> Brand Name English <span class="text-danger">*</span></h5>
+                                                    <h5> Brand Name  <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text"  name="brand_name_en" class="form-control"  >
                                                         @error('brand_name_en')
@@ -73,24 +100,17 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <h5> Brand Name Hindi <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text"  name="brand_name_hin" class="form-control" >
-                                                        @error('brand_name_hin')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                        <div class="help-block"></div>
-                                                    </div>
-                                                </div>
+                                               
 
                                                 <div class="form-group">
                                                     <h5> Brand Image <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file" accept="image/*"  name="brand_image" class="form-control"  >
+                                                        <input type="file" accept="image/*" onChange="mainThamUrl(this)" name="brand_image" class="form-control"  >
                                                         @error('brand_image')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
+                                                        <img  style=" height: 40px; width: 40px;" id="mainThumb">
+
                                                         <div class="help-block"></div>
                                                     </div>
                                                 </div>
@@ -112,5 +132,19 @@
     <!-- <button class="tst1 btn btn-info btn-block mb-15">Info Message</button> -->
 </section>
 
+
+
+<!-- Script for main thumb -->
+<script type="text/javascript">
+    function mainThamUrl(input){
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function(e){              
+                $('#mainThumb').attr('src' , e.target.result).width(80).height(80);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 @endsection

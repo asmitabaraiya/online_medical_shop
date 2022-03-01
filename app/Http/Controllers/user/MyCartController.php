@@ -20,7 +20,8 @@ class MyCartController extends Controller
       
     //      $total = Cart::total();
     //    print_r($total);
-    //    $carts = Cart::content();
+       
+    //    $carts = Cart::content();  taxRate
     //    print_r($carts);
        return view('castomer.wishList.view_myCart');
     }
@@ -122,7 +123,7 @@ class MyCartController extends Controller
         }
         else{
             return response()->json(array(
-                'total' => Cart::total()
+                'total' => Cart::total() 
             ));
         }
     }

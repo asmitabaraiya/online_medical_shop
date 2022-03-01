@@ -2,10 +2,17 @@
 
 @section('title')
 
-@if(session()->get('language') == 'hindi')  My Cart Page  @else My Cart Page @endif     
+ My Cart Page      
 @endsection
 @section('body')
+<div class="main_menu ">
 
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{url('/')}}"> Home </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> My Cart       
+    </li>
+    </ol>      
+</div>
  <!--================Cart Area =================-->
  <section class="cart_area">
     <div class="container">

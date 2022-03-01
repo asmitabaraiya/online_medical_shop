@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMedicineMultiImgsTable extends Migration
+class CreateBlogCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateMedicineMultiImgsTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicine_multi_imgs', function (Blueprint $table) {
+        Schema::create('blog_comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('medicine_id');
-            $table->string('photo_name');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('blog_post_id');
+            $table->text('message');
+            $table->text('reply');
+            $table->string('reply_date');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateMedicineMultiImgsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medicine_multi_imgs');
+        Schema::dropIfExists('blog_comments');
     }
 }

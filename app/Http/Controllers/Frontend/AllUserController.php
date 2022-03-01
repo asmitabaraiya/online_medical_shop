@@ -44,6 +44,7 @@ class AllUserController extends Controller
         Order::findOrFail($id)->update([
             'return_date' => Carbon::now()->format('d F Y'),
             'return_reason' => $request->return_reason,
+            'return_order' => 1,
         ]);
 
         return redirect()->route('myOrder');
@@ -51,10 +52,22 @@ class AllUserController extends Controller
     }
 
     public function ReturnMyOrderView(){
-        $orders = Order::where('user_id' , Auth::id())->where('return_reason' , '!=' , NULL)->orderBy('id' , 'DESC')->get();
-
-        
+        $orders = Order::where('user_id' , Auth::id())->where('return_reason' , '!=' , NULL)->orderBy('id' , 'DESC')->get();        
         return  view('castomer.profile.order.orde_return_view' , compact('orders' ));
 
+    }
+
+    public function OrderTrack(Request $request){
+        $request->validate([
+            'invoice_no' => 'required',           
+        ]);
+        $id = $request->invoice_no;
+        $invoice = Order::where('invoice_no' , $id)->first();
+        if($invoice){
+            return view('castomer.order_track_page' , compact('invoice'));
+        }
+        else{
+            return redirect()->back();
+        }
     }
 }

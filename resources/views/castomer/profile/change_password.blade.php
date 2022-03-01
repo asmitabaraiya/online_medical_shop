@@ -1,8 +1,7 @@
 @extends('castomer.main_master')
 
 @section('title')
-
-@if(session()->get('language') == 'hindi') Pharmative - पासवर्ड चैनेज   @else Pharmative - Change Password  @endif     
+ Pharmative - Change Password       
 @endsection
 @section('body')
 
@@ -10,8 +9,8 @@
 <div class="main_menu ">
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{url('/')}}">@if(session()->get('language') == 'hindi')  घर @else Home @endif</a></li>
-      <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi') पासवर्ड चैनेज   @else Change Password  @endif     
+      <li class="breadcrumb-item"><a href="{{url('/')}}"> Home </a></li>
+      <li class="breadcrumb-item active" aria-current="page">Change Password       
     </li>
     </ol>      
 </div>
@@ -55,7 +54,7 @@
                         @enderror
 
                         <div class="col-md-12 form-group">
-                            <button type="submit" value="submit" class="button button-login w-100">@if(session()->get('language') == 'hindi') अपडेट    @else Update  @endif     </button>
+                            <button type="submit" value="submit" class="button button-login w-100"> Update       </button>
                             <a href="#">Forgot Password?</a>
                         </div>
 

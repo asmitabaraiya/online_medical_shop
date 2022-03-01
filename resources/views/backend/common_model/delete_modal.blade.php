@@ -1,6 +1,6 @@
 	
   <!-- Modal -->
-  <div class="modal center-modal fade" id="modal-center" tabindex="-1">
+  <div class="modal center-modal fade" id="modal-center{{$item->id}}" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -15,9 +15,11 @@
         </div>
         <div class="modal-footer modal-footer-uniform">
           <button type="button" class="btn btn-rounded btn-secondary" data-dismiss="modal">Cancel</button>
-          <button id="modalClick" class="btn btn-rounded btn-danger float-right">Delete</button>
+          <a href="{{route('slider.delete' , $item->id)}}" id="modalClick" class="btn btn-rounded btn-danger float-right">Delete</a>
         </div>
       </div>
     </div>
   </div>
 <!-- /.modal -->
+
+<a  class="waves-effect waves-light btn  btn-circle mx-5  btn-info" data-toggle="modal" data-target="#modal-center{{$item->id}}" ><i class="fa fa-trash" title="delete"></i></a>

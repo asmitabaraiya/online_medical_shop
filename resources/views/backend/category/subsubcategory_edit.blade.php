@@ -53,7 +53,7 @@
 
 
                                                 <div class="form-group">
-                                                    <h5> Sub-SubCategory Name English <span class="text-danger">*</span></h5>
+                                                    <h5> Sub-SubCategory Name  <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text"  name="subsubcategory_name_en" class="form-control"    value="{{$subsubcategory->subsubcategory_name_en}}">
                                                         @error('subsubcategory_name_en')
@@ -63,17 +63,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <h5> SUb-SubCategory Name Hindi <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text"  name="subsubcategory_name_hin" class="form-control"    value="{{$subsubcategory->subsubcategory_name_hin}}" >
-                                                        @error('subsubcategory_name_hin')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                        <div class="help-block"></div>
-                                                    </div>
-                                                </div>
-
+                                                
                                                 
                                                                                                                                 
                                         <div class="text-xs-right">

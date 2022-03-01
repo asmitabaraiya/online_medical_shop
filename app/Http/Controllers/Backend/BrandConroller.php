@@ -17,7 +17,7 @@ class BrandConroller extends Controller
     public function BrandStore(Request $request){
         $request->validate([
             'brand_name_en' => 'required',
-            'brand_name_hin' => 'required',
+           
             'brand_image' => 'required'
         ]);
 
@@ -28,9 +28,7 @@ class BrandConroller extends Controller
 
         Brand::insert([
             'brand_name_en' => $request->brand_name_en,
-            'brand_name_hin' => $request->brand_name_hin,
             'brand_slug_en' => strtolower(str_replace(' ' , '-' , $request->brand_name_en)) ,
-            'brand_slug_hin' => str_replace(' ' , '-' , $request->brand_name_hin) ,
             'brand_image' => $save_url
         ]);
         $notification = array(
@@ -52,8 +50,7 @@ class BrandConroller extends Controller
     public function BrandUpdate(Request $request){
         $request->validate([
             'brand_name_en' => 'required',
-            'brand_name_hin' => 'required',
-            'brand_image' => 'required'
+           
         ]);
         
         $brand_id = $request->id;
@@ -69,9 +66,7 @@ class BrandConroller extends Controller
 
             Brand::findOrFail($brand_id)->update([
                 'brand_name_en' => $request->brand_name_en,
-                'brand_name_hin' => $request->brand_name_hin,
                 'brand_slug_en' => strtolower(str_replace(' ' , '-' , $request->brand_name_en)) ,
-                'brand_slug_hin' => str_replace(' ' , '-' , $request->brand_name_hin) ,
                 'brand_image' => $save_url
             ]);
             $notification = array(
@@ -86,9 +81,7 @@ class BrandConroller extends Controller
 
             Brand::findOrFail($brand_id)->update([
                 'brand_name_en' => $request->brand_name_en,
-                'brand_name_hin' => $request->brand_name_hin,
                 'brand_slug_en' => strtolower(str_replace(' ' , '-' , $request->brand_name_en)) ,
-                'brand_slug_hin' => str_replace(' ' , '-' , $request->brand_name_hin) ,
                
             ]);
             $notification = array(

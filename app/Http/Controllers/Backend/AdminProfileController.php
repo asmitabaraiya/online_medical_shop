@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Order;
 
 class AdminProfileController extends Controller
 {
@@ -64,5 +65,11 @@ class AdminProfileController extends Controller
             return redirect()->back();
         }
 
+   }
+
+   public function chatJS(){
+    $monthData = Order::groupBy('order_month');
+
+    return response()->json('hi');
    }
 }

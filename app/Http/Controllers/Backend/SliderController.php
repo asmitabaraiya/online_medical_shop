@@ -129,4 +129,7 @@ class SliderController extends Controller
         return redirect()->route('manage.slider')->with($notification);
     }
 
+    public function ContactView(){
+        
+    }
 }

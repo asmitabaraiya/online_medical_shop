@@ -12,7 +12,7 @@
         <!-- Basic Forms -->
         <div class="box">
             <div class="box-header with-border">
-                <h4 class="box-title">Add Product</h4>
+                <h4 class="box-title">Add Blog Post</h4>
             </div>
 
             <!-- /.box-header -->
@@ -55,7 +55,7 @@
 
                                         <div class="col-md 6"> 
                                             <div class="form-group">
-                                                <h5>Blog Post Title En <span class="text-danger">*</span></h5>
+                                                <h5>Blog Post Title  <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <input type="text"  name="poast_title_en" class="form-control" >
                                                     @error('poast_title_en')
@@ -66,18 +66,7 @@
                                             </div>
                                         </div>                
 
-                                        <div class="col-md 6">
-                                        <div class="form-group">
-                                            <h5>Blog Post Title Hin <span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="text"  name="poast_title_hin" class="form-control"  >
-                                                @error('poast_title_hin')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                                <div class="help-block"></div>
-                                            </div>
-                                        </div>
-                                        </div>
+                                        
                                       
 
                                     </div> <!--end 4 -->
@@ -110,7 +99,7 @@
                                         <div class="col-md 6">
                                             <div class="box">
                                                 <div class="box-header">
-                                                  <h5>Long Description English</h5>
+                                                  <h5>Long Description </h5>
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
@@ -124,21 +113,7 @@
                                             <!-- /.box -->
                                         </div>
 
-                                        <div class="col-md 6">
-                                            <div class="box">
-                                                <div class="box-header">
-                                                  <h5>Long Description Hindi </h5>
-                                                </div>
-                                                <!-- /.box-header -->
-                                                <div class="box-body">                                                   
-                                                        <textarea id="editor2" class="form-control" placeholder="Long Description Hindi" name="poast_details_hin"    rows="10" cols="80"> </textarea>                                            
-                                                </div>
-                                                @error('poast_details_hin')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            </div>
-                                            <!-- /.box -->
-                                        </div>
+                                        
 
                                     </div> <!--end 8 -->
                                                                  
@@ -147,7 +122,7 @@
 
 
                             <div class="text-xs-right">
-                                <input type="submit" class="btn btn-success mb-5 " value="Edit Blog Post" >                                       
+                                <input type="submit" class="btn btn-success mb-5 " value="Add Blog Post" >                                       
                             </div>
                         </form>
 

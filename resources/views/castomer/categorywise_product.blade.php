@@ -2,18 +2,19 @@
 
 @section('title')
 
-@if(session()->get('language') == 'hindi')  {{ $title->category_name_hin }}  @else {{ $title->category_name_en }} @endif     
+ {{ $title->category_name_en }} 
 @endsection
 @section('body')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script src="https://mdbootstrap.com/docs/b4/jquery/getting-started/cdn/"></script>
+{{-- <script src="https://mdbootstrap.com/docs/b4/jquery/getting-started/cdn/"></script> --}}
 
 <!-- ================ start banner area ================= -->	
-    <div class="main_menu container">
+    <div class="main_menu ">
 
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi')  {{ $title->category_name_hin }}  @else {{ $title->category_name_en }} @endif  </li>
+          <li class="breadcrumb-item active" aria-current="page"> {{ $title->category_name_en }}   </li>
           
         </ol>      
     </div>
@@ -28,75 +29,66 @@
         @include('castomer.comman.tag')
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
-          <div class="filter-bar d-flex flex-wrap align-items-center">
-            <div class="sorting">
-              <select>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-              </select>
-            </div>
-            <div class="sorting mr-auto">
-              <select>
-                <option value="1">Show 12</option>
-                <option value="1">Show 12</option>
-                <option value="1">Show 12</option>
-              </select>
-            </div>
-            <div>
-              <div class="input-group filter-bar-search">
-                <input type="text" placeholder="Search">
-                <div class="input-group-append">
-                  <button type="button"><i class="ti-search"></i></button>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
-            <div class="row">
+            <div class="row" id="product_loadmore_with_ajax">
               
-
-@foreach ($products as $product )
-    
-
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="{{asset($product->product_thumbnail)}}" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                   
-                    <h4 class="card-product__title"><a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug_en  )}}" >@if(session()->get('language') == 'hindi')  {{$product->product_name_hin}}  @else {{$product->product_name_en}} @endif  </a></h4>
-                   
-                    <p class="card-product__price">
-                        @if( $product->discount_price != NULL )
-                        <del>₹{{$product->selling_price}}.00 </del> &nbsp; <strong class="h4">₹{{$product->discount_price}}.00 </strong>
-                        @else
-                            <strong class="h4">₹{{$product->selling_price}}.00</strong>
-                        @endif
-                    </p>
-                  </div>
-                </div>
-              </div>
-@endforeach
-{{ $products->links() }}
+@include('castomer.product_loadmore_with_ajax')
               
             </div>
+
+
+            <div class="ajax-load-product text-center" >
+              <img src="{{asset('castomer/img/loading.gif')}}" alt="" srcset="">
+            </div>
+
+
+
+
           </section>
           <!-- End Best Seller -->
+         
         </div>
       </div>
     </div>
   </section>
   <!-- ================ category section end ================= -->
   
+
+ 
+  
+  <script>
+    function loadAjax(page){
+      $.ajax({
+        type: "get",
+        url: "?page="+page,
+        beforSend: function(response){
+          $('.ajax-load-product').show();
+        }
+      })
+
+      .done(function(data){
+        if(data.product_view == " " ){
+          return;
+        }
+        $('.ajax-load-product').hide();
+        $('#product_loadmore_with_ajax').append(data.product_view);
+      })
+      .fail(function(){
+        alert('SomeThing Went to wrong');
+      })
+    }
+
+    var page = 1;
+    $(window).scroll(function (){
+      if($(window).scrollTop() +$(window).height() >= $(document).height() ){
+        page ++;
+        loadAjax(page);
+      }
+    });
+  </script>
   
 
 @endsection

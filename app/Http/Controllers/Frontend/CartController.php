@@ -19,7 +19,7 @@ class CartController extends Controller
 
         if($product->discount_price == NULL){
             Cart::add([
-                'id' => $id, 
+                'id' => $id,               
                 'name' => $request->product_name, 
                 'qty' => $request->quantity, 
                 'price' => $product->selling_price, 
@@ -33,7 +33,7 @@ class CartController extends Controller
         }
         else{
                 Cart::add([
-                    'id' => $id, 
+                    'id' => $id,                    
                     'name' => $request->product_name, 
                     'qty' => $request->quantity, 
                     'price' => $product->discount_price, 

@@ -2,7 +2,7 @@
 
 @section('title')
 
-@if(session()->get('language') == 'hindi') Pharmative - रजिस्ट्रेशन   @else Pharmative - Registration  @endif     
+Pharmative - Registration       
 @endsection
 @section('body')
 
@@ -12,8 +12,8 @@
 <div class="main_menu ">
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{url('/')}}">@if(session()->get('language') == 'hindi')  घर @else Home @endif</a></li>
-      <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'hindi') रजिस्ट्रेशन  @else Registration  @endif     
+      <li class="breadcrumb-item"><a href="{{url('/')}}"> Home </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> Registration       
     </li>
     </ol>      
 </div>

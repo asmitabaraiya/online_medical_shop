@@ -50,16 +50,16 @@
       <div class="owl-carousel owl-theme hero-carousel">
         <div class="hero-carousel__slide">
           <img src="{{asset('castomer/img/img6.jpeg')}}" height="500" alt="" >
-          <a href="#" class="hero-carousel__slideOverlay">
+          <a href="{{url('/product/categorywise/12/all-medicines')}}" class="hero-carousel__slideOverlay">
             <h3>Order Medicine</h3>
             <p>Save upto 60% off</p>
           </a>
         </div>
         <div class="hero-carousel__slide">
           <img src="{{asset('castomer/img/img4.jpeg')}}" height="500" alt="" >
-          <a href="#" class="hero-carousel__slideOverlay">
+          <a href="{{url('/product/categorywise/13/all-healthCare-product')}}" class="hero-carousel__slideOverlay">
             <h3>Wellness</h3>
-            <p>Our best healthcare products</p>
+            <p>Our best HealthCare products</p>
           </a>
         </div>
         <div class="hero-carousel__slide">
@@ -94,7 +94,7 @@
                 </div>
                 <div class="card-body">
                  
-                  <h4 class="card-product__title"><a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug_en  )}}">@if(session()->get('language') == 'hindi')  {{$product->product_name_hin}}  @else  {{$product->product_name_en}} @endif</a></h4>
+                  <h4 class="card-product__title"><a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug_en  )}}">  {{$product->product_name_en}} </a></h4>
                   <p class="card-product__price"> ₹{{ $product->selling_price }}</p>
                 </div>
               </div>
@@ -107,57 +107,22 @@
     </section>
     <!-- ================ trending product section end ================= -->  
 
-    <!-- ================ Brand  carousel ================= --> 
-    <section class="section-margin calc-60px">
-      <div class="container">
-        <div class="section-intro pb-60px">
-          <h2>Our <span class="section-intro__style">Brands</span></h2>
-        </div>
-        <div class="owl-carousel owl-theme" id="bestSellerCarousel1">
-          @foreach ($brands as $brand )
-              <div class="card text-center card-product">
-                <div class="card-product__img">
-                <a href="{{url('brands/all/'.$brand->id.'/'.$brand->brand_slug_en)}}">  <img class="img-fluid"  src="{{asset($brand->brand_image)}}" style="height: 50%; width: 50%" alt=""> </a>
-                </div>
-                {{-- <div class="card-body">
-                  <h4 class="card-product__title"><a href="single-product.html"> @if(session()->get('language') == 'hindi')  {{$brand->brand_name_hin}}  @else  {{$brand->brand_name_en}} @endif </a> </h4>
-                </div> --}}
-              </div>
-          @endforeach
-        </div>
-      </div>
-    </section>
-    <!-- ================ Brand end ================= --> 
+  
 
-
-    <!-- ================ offer section start ================= --> 
-    <section class="offer" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 20px 30px" data-top-bottom="background-position: 0 20px">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-5">
-            <div class="offer__content text-center">
-              <h3>Up To 50% Off</h3>
-              <h4>Winter Sale</h4>
-              <p>Him she'd let them sixth saw light</p>
-              <a class="button button--active mt-3 mt-xl-4" href="#">Shop Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ================ offer section end ================= --> 
+   
 
     <!-- ================ Best Selling item  carousel ================= --> 
     <section class="section-margin calc-60px">
       <div class="container">
         <div class="section-intro pb-60px">
           {{-- <p>Popular Item in the market</p> --}}
-          <h2> <span class="section-intro__style">@if(session()->get('language') == 'hindi')  {{$active_cat->category_name_hin}}  @else  {{$active_cat->category_name_en}} @endif </span></h2>
+          <h2> <span class="section-intro__style">  Medicines  </span></h2>
+          
         </div>
         <div class="owl-carousel owl-theme carouselme" >
 
 
-  @foreach ( $active_products as $product )
+  @foreach ( $medicines as $product )
   
           <div class="card text-center card-product">
             <div class="card-product__img">
@@ -169,20 +134,45 @@
               </ul>
             </div>
             <div class="card-body">
-              <h4 class="card-product__title"><a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug_en  )}}">@if(session()->get('language') == 'hindi')  {{$product->product_name_hin}}  @else  {{$product->product_name_en}} @endif</a></h4>
+              <h4 class="card-product__title"><a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug_en  )}}">  {{$product->product_name_en}}</a></h4>
               <p class="card-product__price">₹{{ $product->selling_price }}</p>
             </div>
           </div>
-  @endforeach
-         
-
+  @endforeach           
         </div>
+        <a href="{{url('/product/categorywise/12/all-medicines')}}" style="float: right;"> View All Medicines </a> 
+
       </div>
-    </section>
-    <!-- ================ Best Selling item  carousel end ================= --> 
+</section>
+<!-- ================ Best Selling item  carousel end ================= --> 
 
 
      {{-- end section of desplaing medicines --}}
+
+
+
+  <!-- ================ Brand  carousel ================= --> 
+  <section class="section-margin calc-60px">
+    <div class="container">
+      <div class="section-intro pb-60px">
+        <h2>Our <span class="section-intro__style">Brands</span></h2>
+      </div>
+      <div class="owl-carousel owl-theme" id="bestSellerCarousel1">
+        @foreach ($brands as $brand )
+            <div class="card text-center card-product">
+              <div class="card-product__img">
+              <a href="{{url('brands/all/'.$brand->id.'/'.$brand->brand_slug_en)}}">  <img class="img-fluid"  src="{{asset($brand->brand_image)}}" style="height: 50%; width: 50%" alt=""> </a>
+              </div>
+              {{-- <div class="card-body">
+                <h4 class="card-product__title"><a href="single-product.html"> @if(session()->get('language') == 'hindi')  {{$brand->brand_name_hin}}  @else  {{$brand->brand_name_en}} @endif </a> </h4>
+              </div> --}}
+            </div>
+        @endforeach
+      </div>
+    </div>
+  </section>
+  <!-- ================ Brand end ================= --> 
+
 
     <!-- ================ Blog section start ================= -->  
 <br><br>    
@@ -194,56 +184,26 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-blog">
-              <div class="card-blog__img">
-                <img class="card-img rounded-0" src="{{asset('castomer')}}/img/blog/blog1.png" alt="">
-              </div>
-              <div class="card-body">
-                <ul class="card-blog__info">
-                  <li><a href="#">By Admin</a></li>
-                  <li><a href="#"><i class="ti-comments-smiley"></i> 2 Comments</a></li>
-                </ul>
-                <h4 class="card-blog__title"><a href="single-blog.html">The Richland Center Shooping News and weekly shooper</a></h4>
-                <p>Let one fifth i bring fly to divided face for bearing divide unto seed. Winged divided light Forth.</p>
-                <a class="card-blog__link" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-blog">
-              <div class="card-blog__img">
-                <img class="card-img rounded-0" src="{{asset('castomer')}}/img/blog/blog2.png" alt="">
-              </div>
-              <div class="card-body">
-                <ul class="card-blog__info">
-                  <li><a href="#">By Admin</a></li>
-                  <li><a href="#"><i class="ti-comments-smiley"></i> 2 Comments</a></li>
-                </ul>
-                <h4 class="card-blog__title"><a href="single-blog.html">The Shopping News also offers top-quality printing services</a></h4>
-                <p>Let one fifth i bring fly to divided face for bearing divide unto seed. Winged divided light Forth.</p>
-                <a class="card-blog__link" href="#">Read More <i class="ti-arrow-right"></i></a>
+        
+          @foreach ($blogs as $blogPost )
+            
+            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+              <div class="card card-blog">
+                <div class="card-blog__img">
+                  <img class="card-img rounded-0" src="{{asset($blogPost->post_image)}}" style="width: 350px; height:243.05px;" alt="">
+                </div>
+                <div class="card-body">
+                  <ul class="card-blog__info">
+                    <li><a href="#">By Admin</a></li>
+                    <li><a href="#"><i class="ti-comments-smiley"></i> 2 Comments</a></li>
+                  </ul>
+                  <h4 class="card-blog__title"><a href="{{route('blogPage.detail.view' , $blogPost->id)}}">{{$blogPost->poast_title_en}}</a></h4>
+                  <p>{!! Str::limit($blogPost->poast_details_en , 100) !!}</p>
+                  <a class="card-blog__link" href="{{route('blogPage.detail.view' , $blogPost->id)}}">Read More <i class="ti-arrow-right"></i></a>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-blog">
-              <div class="card-blog__img">
-                <img class="card-img rounded-0" src="{{asset('castomer')}}/img/blog/blog3.png" alt="">
-              </div>
-              <div class="card-body">
-                <ul class="card-blog__info">
-                  <li><a href="#">By Admin</a></li>
-                  <li><a href="#"><i class="ti-comments-smiley"></i> 2 Comments</a></li>
-                </ul>
-                <h4 class="card-blog__title"><a href="single-blog.html">Professional design staff and efficient equipment you’ll find we offer</a></h4>
-                <p>Let one fifth i bring fly to divided face for bearing divide unto seed. Winged divided light Forth.</p>
-                <a class="card-blog__link" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>

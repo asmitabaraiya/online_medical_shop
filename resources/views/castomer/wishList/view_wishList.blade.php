@@ -2,9 +2,17 @@
 
 @section('title')
 
-@if(session()->get('language') == 'hindi')  My WishList Page  @else My WishList Page @endif     
+ My WishList Page      
 @endsection
 @section('body')
+<div class="main_menu ">
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{url('/')}}"> Home </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> My WishList      
+    </li>
+    </ol>      
+</div>
 @include('castomer.comman.product_modal')
  <!--================Cart Area =================-->
  <section class="cart_area">

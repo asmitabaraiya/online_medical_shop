@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Medicine extends Model
+class BlogComment extends Model
 {
-    use HasFactory;
     protected $guarded=[];
+    use HasFactory;
+
+    public function users(){
+        return $this->belongsTo(User::class , 'user_id' , 'id');
+    }
 }

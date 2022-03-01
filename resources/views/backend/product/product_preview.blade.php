@@ -25,7 +25,7 @@
                                 <div class="col-12">
 
                                     <div class="row"> <!-- Start 1st row -->
-                                        <div class="col-md 4"> 
+                                        <div class="col-md 6"> 
                                             <div class="form-group">
                                                         <h5> Brand    </h5>
                                                         <div class="controls">
@@ -39,7 +39,7 @@
                                                     </div>            
                                         </div> 
 
-                                        <div class="col-md 4"> 
+                                        <div class="col-md 6"> 
                                                     <div class="form-group">
                                                         <h5> Category    </h5>
                                                         <div class="controls">
@@ -54,26 +54,28 @@
 
                                         </div> 
 
-                                        <div class="col-md 4"> 
-                                                    <div class="form-group">
-                                                        <h5> SubCategory    </h5>
-                                                        <div class="controls">
-                                                                <select name="subcategory_id" id="select" required="" class="form-control" aria-invalid="false" disabled>
-                                                                <option value="" selected="" disable="" >Select SubCategory</option>
-                                                                    @foreach($subcategory as $item)
-                                                                        <option value="{{ $item->id }}"  {{ $item->id == $product->subcategory_id ? 'selected' : '' }} >{{ $item->subcategory_name_en }}</option>
-                                                                    @endforeach()
-                                                                
-                                                                </select>
-                                                        <div class="help-block"></div></div>
-                                                    </div> 
-                                        </div>                                                                           
+                                                                                                                
                                     </div> <!--end 1 -->
 
                                     <div class="row"> <!-- Start 2st row -->
-                                        <div class="col-md 4"> 
+                                        <div class="col-md 6"> 
                                             <div class="form-group">
                                                 <h5> SubCategory    </h5>
+                                                <div class="controls">
+                                                        <select name="subcategory_id" id="select" required="" class="form-control" aria-invalid="false" disabled>
+                                                        <option value="" selected="" disable="" >Select SubCategory</option>
+                                                            @foreach($subcategory as $item)
+                                                                <option value="{{ $item->id }}"  {{ $item->id == $product->subcategory_id ? 'selected' : '' }} >{{ $item->subcategory_name_en }}</option>
+                                                            @endforeach()
+                                                        
+                                                        </select>
+                                                <div class="help-block"></div></div>
+                                            </div> 
+                                        </div>   
+
+                                        <div class="col-md 6"> 
+                                            <div class="form-group">
+                                                <h5>Sub - SubCategory    </h5>
                                                     <div class="controls">
                                                         <select name="subsubcategory_id" id="select" required="" class="form-control" aria-invalid="false" disabled>
                                                             <option value="" selected="" disable="" >Select SubSubCategory</option>  
@@ -85,9 +87,16 @@
                                             </div> 
                                         </div>  
 
-                                        <div class="col-md 4">
+                                       
+
+                                       
+
+                                    </div> <!--end 2 -->
+
+                                    <div class="row"> <!-- Start 3st row -->
+                                        <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Name En   </h5>
+                                                <h5>Product Name   </h5>
                                                 <div class="controls">
                                                     <input  disabled type="text" name="product_name_en" class="form-control" required value="{{$product->product_name_en}}"
                                                         data-validation-required-message="This field is required">
@@ -95,20 +104,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 4">
-                                            <div class="form-group">
-                                                <h5>Product Name Hin   </h5>
-                                                <div class="controls">
-                                                    <input disabled type="text" name="product_name_hin" class="form-control" required  value="{{$product->product_name_hin}}"
-                                                        data-validation-required-message="This field is required">
-                                                </div>
-                                            </div>    
-                                        </div>
-
-                                    </div> <!--end 2 -->
-
-                                    <div class="row"> <!-- Start 3st row -->
-                                        <div class="col-md 4">
+                                        <div class="col-md 6">
                                             <div class="form-group">
                                                 <h5>Product Code   </h5>
                                                 <div class="controls">
@@ -118,46 +114,25 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 4">
-                                            <div class="form-group">
-                                                <h5>Product Quantity   </h5>
-                                                <div class="controls">
-                                                    <input disabled type="text" name="product_qty" class="form-control" required  value="{{$product->product_qty}}"
-                                                        data-validation-required-message="This field is required">
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
                                     
                                     </div> <!--end 3 -->
 
-                                    <div class="row"> <!-- Start 4st row -->
-                                        <div class="col-md 6">
-                                            <div class="form-group">
-                                                <h5>Product Tags En   </h5>
-                                                <div class="controls">     
-                                                    <input disabled  type="text" name="product_tags_en" class="form-control"  value="{{$product->product_tags_en}}"   data-role="tagsinput"  >                                       
-                                        
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md 6">
-                                            <div class="form-group">
-                                                <h5>Product Tags Hin   </h5>
-                                                <div class="controls">     
-                                                    <input disabled  type="text" name="product_tags_hin" class="form-control"  value="{{$product->product_tags_hin}}" required=""  data-role="tagsinput"  >                                       
-                                        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="row"> <!-- Start 5st row -->
                                         
 
+                                       
+
+                                       
+
+                                    </div> <!--end 4 -->
+
+                                    <div class="row"> <!-- Start 6st row -->
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Size En   </h5>
+                                                <h5>Product Size  </h5>
                                                 <div class="controls">     
                                                     <input disabled type="text" name="product_size_en" class="form-control"  value="{{$product->product_size_en}}" required=""  data-role="tagsinput"  >                                       
                                         
@@ -167,20 +142,7 @@
 
                                         <div class="col-md 6">
                                             <div class="form-group">
-                                                <h5>Product Size Hin   </h5>
-                                                <div class="controls">     
-                                                    <input disabled type="text" name="product_size_hin" class="form-control"  value="{{$product->product_size_hin}}" required=""  data-role="tagsinput"  >                                       
-                                        
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div> <!--end 4 -->
-
-                                    <div class="row"> <!-- Start 6st row -->
-                                        <div class="col-md 6">
-                                            <div class="form-group">
-                                                <h5>Product Color En   </h5>
+                                                <h5>Product Color    </h5>
                                                 <div class="controls">     
                                                     <input disabled type="text" name="product_color_en" class="form-control"  value="{{$product->product_color_en}}" required=""  data-role="tagsinput"  >                                       
                                         
@@ -188,20 +150,22 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 6">
-                                            <div class="form-group">
-                                                <h5>Product Color Hin   </h5>
-                                                <div class="controls">     
-                                                    <input disabled type="text" name="product_color_hin" class="form-control"  value="{{$product->product_color_hin}}" required=""  data-role="tagsinput"  >                                       
-                                        
-                                                </div>
-                                            </div>
-                                        </div>                                       
+                                                                              
 
                                     </div> <!--end 6 -->
                                     
                                     <div class="row">  <!-- Start 7st row -->
-                                        <div class="col-md 6">
+                                        <div class="col-md 4">
+                                            <div class="form-group">
+                                                <h5>Product Quantity   </h5>
+                                                <div class="controls">
+                                                    <input disabled type="text" name="product_qty" class="form-control" required  value="{{$product->product_qty}}"
+                                                        data-validation-required-message="This field is required">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md 4">
                                             <div class="form-group">
                                                 <h5>Product Selling Price   </h5>
                                                 <div class="controls">
@@ -211,7 +175,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 6">
+                                        <div class="col-md 4">
                                             <div class="form-group">
                                                 <h5>Product Discount Price   </h5>
                                                 <div class="controls">
@@ -225,9 +189,9 @@
                                    
 
                                     <div class="row"> <!-- Start 9st row -->
-                                        <div class="col-md 6">
+                                        <div class="col-md 12">
                                             <div class="form-group">
-                                                <h5>Short Description English   </h5>
+                                                <h5>Short Description    </h5>
                                                 <div class="controls">
                                                     <textarea  name="short_descp_en" id="textarea" class="form-control"   required  data-validation-required-message="This field is required"> {{$product->short_descp_en}} </textarea>   
                                                 <div class="help-block"></div>
@@ -235,23 +199,15 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 6">
-                                            <div class="form-group">
-                                                <h5>Short Description Hindi   </h5>
-                                                <div class="controls">
-                                                <textarea  name="short_descp_hin" id="textarea" class="form-control"  required  data-validation-required-message="This field is required"> {{$product->short_descp_hin}} </textarea> 
-                                                    <div class="help-block"></div>
-                                                </div>
-                                            </div>   
-                                        </div>
+                                      
 
                                     </div> <!--end 9 -->
 
                                     <div class="row"> <!-- Start 10t row -->
-                                        <div class="col-md 6">
+                                        <div class="col-md 12">
                                             <div class="box">
                                                 <div class="box-header">
-                                                  <h5>Long Description English   </h5>
+                                                  <h5>Long Description    </h5>
                                                 </div>
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
@@ -262,18 +218,7 @@
                                             <!-- /.box -->
                                         </div>
 
-                                        <div class="col-md 6">
-                                            <div class="box">
-                                                <div class="box-header">
-                                                  <h5>Long Description Hindi   </h5>
-                                                </div>
-                                                <!-- /.box-header -->
-                                                <div class="box-body">                                                   
-                                                        <textarea disabled id="editor2" class="form-control" placeholder="Long Description Hindi" name="long_descp_hin" required="" rows="10" cols="80"> {{$product->long_descp_hin}}</textarea>                                            
-                                                </div>
-                                            </div>
-                                            <!-- /.box -->
-                                        </div>
+                                        
 
                                     </div> <!--end 10 -->
                                                                  
