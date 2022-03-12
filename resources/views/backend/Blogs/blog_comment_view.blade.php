@@ -63,7 +63,7 @@
         </div>
         <div class="modal-footer modal-footer-uniform">
           <button type="button" class="btn btn-rounded btn-secondary" data-dismiss="modal">Cancel</button>
-          <a href="{{route('slider.delete' , $Commentitem->id)}}" id="modalClick" class="btn btn-rounded btn-danger float-right">Delete</a>
+          <a href="{{route('comment.delete' , $Commentitem->id)}}" id="modalClick" class="btn btn-rounded btn-danger float-right">Delete</a>
         </div>
       </div>
     </div>
@@ -80,8 +80,8 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                     <!-- Conversations are loaded here -->
-                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
-                        <div id="chat-app" class="direct-chat-messages chat-app" style="overflow: hidden; width: auto; height: auto;">
+                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;">
+                        <div id="chat-app" class="direct-chat-messages chat-app" style="overflow: hidden; width: auto; height: 300px;">
                         <!-- Message. Default to the left -->
                         <div class="direct-chat-msg mb-30">
                             <div class="clearfix mb-15">

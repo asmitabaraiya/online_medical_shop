@@ -5,8 +5,11 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use App\Models\Contact;
 use Carbon\Carbon;
 use Image; 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 
 class SliderController extends Controller
 {
@@ -33,7 +36,7 @@ class SliderController extends Controller
             'slider_img' => $save_url,
         ]);
         $notification = array(
-            'message' => 'Product inserted Successfully',
+            'message' => 'Slider inserted Successfully',
             'alert-type' => 'success'
         );
         
@@ -46,8 +49,8 @@ class SliderController extends Controller
             'status' => 0
         ]);
         $notification = array(
-            'message' => 'Product Inactive Successfully',
-            'alert-type' => 'info'
+            'message' => 'Slider Inactive Successfully',
+            'alert-type' => 'warning'
         );
 
         return redirect()->back()->with($notification);
@@ -58,7 +61,7 @@ class SliderController extends Controller
             'status' => 1
         ]);
         $notification = array(
-            'message' => 'Product Active Successfully',
+            'message' => 'Slider Active Successfully',
             'alert-type' => 'info'
         );
 
@@ -107,7 +110,7 @@ class SliderController extends Controller
         }
 
         $notification = array(
-            'message' => ' Product Edit Successfully',
+            'message' => ' Slider Update Successfully',
             'alert-type' => 'info'
         );
 
@@ -122,14 +125,56 @@ class SliderController extends Controller
         Slider::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => ' Product Delete Successfully',
-            'alert-type' => 'info'
+            'message' => ' Slider Delete Successfully',
+            'alert-type' => 'error'
         );
 
         return redirect()->route('manage.slider')->with($notification);
     }
 
     public function ContactView(){
+        $contacts = Contact::orderBy('id' , 'DESC')->get();
+        return view('backend.Contact.contact_view' , compact('contacts'));
+    }
+
+    public function ContactDelete($id){
+        Contact::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => ' Contact Massage Delete Successfully',
+            'alert-type' => 'error'
+        );
+
+        return redirect()->route('manage.contact')->with($notification);
+    }
+
+    public function ContactShow($id){
+        $massage = Contact::findOrFail($id);
+        return view('backend.Contact.contactMass_view' , compact('massage'));
+
+    }
+
+    public function ContactReply($id){
+
+        $contact = Contact::findOrFail($id);
+        return view('backend.Contact.contact_reply' , compact('contact'));
+    }
+
+    public function ContactEmail(Request $request){
+             
+                $data = [                   
+                    'subject' => $request->subject,
+                    'massage' => $request->massage,
+                ];
+
+                Mail::to($request->email)->send(new ContactMail($data));
+
+                $notification = array(
+                    'message' => ' Massage Send Successfully',
+                    'alert-type' => 'success'
+                );
         
+                return redirect()->route('manage.contact')->with($notification);
+
     }
 }

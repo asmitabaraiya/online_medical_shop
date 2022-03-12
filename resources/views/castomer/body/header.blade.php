@@ -18,7 +18,7 @@
               <li class="nav-item active"><a class="nav-link" href="{{url('/')}}"> Home  </a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">  Devices  </a>
+                  aria-expanded="false">  Category  </a>
                 <ul class="dropdown-menu">
                     @php  
                          $categorys = App\Models\Category::orderBy('category_name_en', 'ASC')->get();
@@ -41,7 +41,7 @@
             
               <li class="nav-item"><a class="nav-link" href="{{route('contact.page')}}">Contact </a></li> 
 
-              <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#OrderTrack" href="contact.html">Order Track </a></li> 
+              <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="" data-bs-target="#OrderTrack" >Order Track </a></li> 
 
             
               

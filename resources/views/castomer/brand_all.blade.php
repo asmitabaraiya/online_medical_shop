@@ -1,3 +1,5 @@
+@include('castomer.comman.product_modal')
+
 @extends('castomer.main_master')
 
 @section('title')
@@ -38,8 +40,9 @@
                         <img class="img-fluid" src="{{asset($product->product_thumbnail)}}" alt="">
                         <ul class="card-product__imgOverlay">
                           <li><button><i class="ti-search"></i></button></li>
-                          <li><button><i class="ti-shopping-cart"></i></button></li>
-                          <li><button><i class="ti-heart"></i></button></li>
+                          <li><button   data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"  ><i class="ti-shopping-cart"></i></button></li>
+                          <li><button  id="{{$product->id}}" onclick="addToWishList(this.id)"><i class="ti-heart"  ></i></button></li>
+      
                         </ul>
                       </div>
                       <div class="card-body">
@@ -59,6 +62,38 @@
 @endforeach
 
 
+<section class="related-product-area section-margin--small mt-0">
+  <div class="container">
+      <div class="section-intro pb-60px">
+      
+        <h2>Featured <span class="section-intro__style"> Product</span></h2>
+      </div>
+    <div class="row">
+
+@php
+  $products = App\Models\Product::where('status' , 1)->where('featured' , 1)->orderBy('id' , 'DESC')->limit(12)->get();
+@endphp      
+
+
+      @foreach ($products as $item)                          
+          <div class="col-md-3 my-3">
+            <div class="single-search-product-wrapper">
+              <div class="single-search-product d-flex">
+                <a href="{{ url('product/detail/'.$item->id.'/'.$item->product_slug_en  )}}"><img src="{{asset($item->product_thumbnail)}}" style="height: 70px; width: 70px;" alt=""></a>
+                <div class="desc">
+                    <a href="{{ url('product/detail/'.$item->id.'/'.$item->product_slug_en  )}}" class="title">{{$item->product_name_en}}</a>
+                    <div class="price">₹{{$item->selling_price}}.00</div>
+                </div>
+              </div>
+            </div>
+          </div>  
+      @endforeach
+
+      
+              
+    </div>
+  </div>
+</section>  
 
    
      

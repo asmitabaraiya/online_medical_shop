@@ -85,7 +85,7 @@
             <table class="order-rable">
               <tr>
                 <td>Street</td>
-                <td>: {{$order->state->state_name}}</td>
+                <td>: {{$order->address}}</td>
               </tr>
               <tr>
                 <td>City</td>

@@ -175,7 +175,7 @@ Pharmative - Order Track
                             <b>Order date </b><br> {{$invoice->order_date}}
                         </div>
                         <div class="col-md-3 ">
-                            <b>Shipping By </b><br>{{$invoice->state->state_name}}, | {{$invoice->district->district_name}}
+                            <b>Shipping By </b><br>{{$invoice->address}}, | {{$invoice->district->district_name}}
                         </div>                       
                         <div class="col-md-3 ">
                             <b>Payment Method</b> <br> {{$invoice->payment_type}}

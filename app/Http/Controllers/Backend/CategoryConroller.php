@@ -63,7 +63,7 @@ class CategoryConroller extends Controller
         Category::findOrFail($id)->delete();
         $notification = array(
             'message' => 'Category delete Successfully',
-            'alert-type' => 'info'
+            'alert-type' => 'error'
         );
 
         return redirect()->back()->with($notification);
@@ -84,7 +84,7 @@ class CategoryConroller extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Category add  Successfully',
+            'message' => 'Category Active  Successfully',
             'alert-type' => 'info'
         );
 

@@ -56,10 +56,8 @@ width: 100% !important;
 <td style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
  
 </td>
-
-<td>  Invoice No : {{ $order['invoice_no'] }} &nbsp; &nbsp;</td>
-<td>  Name : {{ $order['name'] }} &nbsp; &nbsp;</td>
-<td>  Amount : ₹{{ $order['amount'] }} &nbsp; &nbsp;</td>
+<h3> {{ $order['subject'] }} </h3>
+<p>{{ $order['massage'] }}</p>
 
 
 </tr>

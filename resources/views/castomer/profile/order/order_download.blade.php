@@ -75,7 +75,7 @@
           <br> <strong >Name:</strong> {{$order->name}} <br>
            <strong >Email:</strong> {{$order->email}} <br>
            <strong >Phone:</strong> {{$order->phone}} <br>
-           <strong >Address:</strong> {{$order->state->state_name}} , {{$order->district->district_name}} , {{$order->division->division_name}} <br>
+           <strong >Address:</strong> {{$order->address}} , {{$order->district->district_name}} , {{$order->division->division_name}} <br>
            <strong >Post Code:</strong> {{$order->post_code}}
          </p>
         </td>
@@ -98,8 +98,7 @@
       <tr class="font">
         <th></th>
         <th>Product </th>
-        <th>Size</th>
-        <th>Color</th>
+        <th>Size</th>      
         <th>Code</th>
         <th>Quantity</th>
         <th>Unit Price </th>
@@ -123,11 +122,7 @@
         @endif
 
 
-        @if ($item->color == NULL)
-            <td align="center">-</td>
-        @else
-            <td align="center">{{$item->color}}</td>
-        @endif
+      
 
        
        

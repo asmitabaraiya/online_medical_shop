@@ -52,7 +52,7 @@ class SiteSettingController extends Controller
                 'logo' => $save_url
             ]);
             $notification = array(
-                'message' => 'Brand update Successfully',
+                'message' => 'Settings update Successfully',
                 'alert-type' => 'info'
             );
 
@@ -74,7 +74,7 @@ class SiteSettingController extends Controller
                
             ]);
             $notification = array(
-                'message' => 'Brand update Successfully',
+                'message' => 'Settings update Successfully',
                 'alert-type' => 'info'
             );
 
@@ -106,7 +106,7 @@ class SiteSettingController extends Controller
                 'google_analytics' => $request->google_analytics,                                                
             ]);
             $notification = array(
-                'message' => 'Brand update Successfully',
+                'message' => 'Settings update Successfully',
                 'alert-type' => 'info'
             );
 

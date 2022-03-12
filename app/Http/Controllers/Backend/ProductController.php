@@ -42,13 +42,14 @@ class ProductController extends Controller
             'subcategory_id' => 'required',
             'product_name_en' => 'required',
             'product_code' => 'required',
-            'product_qty' => 'required',
-            'product_size_en' => 'required',
+            'product_qty' => 'required',           
             'discount_price' => 'numeric',
             'selling_price' => 'required|numeric',
             'product_thumbnail' => 'required',
             'short_descp_en' => 'required',
         ]);
+
+       
 
 
         $image = $request->file('product_thumbnail');
@@ -66,7 +67,6 @@ class ProductController extends Controller
                     'product_code' => $request->product_code,
                     'product_qty' => $request->product_qty,
                     'product_size_en' => $request->product_size_en,
-                    'product_color_en' => $request->product_color_en,
                     'selling_price' => $request->selling_price,
                     'discount_price' => $request->discount_price,
                     'product_thumbnail' => $save_url,
@@ -76,6 +76,7 @@ class ProductController extends Controller
                     'featured' => $request->featured,
                     'special_offer' => $request->special_offer,
                     'special_deals' => $request->special_deals,
+                    'px' => $request->px,
                     'status' => 1,
                     'created_at' => Carbon::now(),
                 ]);
@@ -137,8 +138,7 @@ class ProductController extends Controller
             'subcategory_id' => 'required',
             'product_name_en' => 'required',
             'product_code' => 'required',
-            'product_qty' => 'required',
-            'product_size_en' => 'required',
+            'product_qty' => 'required',          
             'discount_price' => 'numeric|numeric',
             'selling_price' => 'required|numeric',           
             'short_descp_en' => 'required',
@@ -155,7 +155,6 @@ class ProductController extends Controller
             'product_code' => $request->product_code,
             'product_qty' => $request->product_qty,
             'product_size_en' => $request->product_size_en,
-            'product_color_en' => $request->product_color_en,
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
             'short_descp_en' => $request->short_descp_en,
@@ -164,6 +163,7 @@ class ProductController extends Controller
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,
             'special_deals' => $request->special_deals,
+            'px' => $request->px,
             'status' => 1,
             'created_at' => Carbon::now(),
         ]);

@@ -110,7 +110,7 @@
                                                 </div>
 
                                     @endif
-                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                  
                                 </div>
                             </div>
                     </div> 
@@ -124,7 +124,7 @@
 
                                         
                                             
-                                        <form action="{{ route('cash.order')}}" method="post" id="payment-form">
+                                        <form action="{{ route('cash.order')}}"  method="POST" enctype="multipart/form-data"  >
                                             @csrf
                                             <div class="form-row">
                                                 <label for="card-element">
@@ -134,13 +134,25 @@
                                                     <input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
                                                     <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
                                                     <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
-                                                    <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+                                                    <input type="hidden" name="address" value="{{ $data['address'] }}">
                                                     <input type="hidden" name="notes" value="{{ $data['notes'] }}"> 
+                                                     
                                                                                                    
                                                 </label>
                                                 <img src="{{asset('castomer/img/payments/cash.png')}}" alt="" srcset="">
 
+                                            </div><br><br>
+                                            @if (session('px') == 'y')
+                                            <div class=" form-group">
+                                                <label>Upload PX</label>
+                                                <input type="file" id="validationCustom03"  class="form-control"  name="px_img" required  >
+                                                <div class="invalid-feedback">
+                                                    Please Upload PX .
+                                                  </div>
+                                              
                                             </div>
+                                            <hr>                                 
+                                        @endif
                                             <br>
                                             <button class="button button-paypal"  >Submit Payment</button>
                                         </form>

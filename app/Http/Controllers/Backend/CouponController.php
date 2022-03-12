@@ -29,7 +29,7 @@ class CouponController extends Controller
             'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'Product inserted Successfully',
+            'message' => 'Coupon inserted Successfully',
             'alert-type' => 'success'
         );
         
@@ -42,8 +42,8 @@ class CouponController extends Controller
             'status' => 0
         ]);
         $notification = array(
-            'message' => 'Product Inactive Successfully',
-            'alert-type' => 'info'
+            'message' => 'Coupon Inactive Successfully',
+            'alert-type' => 'warning'
         );
 
         return redirect()->back()->with($notification);
@@ -54,7 +54,7 @@ class CouponController extends Controller
             'status' => 1
         ]);
         $notification = array(
-            'message' => 'Product Active Successfully',
+            'message' => 'Coupon Active Successfully',
             'alert-type' => 'info'
         );
 
@@ -82,7 +82,7 @@ class CouponController extends Controller
             ]); 
         
         $notification = array(
-            'message' => ' Product Edit Successfully',
+            'message' => ' Coupon Update Successfully',
             'alert-type' => 'info'
         );
 
@@ -92,8 +92,8 @@ class CouponController extends Controller
     public function CouponDelete($id){      
         Coupon::findOrFail($id)->delete();
         $notification = array(
-            'message' => ' Product Delete Successfully',
-            'alert-type' => 'info'
+            'message' => 'Coupon Delete Successfully',
+            'alert-type' => 'error'
         );
 
         return redirect()->route('manage.coupon')->with($notification);

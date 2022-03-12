@@ -26,9 +26,10 @@ class CartController extends Controller
                 'weight' => 1, 
                 'options' => [
                     'image' => $product->product_thumbnail,
-                    'color' => $request->color                                                         
+                    'size' => $request->size                                                         
                 ]
             ]);
+            
             return response()->json(['success' => 'successfull added on cart'] );
         }
         else{
@@ -40,7 +41,7 @@ class CartController extends Controller
                     'weight' => 1, 
                     'options' => [
                         'image' => $product->product_thumbnail,
-                        'color' => $request->color                                                         
+                        'size' => $request->size                                                         
                     ]
                 ]);
             return response()->json(['success' => 'Product Add to Cart']);

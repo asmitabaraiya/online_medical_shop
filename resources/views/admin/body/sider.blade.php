@@ -26,7 +26,7 @@
                 
                     <li class="{{ ($route == 'admin.dashboard') ? 'active' : '' }}">
                         <a href="{{ route('admin.dashboard') }}">
-                            <i data-feather="pie-chart"></i>
+                            <i class="fa  fa-home" style="font-size: 20px;"></i>    
                             <span>Dashboard</span>
                         </a>
                     </li>
@@ -46,7 +46,8 @@
 
                     <li class="treeview  {{ ($prefix == '/category') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="mail"></i> <span>Product Category</span>
+                            <i class="si-layers si" style="font-size: 20px;"></i>  
+                             <span>Product Category</span>  
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
                             </span>
@@ -61,8 +62,8 @@
 
                     <li class="treeview  {{ ($prefix == '/product') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
-                            <span>Products</span>
+                            <i class="ti  ti-view-grid" style="font-size: 20px;"></i>  
+                            <span>Products</span>  
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
                             </span>
@@ -81,8 +82,8 @@
 
                     <li class="treeview  {{ ($prefix == '/slider') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
-                            <span>Slider</span>
+                            <i class="fa fa-image" style="font-size: 20px;"></i>    
+                            <span>Slider</span> 
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
                             </span>
@@ -96,7 +97,7 @@
 
                     <li class="treeview  {{ ($prefix == '/coupon') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
+                            <i class="fa fa-cc-amex" style="font-size: 17px;"></i>    
                             <span>Coupon</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
@@ -110,7 +111,7 @@
 
                     <li class="treeview  {{ ($prefix == '/orders') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
+                            <i class="fa fa-reorder" style="font-size: 20px;"></i>    
                             <span>Orders</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
@@ -131,7 +132,7 @@
 
                     <li class="treeview  {{ ($prefix == '/shipping') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
+                            <i class="fa fa-truck" style="font-size: 20px;"></i>  
                             <span>Shipping Area</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
@@ -141,7 +142,6 @@
                         <ul class="treeview-menu">
                             <li class=" {{ ($route == 'manage.division') ? 'active' : '' }}"><a href="{{route('manage.division')}}"><i class="ti-more"></i>Manage Division</a></li>                                                   
                             <li class=" {{ ($route == 'manage.district') ? 'active' : '' }}"><a href="{{route('manage.district')}}"><i class="ti-more"></i>Manage District</a></li>                           
-                            <li class=" {{ ($route == 'manage.state') ? 'active' : '' }}"><a href="{{route('manage.state')}}"><i class="ti-more"></i>Manage State</a></li>                           
                      
                         </ul>
                     </li>
@@ -149,7 +149,7 @@
 
                     <li class="treeview  {{ ($prefix == '/repots') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
+                            <i data-feather="mail"></i>
                             <span>Reports</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
@@ -163,7 +163,7 @@
 
                     <li class="treeview  {{ ($prefix == '/users') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
+                            <i class="fa fa-user-circle" style="font-size: 20px;"></i>
                             <span>Users</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
@@ -177,7 +177,7 @@
 
                     <li class="treeview  {{ ($prefix == '/blogs') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
+                            <i class="mdi mdi-newspaper" style="font-size: 20px;"></i> 
                             <span>Blogs</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
@@ -197,12 +197,12 @@
                         </ul>                                                                        
                     </li>
 
-
+                    
 
                     <li class="treeview  {{ ($prefix == '/contact') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
-                            <span>Contact</span>
+                            <i class="fa fa-phone" style="font-size: 20px;"></i>
+                            <span> Contacts</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
                             </span>
@@ -212,12 +212,13 @@
                            
                         </ul>
                     </li>
+                   
 
 
                     
                     <li class="treeview  {{ ($prefix == '/settings') ? 'active' : '' }}">
                         <a href="#">
-                            <i data-feather="file"></i>
+                            <i class="fa fa-cog" style="font-size: 20px;"></i>
                             <span>Settings</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>

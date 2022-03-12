@@ -152,15 +152,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 6">
-                                            <div class="form-group">
-                                                <h5>Product Color  </h5>
-                                                <div class="controls">     
-                                                    <input type="text" name="product_color_en" class="form-control"  value="{{$product->product_color_en}}"    data-role="tagsinput"  >                                       
-                                        
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
                                        
 
                                     </div> <!--end 4 -->
@@ -250,6 +242,29 @@
                                                                  
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                     <div class="form-group">
+                                        
+                                         <div class="controls">
+                                             <div>
+                                                 <p>Admin Can put product which needed PX.</p>
+                                             </div>
+                                             <fieldset>
+                                                 <input type="checkbox" id="checkbox_6" name="px" value="1" {{ $product->px == 1 ? 'checked' : ''}}>
+                                                 <label for="checkbox_6">PX </label>
+                                             </fieldset>
+                                            
+                                         </div>
+                                     </div>
+                                 </div>
+                            
+                             </div>
+
+                             <hr>
+
+
 
                             <div class="row">
                                <div class="col-md-6">

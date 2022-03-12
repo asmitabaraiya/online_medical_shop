@@ -16,6 +16,31 @@
   <script>
     {{$seo->google_analytics}}
   </script>
+  
+   {{-- sweet alert style --}}
+   <style>
+     .notify-badge{
+    position: absolute;
+    background: rgb(236 77 69);
+    height:3rem;
+    top:0rem;
+    right:-0.5rem;
+    width:3rem;
+    text-align: center;
+    line-height: 3rem;;
+    font-size: 1rem;
+    border-radius: 50%;
+    color:white;
+    border:1px solid rgb(236 77 69);
+}
+   </style>
+  <style>
+    .Toast-modal{
+      background-color: rgba(255, 255, 255, 0.979);
+    }
+  </style>
+
+
 
   <title> @yield('title') </title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -79,7 +104,9 @@
   <script src="{{asset('castomer/js/search.js')}}"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ 
+ 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   
   
   {{-- js of oragani --}}
@@ -135,15 +162,15 @@ function productView(id){
         $('#pstock').text('Available');
       }
 
-      $('select[name="color"]').empty();
-      $.each(data.color,function(key,value){
-        $('select[name="color"]').append('<option value=" '+value+' "> '+value+' </option>')
+      $('select[name="size"]').empty();
+      $.each(data.size,function(key,value){
+        $('select[name="size"]').append('<option value=" '+value+' "> '+value+' </option>')
 
-        if(data.color == ""){
-            $("#colorArea").hide();
+        if(data.size == ""){
+            $("#sizeArea").hide();
         }
         else{
-          $("#colorArea").show();
+          $("#sizeArea").show();
 
         }
 
@@ -160,13 +187,13 @@ function productView(id){
 function addToCart(){
     var product_name = $('#pname').text();
     var id = $('#product_id').val();
-    var color = $('#color option:selected').text();
+    var size = $('#size option:selected').text();
     var quantity = $('#qty').val();
     $.ajax({
       type: "POST" ,
       dataType: 'json' ,
       data:{
-        color:color , quantity:quantity , product_name:product_name
+        size:size , quantity:quantity , product_name:product_name
       },
       url: "/cart/data/store/"+id ,
       success:function(data){
@@ -175,21 +202,29 @@ function addToCart(){
        // console.log(data)
         const Toast = Swal.mixin({
                       toast: true,
-                      position: 'top-end',
+                      position: 'bottom-end',
                       icon: 'success',
                       showConfirmButton: false,
-                      timer: 1500
+                      timer: 3000,
+                      timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+
                     })
         if($.isEmptyObject(data.error)){
                       Toast.fire({
                         type: 'success',
                         title: data.success,
+                        background: 'rgba(255, 255, 255, 0.979)'
                     })
         }
         else{
                   Toast.fire({
                         type: 'error',
                         title: data.error,
+                        background: 'rgba(255, 255, 255, 0.979)'
                     })
         }                    
       }
@@ -258,20 +293,28 @@ function addToCart(){
              // Start Message 
                 const Toast = Swal.mixin({
                       toast: true,
-                      position: 'top-end',
+                      position: 'bottom-end',
                       icon: 'success',
                       showConfirmButton: false,
-                      timer: 3000
+                      timer: 3000,
+                      timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+
                     })
                 if ($.isEmptyObject(data.error)) {
                     Toast.fire({
                         type: 'success',
-                        title: data.success
+                        title: data.success,
+                        background: 'rgba(255, 255, 255, 0.979)'
                     })
                 }else{
                     Toast.fire({
                         type: 'error',
-                        title: data.error
+                        title: data.error,
+                        background: 'rgba(255, 255, 255, 0.979)'
                     })
                 }
                 // End Message 
@@ -294,22 +337,30 @@ function addToCart(){
                // Start Message 
                   const Toast = Swal.mixin({
                         toast: true,
-                        position: 'top-end',
+                        position: 'bottom-end',
                         
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+
                       })
                   if ($.isEmptyObject(data.error)) {
                       Toast.fire({
                           type: 'success',
                           icon: 'success',
-                          title: data.success
+                          title: data.success,
+                          background: 'rgba(255, 255, 255, 0.979)'
                       })
                   }else{
                       Toast.fire({
                           type: 'error',
                           icon: 'error',
-                          title: data.error
+                          title: data.error,
+                          background: 'rgba(255, 255, 255, 0.979)'
                       })
                   }
                   // End Message 
@@ -334,7 +385,7 @@ function addToCart(){
                         <tr>
                             <td>
                                 <div class="media">
-                                    <div class="d-flex">
+                                    <div class="d-flex">                                     
                                         <img src="/${value.product.product_thumbnail}" alt="" width="100px" hieght="100px">
                                     </div>
                                     <div class="media-body">
@@ -383,21 +434,30 @@ function addToCart(){
              // Start Message 
                 const Toast = Swal.mixin({
                       toast: true,
-                      position: 'top-end',                     
+                      position: 'bottom-end',                     
                       showConfirmButton: false,
-                      timer: 3000
+                      timer: 3000,
+                      timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+
+
                     })
                 if ($.isEmptyObject(data.error)) {
                     Toast.fire({
                         type: 'success',
                         icon: 'success',
-                        title: data.success
+                        title: data.success,
+                        background: 'rgba(255, 255, 255, 0.979)'
                     })
                 }else{
                     Toast.fire({
                         type: 'error',
                         icon: 'error',
-                        title: data.error
+                        title: data.error,
+                        background: 'rgba(255, 255, 255, 0.979)'
                     })
                 }
                 // End Message 
@@ -484,21 +544,29 @@ function addToCart(){
                // Start Message 
                   const Toast = Swal.mixin({
                         toast: true,
-                        position: 'top-end',                     
-                        showConfirmButton: false,
-                        timer: 3000
+                        position: 'bottom-end',                     
+                        showConfirmButton: false,                        
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+
                       })
                   if ($.isEmptyObject(data.error)) {
                       Toast.fire({
                           type: 'success',
                           icon: 'success',
-                          title: data.success
+                          title: data.success,
+                          background: 'rgba(255, 255, 255, 0.979)'
                       })
                   }else{
                       Toast.fire({
                           type: 'error',
                           icon: 'error',
-                          title: data.error
+                          title: data.error,
+                          background: 'rgba(255, 255, 255, 0.979)'
                       })
                   }
                   // End Message 
@@ -561,9 +629,15 @@ function applyCoupon(){
                // Start Message 
                   const Toast = Swal.mixin({
                         toast: true,
-                        position: 'top-end',                     
+                        position: 'bottom-end',                     
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+
                       })
                   if ($.isEmptyObject(data.error)) {
                   
@@ -571,14 +645,16 @@ function applyCoupon(){
                       Toast.fire({
                           type: 'success',
                           icon: 'success',
-                          title: data.success
+                          title: data.success,
+                          background: 'rgba(255, 255, 255, 0.979)'
                       })
                   }else{
                     
                       Toast.fire({
                           type: 'error',
                           icon: 'error',
-                          title: data.error
+                          title: data.error,
+                          background: 'rgba(255, 255, 255, 0.979)'
                       })
                   }
                   // End Message
@@ -656,21 +732,29 @@ function couponRemove(){
                // Start Message 
                   const Toast = Swal.mixin({
                         toast: true,
-                        position: 'top-end',                     
+                        position: 'bottom-end',                     
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
                       })
                   if ($.isEmptyObject(data.error)) {
                       Toast.fire({
                           type: 'success',
                           icon: 'success',
-                          title: data.success
+                          title: data.success,
+                          background: 'rgba(255, 255, 255, 0.979)'
                       })
                   }else{
                       Toast.fire({
                           type: 'error',
                           icon: 'error',
-                          title: data.error
+                          title: data.error,
+                          background: 'rgba(255, 255, 255, 0.979)'
+                         
                       })
                   }
                   // End Message
@@ -713,26 +797,26 @@ function couponRemove(){
 
 
 
-    $('select[name="district_id"]').on('change', function(){
-        var district_id = $(this).val();
-        if(district_id) {
+    // $('select[name="district_id"]').on('change', function(){
+    //     var district_id = $(this).val();
+    //     if(district_id) {
            
-            $.ajax({
-                url: "/user/state/ajax/"+district_id,
-                type:"GET",
-                dataType:"json",
-                success:function(data) {
-                  console.log(data)
-                  var d =$('select[name="state_id"]').empty();
-                        $.each(data, function(key, value){
-                            $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + '</option>');
-                        });
-                },
-            });
-        } else {
-            alert('danger');
-        }
-    });
+    //         $.ajax({
+    //             url: "/user/state/ajax/"+district_id,
+    //             type:"GET",
+    //             dataType:"json",
+    //             success:function(data) {
+    //               console.log(data)
+    //               var d =$('select[name="state_id"]').empty();
+    //                     $.each(data, function(key, value){
+    //                         $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + '</option>');
+    //                     });
+    //             },
+    //         });
+    //     } else {
+    //         alert('danger');
+    //     }
+    // });
 });
 
 

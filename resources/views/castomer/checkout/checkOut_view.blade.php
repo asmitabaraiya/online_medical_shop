@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <h3>Shipping Address</h3>
-                    <form class="row  contact_form" method="POST" action="{{route('checkOute.store')}}" id="register_form" >
+                    <form class="row  contact_form" method="POST"  action="{{route('checkOute.store')}}" id="register_form" >
                         @csrf
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="name" value="{{ old('shipping_name') }}" name="shipping_name" placeholder="Shipping Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Shipping Name'">
@@ -50,22 +50,28 @@
 
                         </div>
 
-                        <div class="col-md-12 form-group  contact_form">
-                            <select name="division_id"  class="country_select"  >
-                                <option value="" selected="" disable="">Select Division</option>
-                                @foreach($divisions as $item)
-                                    <option value="{{ $item->id }}">{{ $item->division_name }}</option>
-                                @endforeach()
-                            </select>
-                            @error('division_id')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                        </div>
+                      
 
                         <div class="row">
+
+                            <div class="col-md-6 form-group  contact_form">
+                                <select name="division_id"  class="country_select"  >
+                                    <option value="" selected="" disable="">Select State</option>
+                                    @foreach($divisions as $item)
+                                        <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+                                    @endforeach()
+                                </select>
+                                @error('division_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            </div>
+
+
+
+
                             <div class="col-md-6 form-group   contact_form">
-                                <select name="district_id"  class="country_select"  >
-                                    <option value="" selected="" disable="" >Select District</option> 
+                                <select name="district_id"  class="form-select"  >
+                                    <option value="" selected="" disable="" >Select City</option> 
                                                                      
                                 </select>
                                 @error('district_id')
@@ -73,18 +79,18 @@
                             @enderror
                               
                             </div>
-
-                            <div class="col-md-6 form-group  contact_form">
-                                <select name="state_id"  class="country_select"  >
-                                    <option value="" selected="" disable="" >Select State</option>     
-                                       
-                                </select>
-                                @error('state_id')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            </div>
-
+                            
                         </div>
+
+
+                        <div class="col-md-12 form-group">
+                            <textarea class="form-control" value="{{ old('address') }}" name="address" id="message" rows="2" placeholder="Order Address"></textarea>
+                            @error('address')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                       
+                        </div>
+
 
                         <div class="col-md-12 form-group">
                             <textarea class="form-control" value="{{ old('notes') }}" name="notes" id="message" rows="3" placeholder="Order Notes"></textarea>
@@ -100,7 +106,17 @@
                            
 
                             @foreach ($carts as $item )
+                            @php
+                                $pxItem = App\Models\Product::findOrFail($item->id);
+                            @endphp
                             <li>
+                               @if ($pxItem->px)
+                                   @php
+                                      session()->put('px','y');                                      
+                                   @endphp
+                                   
+                               @endif
+                              
                                 <div class="row">
                                     <div class="col">
                                         <img src="{{asset($item->options->image)}}" class="rounded" style="height: 50px; width: 50px;">
@@ -115,7 +131,12 @@
                             </li>
                             <hr>
                             @endforeach
-                            
+
+                          
+                        
+                           
+
+
                         </ul>
 
                         @if (Session::has('coupon'))

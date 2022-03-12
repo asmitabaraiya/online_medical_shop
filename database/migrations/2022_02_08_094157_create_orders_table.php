@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('division_id');
             $table->unsignedBigInteger('district_id');
-            $table->unsignedBigInteger('state_id');
+            $table->text('address');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
@@ -39,10 +39,11 @@ class CreateOrdersTable extends Migration
             $table->string('picked_date')->nullable();
             $table->string('shipped_date')->nullable();
             $table->string('delivered_date')->nullable();
-            $table->string('cancel_date')->nullable();
+            $table->string('cancel_date')->nullable();  
             $table->string('return_date')->nullable();
             $table->string('return_reason')->nullable();
             $table->string('return_order')->nullable();
+            $table->string('px_img')->nullable();
             $table->integer('status');           
             $table->timestamps();
         });

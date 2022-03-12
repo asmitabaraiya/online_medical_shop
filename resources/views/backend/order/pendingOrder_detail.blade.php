@@ -59,7 +59,7 @@
         
                      <tr>
                       <th> State : </th>
-                       <th>{{ $order->state->state_name }} </th>
+                       <th>{{ $order->address }} </th>
                     </tr>
         
                     <tr>
@@ -129,7 +129,17 @@
         
         
                     <tr>
-                      <th>  </th>
+                      <th> 
+                       @if ($order->px_img != NULL)
+                         <a   href="{{asset($order->px_img)}}" data-toggle="lightbox" data-gallery="multiimages" data-title="Order PX" > View PX </a>
+                       @endif 
+                        
+                        
+                        
+                      
+                      
+                      
+                      </th>
                        <th> 
                            @if($order->status == 'pending')
                            <a href="{{route('pending-comfirm' , $order->id)}}" class="btn btn-block btn-success" id="confirm">Confirm Order</a>  
@@ -183,9 +193,7 @@
                         </td>
         
         
-                       <td width="10%">
-                          <label for=""> Color </label>
-                        </td>
+                     
         
                         <td width="10%">
                           <label for=""> Size </label>
@@ -210,6 +218,10 @@
                <tr>
                        <td width="10%">
                           <label for=""><img src="{{asset($item->product->product_thumbnail)}}" height="50px;" width="50px;"> </label>
+                          @if ($item->product->px != NULL)
+                            <label class="text-danger"> &nbsp; PX</label>
+                          @endif
+                         
                         </td>
         
                        <td width="20%">
@@ -243,9 +255,12 @@
                         
                       </tr>
                       @endforeach
+					
+
                     </tbody>
             
                 </table>
+                
               </div>
             </div>
         </div>
@@ -255,9 +270,8 @@
       
     </div>
 
-    <!-- <button class="tst1 btn btn-info btn-block mb-15">Info Message</button> -->
 </section>
 
 
-{{-- <li><a class="box-btn-close" href="#"></a></li> --}}
+
 @endsection

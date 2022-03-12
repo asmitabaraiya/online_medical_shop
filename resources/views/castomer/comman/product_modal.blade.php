@@ -40,13 +40,15 @@
                             <p id="pstock"></p>
                         </div>
 
-                        <div class="col-md 12 my-4" id="colorArea" >
-                          <label for="exampleFormControlInput1" class="form-label">Color :</label>
-                            <select class="form-select" aria-label="Default select example" id="color" name="color"  >
+                                               
+                        <div class="col-md 12 my-4" id="sizeArea" >
+                          <label for="exampleFormControlInput1" class="form-label">Size :</label>
+                            <select class="form-select" aria-label="Default select example" id="size" name="size"  >
                             
                             </select>
                         </div>
                         
+
                         <div class = "form-group col-md 12">
                           <label for="exampleFormControlInput1" class="form-label">Qty :</label>
                             <input class="form-control form-control-sm" id="qty"   type="number" placeholder="Quantity" aria-label="Quantity" min="1">

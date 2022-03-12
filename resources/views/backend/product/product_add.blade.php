@@ -138,7 +138,7 @@
                                             <div class="form-group">
                                                 <h5>Product Size  <span class="text-danger">*</span></h5>
                                                 <div class="controls">     
-                                                    <input type="text" name="product_size_en" class="form-control"  value=""     data-role="tagsinput"  >                                       
+                                                    <input type="text" name="product_size_en" class="form-control"  id="product_size_en"     data-role="tagsinput"  >                                       
                                                     @error('product_size_en')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -146,15 +146,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md 6" id="color">
-                                            <div class="form-group">
-                                                <h5>Product Color  </h5>
-                                                <div class="controls">     
-                                                    <input type="text" name="product_color_en" class="form-control"  value=""     data-role="tagsinput"  >                                       
-                                        
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
 
                                         
                                     </div> <!--end 4 -->
@@ -277,6 +269,28 @@
                             </div>
 
                             <div class="row">
+                                <div class="col-md-6">
+                                     <div class="form-group">
+                                        
+                                         <div class="controls">
+                                             <div>
+                                                 <p>Admin Can put product which needed PX.</p>
+                                             </div>
+                                             <fieldset>
+                                                 <input type="checkbox" id="checkbox_6" name="px"  value="1">
+                                                 <label for="checkbox_6">PX </label>
+                                             </fieldset>
+                                            
+                                         </div>
+                                     </div>
+                                 </div>
+                            
+                             </div>
+
+                             <hr>
+
+
+                            <div class="row">
                                <div class="col-md-6">
                                     <div class="form-group">
                                        
@@ -333,7 +347,7 @@
     // $('select[name="category_id"]').on('change' , function(){
     //     var category_id = $(this).val();
     //     if(category_id == 12){
-    //         document.getElementById("SizeColor").style.visibility = "hidden";
+    //         document.getElementById("product_size_en").style.visibility = "hidden";
           
            
     //     }

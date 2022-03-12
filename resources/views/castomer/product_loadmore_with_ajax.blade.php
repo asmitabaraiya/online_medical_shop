@@ -5,11 +5,19 @@
 <div class="col-md-6 col-lg-4">
   <div class="card text-center card-product">
     <div class="card-product__img">
+      @if ($product->discount_price != NULL)                  
+      @php
+        $amount = $product->selling_price - $product->discount_price;
+        $discount = ($amount/$product->selling_price) * 100;
+      @endphp
+      <span class="notify-badge">{{$product->discount_price}}%</span>  
+    @endif
       <img class="card-img" src="{{asset($product->product_thumbnail)}}" alt="">
       <ul class="card-product__imgOverlay">
         <li><button><i class="ti-search"></i></button></li>
-        <li><button><i class="ti-shopping-cart"></i></button></li>
-        <li><button><i class="ti-heart"></i></button></li>
+        <li><button   data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"  ><i class="ti-shopping-cart"></i></button></li>
+        <li><button  id="{{$product->id}}" onclick="addToWishList(this.id)"><i class="ti-heart"  ></i></button></li>
+
       </ul>
     </div>
     <div class="card-body">

@@ -156,14 +156,12 @@ Route::middleware(['auth:admin'])->group(function(){
     });
 
     Route::prefix('contact')->group(function(){
-        Route::get('/view' , [SliderController::class , 'ContactView'])->name('contact.slider');
-        // Route::post('/store' , [SliderController::class , 'SliderStore'])->name('slider.store');
-        // Route::get('/edit/{id}' , [SliderController::class , 'SliderEdit'])->name('slider.edit');
-        // Route::post('/update' , [SliderController::class , 'SliderUpdate'])->name('slider.update');   
-        // Route::get('/delete/{id}' , [SliderController::class , 'SliderDelete'])->name('slider.delete');
-        //
-        // Route::get('/inactive/{id}' , [SliderController::class , 'SliderInactive'])->name('slider.inactive');
-        // Route::get('/active/{id}' , [SliderController::class , 'SliderActive'])->name('slider.active');
+        Route::get('/view' , [SliderController::class , 'ContactView'])->name('manage.contact');
+        Route::get('/show/{id}' , [SliderController::class , 'ContactShow'])->name('contact.show');
+        Route::get('/reply/{id}' , [SliderController::class , 'ContactReply'])->name('contact.reply');   
+        Route::get('/delete/{id}' , [SliderController::class , 'ContactDelete'])->name('contact.delete');
+    
+        Route::post('/email' , [SliderController::class , 'ContactEmail'])->name('contact.email');
 
                     
     });
@@ -204,11 +202,11 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/district/delete/{id}' , [ShippingAreaController::class , 'DistrictDelete'])->name('district.delete');
         
         
-        Route::get('/state/view' , [ShippingAreaController::class , 'StateView'])->name('manage.state');
-        Route::post('/state/store' , [ShippingAreaController::class , 'StateStore'])->name('state.store');
-        Route::get('/state/edit/{id}' , [ShippingAreaController::class , 'StateEdit'])->name('state.edit');
-        Route::post('/state/update' , [ShippingAreaController::class , 'StateUpdate'])->name('state.update');   
-        Route::get('/state/delete/{id}' , [ShippingAreaController::class , 'StateDelete'])->name('state.delete');
+        // Route::get('/state/view' , [ShippingAreaController::class , 'StateView'])->name('manage.state');
+        // Route::post('/state/store' , [ShippingAreaController::class , 'StateStore'])->name('state.store');
+        // Route::get('/state/edit/{id}' , [ShippingAreaController::class , 'StateEdit'])->name('state.edit');
+        // Route::post('/state/update' , [ShippingAreaController::class , 'StateUpdate'])->name('state.update');   
+        // Route::get('/state/delete/{id}' , [ShippingAreaController::class , 'StateDelete'])->name('state.delete');
 
         
         Route::get('/district/ajax/{division_id}' , [ShippingAreaController::class , 'GetDivision']);
@@ -341,6 +339,8 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
  // Product detail route
 Route::get('/product/detail/{id}/{slug}' , [UserIndexController::class , 'ProductDetail'])->name('product.detail');
 
+ 
+
 // Frontend product categorywise
 Route::get('/product/categorywise/{id}/{slug}' , [UserIndexController::class , 'ProductCatwise']);
 Route::get('/product/subcategorywise/{id}/{slug}' , [UserIndexController::class , 'ProductSubCatwise']);
@@ -367,6 +367,13 @@ Route::get('/minicart/product-remove/{rowId}' , [CartController::class , 'Remove
 
 // add to wish list with ajax
 Route::post('/add-to-wishlist/{product_id}' , [WhishListController::class , 'AddToWishList']);
+
+
+
+
+
+
+
 
 
 //==================================================================================================
@@ -485,7 +492,8 @@ Route::post('/product/saerch' , [UserIndexController::class , 'ProductSearch'])-
 Route::post('/advance-saerch' , [UserIndexController::class , 'AdvanceProductSearch']);  
 
 // filter
-Route::post('/filter-category' , [UserIndexController::class , 'shopFilter'])->name('shope.filter');  
+Route::get('/filter-subcategory/{cid}/{sid}' , [UserIndexController::class , 'subcatFilter'])->name('subcat.filter');  
+Route::get('/filter-subsubcategory/{cid}/{sid}/{ssid}' , [UserIndexController::class , 'subsubcatFilter']);  
 
 // contact
 Route::get('/contact' , [UserIndexController::class , 'contactPage'])->name('contact.page');

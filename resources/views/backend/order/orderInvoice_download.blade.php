@@ -75,7 +75,7 @@
           <br> <strong >Name:</strong> {{$order->name}} <br>
            <strong >Email:</strong> {{$order->email}} <br>
            <strong >Phone:</strong> {{$order->phone}} <br>
-           <strong >Address:</strong> {{$order->state->state_name}} , {{$order->district->district_name}} , {{$order->division->division_name}} <br>
+           <strong >Address:</strong> {{$order->address}} , {{$order->district->district_name}} , {{$order->division->division_name}} <br>
            <strong >Post Code:</strong> {{$order->post_code}}
          </p>
         </td>

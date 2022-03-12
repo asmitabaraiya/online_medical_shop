@@ -28,7 +28,7 @@ class ShippingAreaController extends Controller
             'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'Product inserted Successfully',
+            'message' => 'Division inserted Successfully',
             'alert-type' => 'success'
         );
         
@@ -53,7 +53,7 @@ class ShippingAreaController extends Controller
             ]); 
         
         $notification = array(
-            'message' => ' Product Edit Successfully',
+            'message' => ' Division Edit Successfully',
             'alert-type' => 'info'
         );
 
@@ -63,8 +63,8 @@ class ShippingAreaController extends Controller
     public function DivisionDelete($id){      
         ShippingArea::findOrFail($id)->delete();
         $notification = array(
-            'message' => ' Product Delete Successfully',
-            'alert-type' => 'info'
+            'message' => ' Division Delete Successfully',
+            'alert-type' => 'error'
         );
 
         return redirect()->route('manage.division')->with($notification);
@@ -93,7 +93,7 @@ class ShippingAreaController extends Controller
             'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'Product inserted Successfully',
+            'message' => 'District inserted Successfully',
             'alert-type' => 'success'
         );
         
@@ -122,7 +122,7 @@ class ShippingAreaController extends Controller
             ]); 
         
         $notification = array(
-            'message' => ' Product Edit Successfully',
+            'message' => ' District Update Successfully',
             'alert-type' => 'info'
         );
 
@@ -132,8 +132,8 @@ class ShippingAreaController extends Controller
     public function DistrictDelete($id){      
         ShipDistrict::findOrFail($id)->delete();
         $notification = array(
-            'message' => ' Product Delete Successfully',
-            'alert-type' => 'info'
+            'message' => ' District Delete Successfully',
+            'alert-type' => 'error'
         );
 
         return redirect()->route('manage.district')->with($notification);
@@ -166,7 +166,7 @@ class ShippingAreaController extends Controller
             'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'Product inserted Successfully',
+            'message' => 'State inserted Successfully',
             'alert-type' => 'success'
         );
         
@@ -202,7 +202,7 @@ class ShippingAreaController extends Controller
             ]); 
         
         $notification = array(
-            'message' => ' Product Edit Successfully',
+            'message' => ' State update Successfully',
             'alert-type' => 'info'
         );
 
@@ -212,8 +212,8 @@ class ShippingAreaController extends Controller
     public function StateDelete($id){      
         ShipState::findOrFail($id)->delete();
         $notification = array(
-            'message' => ' Product Delete Successfully',
-            'alert-type' => 'info'
+            'message' => ' State Delete Successfully',
+            'alert-type' => 'error'
         );
 
         return redirect()->route('manage.state')->with($notification);

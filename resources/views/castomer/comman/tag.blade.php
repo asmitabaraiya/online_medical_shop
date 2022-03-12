@@ -2,50 +2,68 @@
         <div class="blog_right_sidebar">
 
             <aside class="single_sidebar_widget post_category_widget">
-                <h4 class="widget_title">Catgories</h4>
+                <h4 class="widget_title">Categories</h4>
                 @php
-                $categorys = App\Models\Category::orderBy('category_name_en', 'ASC')->get(); 
+                $categorys = App\Models\SubCategory::orderBy('subcategory_name_en', 'ASC')->where('category_id' , $title->id )->get(); 
              @endphp
                 <ul class="main-categories">
                   <li class="common-filter">
-                    <form action="{{route('shope.filter')}}" method="post">
-                        @csrf
+                    
                       <ul>
                         @foreach ($categorys as $category)
-                        <li class="filter-list"><input class="pixel-radio" type="checkbox" onchange="this.form.submit()" name="category" value="{{$category->category_slug_en}}" id="men" name="brand"><label for="men">{{$category->category_name_en}}</label></li>
+                        <li class="filter-list"><a href="{{url('filter-subcategory/'.$category->category_id.'/'.$category->id)}}"> 
+                           
+                           @if (isset($titleSubCat))
+                                @if ($titleSubCat->id ==  $category->id)
+                                    <i class="fas fa-circle"></i>
+                                @else
+                                    <i class="far fa-circle"></i>                                  
+                                @endif   
+                           @else
+                                 <i class="far fa-circle"></i>    
+                           @endif
+                               
+                           
+                            <label for="men">  {{$category->subcategory_name_en}}</label></a>
+                        </li>
                         @endforeach    
                     </ul>
-                    </form>
+                  
                   </li>
                 </ul>
                 <div class="br"></div>
-            </aside>
-
-
-
-            <aside class="single_sidebar_widget post_category_widget">
-                <h4 class="widget_title">Sub Catgories</h4>
-                <ul class="main-categories">
-
-                   
-                    @foreach ($subcat as $subcategory)
-                    <li class="filter-list"><input class="pixel-radio" type="checkbox" id="men" name="brand"><label for="men">{{$subcategory->subcategory_name_en}} </label></li>
-                        
-                    @endforeach                    
-                </ul>
-                <div class="br"></div>
+                
             </aside>
 
 
             <aside class="single_sidebar_widget post_category_widget">
-                <h4 class="widget_title">Sub Category</h4>
+                <h4 class="widget_title">Sub Categories</h4>
                 <ul class="main-categories">
+              
+                
+                    
+                  
 
-                   
-                    @foreach ($subcat as $subcategory)
-                    <li class="filter-list"><input class="pixel-radio" type="checkbox" id="men" name="brand"><label for="men">{{$subcategory->subcategory_name_en}} </label></li>
+                    @foreach ($subsubCat as $subcategory)
+                        <li class="filter-list"><a href="{{url('filter-subsubcategory/'.$subcategory->category_id.'/'.$subcategory->subcategory_id.'/'.$subcategory->id)}}"> 
+                           
+                           @if (isset($titleSubSubCat))
+                                @if ($titleSubSubCat->id ==  $subcategory->id)
+                                    <i class="fas fa-circle"></i>
+                                @else
+                                    <i class="far fa-circle"></i>                                  
+                                @endif   
+                           @else
+                                 <i class="far fa-circle"></i>    
+                           @endif
+                               
+                           
+                            <label for="men">  {{$subcategory->subsubcategory_name_en}}</label></a>
+                        </li>
+                       
                         
                     @endforeach                    
+                
                 </ul>
                 <div class="br"></div>
             </aside>

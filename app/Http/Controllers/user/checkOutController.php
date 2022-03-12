@@ -11,17 +11,22 @@ class checkOutController extends Controller
     public function CheckOuteStore(Request $request){
 
 
-        $request->validate([
-            'shipping_name' => 'required|max:30',
-            'shipping_email' => 'required|email',
-            'shipping_phone' => 'required|digits:10',
-            'post_code' => 'required|numeric',
-            'division_id' => 'required',
-            'district_id' => 'required',
-            'state_id' => 'required',
-            'payment_method' => 'required'
-        ]);
+       
+
         
+            $request->validate([
+               
+                'shipping_name' => 'required|max:30',
+                'shipping_email' => 'required|email',
+                'shipping_phone' => 'required|digits:10',
+                'post_code' => 'required|numeric',
+                'division_id' => 'required',
+                'district_id' => 'required',
+                'address' => 'required',
+                'payment_method' => 'required', 
+            ]);
+            
+       
         $carts = Cart::content();
         $cartQty = Cart::count();
         $cartTotal = Cart::total();
@@ -33,9 +38,8 @@ class checkOutController extends Controller
         $data['post_code'] = $request->post_code;
         $data['division_id'] = $request->division_id;
         $data['district_id'] = $request->district_id;
-        $data['state_id'] = $request->state_id;
+        $data['address'] = $request->address;
         $data['notes'] = $request->notes;
-        
         if($request->payment_method == 'stripe'){
             return view('castomer.payment.stripe' , compact('data' , 'carts' , 'cartQty' , 'cartTotal'));
         }

@@ -35,9 +35,11 @@
 						
 						</div>
 
+						
+
 						<div class="col-md-12 form-group ">
-							<input type="text" class="form-control" id="phone" name="phone" placeholder="Phone No" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone No'">
-							@error('phone')
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+							@error('password')
 							<span style="color:Tomato;"> {{ $message }}  </span>
 							@enderror
 						
@@ -45,12 +47,13 @@
 
 
 							<div class="col-md-12 form-group ">
-								<input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
-								@error('password')
+								<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="password confirmation" onfocus="this.placeholder = ''" onblur="this.placeholder = 'password confirmation'">
+								@error('password_confirmation')
 								<span style="color:Tomato;"> {{ $message }}  </span>
 								@enderror
 							
 							</div>
+
 
 							<button type="submit" class="button button-login w-50">Password Reset </button>
 						</form>

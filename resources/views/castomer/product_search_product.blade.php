@@ -59,6 +59,7 @@
                     
     
                 @foreach($products as $item)
+                
        <a href="{{url('product/detail/'.$item->id.'/'.$item->product_slug_en)}}">
                     <div class="list border-bottom">  <img src="{{ asset($item->product_thumbnail) }}" style="width: 50px; height: 50px;"> 
                         

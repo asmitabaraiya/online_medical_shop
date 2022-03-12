@@ -109,27 +109,27 @@
                                                         @error('brand_image')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
-                                                        <img  style=" height: 40px; width: 40px;" id="mainThumb">
+                                                        <img id="mainThumb">
 
                                                         <div class="help-block"></div>
                                                     </div>
                                                 </div>
                                                                                                                                 
                                         <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-success mb-5 " value="Add Brand" >
+                                        <input type="submit" class="btn  btn-success mb-5 " value="Add Brand" >
                                        
                                         </div>
                                     </div>
                                 </div>
                     </form>
-               
+                    
             </div>
             <!-- /.box-body -->
             </div>
         </div>
     </div>
 
-    <!-- <button class="tst1 btn btn-info btn-block mb-15">Info Message</button> -->
+     
 </section>
 
 

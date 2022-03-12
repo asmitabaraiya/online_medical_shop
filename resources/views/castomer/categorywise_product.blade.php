@@ -1,3 +1,5 @@
+@include('castomer.comman.product_modal')
+
 @extends('castomer.main_master')
 
 @section('title')
@@ -5,6 +7,8 @@
  {{ $title->category_name_en }} 
 @endsection
 @section('body')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 {{-- <script src="https://mdbootstrap.com/docs/b4/jquery/getting-started/cdn/"></script> --}}
@@ -14,7 +18,16 @@
 
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page"> {{ $title->category_name_en }}   </li>
+          <li class="breadcrumb-item active" aria-current="page"> <a href="{{url('/product/categorywise/'.$title->id.'/'.$title->category_slug_en)}}"> {{ $title->category_name_en }} </a>  </li> 
+          @if (isset($titleSubCat))
+            <li class="breadcrumb-item active" aria-current="page"> <a href="{{url('filter-subcategory/'.$title->id.'/'.$titleSubCat->id)}}"> {{ $titleSubCat->subcategory_name_en }} </a>  </li>   
+                @if (isset($titleSubSubCat))
+                <li class="breadcrumb-item active" aria-current="page">  {{ $titleSubSubCat->subsubcategory_name_en }}   </li> 
+              @endif                
+          @endif
+
+         
+
           
         </ol>      
     </div>

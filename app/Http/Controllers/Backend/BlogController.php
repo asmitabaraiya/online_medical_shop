@@ -29,7 +29,7 @@ class BlogController extends Controller
             'blog_category_slug_en' => strtolower(str_replace(' ' , '-' , $request->blog_category_name_en)) ,
         ]);
         $notification = array(
-            'message' => 'Category inserted Successfully',
+            'message' => 'Blog Category inserted Successfully',
             'alert-type' => 'success'
         );
 
@@ -54,7 +54,7 @@ class BlogController extends Controller
                 'blog_category_slug_en' => strtolower(str_replace(' ' , '-' , $request->blog_category_name_en)) ,
             ]);
             $notification = array(
-                'message' => 'Category update Successfully',
+                'message' => 'Blog Category update Successfully',
                 'alert-type' => 'info'
             );
 
@@ -67,8 +67,8 @@ class BlogController extends Controller
         
         BlogCategory::findOrFail($id)->delete();
         $notification = array(
-            'message' => 'Category delete Successfully',
-            'alert-type' => 'info'
+            'message' => 'Blog Category delete Successfully',
+            'alert-type' => 'error'
         );
 
         return redirect()->back()->with($notification);
@@ -102,7 +102,7 @@ class BlogController extends Controller
             'created_at' => Carbon::now()        
         ]);
         $notification = array(
-            'message' => 'Category inserted Successfully',
+            'message' => 'Post inserted Successfully',
             'alert-type' => 'success'
         );
 
@@ -154,7 +154,7 @@ class BlogController extends Controller
                 'post_image' => $save_url
             ]);
             $notification = array(
-                'message' => 'Brand update Successfully',
+                'message' => 'Post update Successfully',
                 'alert-type' => 'info'
             );
 
@@ -172,7 +172,7 @@ class BlogController extends Controller
                
             ]);
             $notification = array(
-                'message' => 'Brand update Successfully',
+                'message' => 'Post update Successfully',
                 'alert-type' => 'info'
             );
 
@@ -187,8 +187,8 @@ class BlogController extends Controller
 
         BlogPost::findOrFail($id)->delete();
         $notification = array(
-            'message' => 'Brand delete Successfully',
-            'alert-type' => 'info'
+            'message' => 'Post delete Successfully',
+            'alert-type' => 'error'
         );
 
         return redirect()->back()->with($notification);
@@ -229,6 +229,11 @@ class BlogController extends Controller
         BlogComment::findOrFail($id)->delete();       
         $comments = BlogComment::where('blog_post_id' , $Commentitem->blog_post_id)->latest()->get();
 
-        return redirect()->route('blog.post.comment' , $comments);
+        $notification = array(
+            'message' => 'Comment delete Successfully',
+            'alert-type' => 'error'
+        );
+
+        return redirect()->route('blog.post.comment' , $comments)->with($notification);
     }
 }

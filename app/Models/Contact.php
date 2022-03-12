@@ -9,4 +9,8 @@ class Contact extends Model
 {
     protected $guarded=[];
     use HasFactory;
+
+    public function userInfo(){
+        return $this->belongsTo(User::class , 'user_id' , 'id');
+    }
 }

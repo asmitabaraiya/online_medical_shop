@@ -12,16 +12,54 @@
 <div class="product_image_area">
     <div class="container">
         <div class="row s_product_inner">
+          
             <div class="col-lg-6">
-                <div class="owl-carousel owl-theme s_Product_carousel">
-                    <div class="single-prd-item">
-                        <img class="img-fluid" src="{{asset($product->product_thumbnail)}}" alt="">
-                    </div>
-                </div>
+                           
+                 
+                            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                                
+                                <div class="carousel-inner">
+                                     
+                                  <div class="carousel-item active">
+                                    @if ($product->discount_price != NULL)                  
+                                    @php
+                                    $amount = $product->selling_price - $product->discount_price;
+                                    $discount = ($amount/$product->selling_price) * 100;
+                                    @endphp
+                                    <span class="notify-badge">{{$product->discount_price}}%</span>  
+                                @endif 
+                                    <img src="{{asset($product->product_thumbnail)}}" class="d-block w-100" alt="...">
+                                  </div>
+
+                                  @foreach ($multiImg as $item )
+                                        <div class="carousel-item">
+                                            
+                                            <img src="{{asset($item->photo_name)}}" class="d-block w-100" alt="...">
+                                        </div>
+                                      
+                                  @endforeach
+                                       
+
+                                
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                                  
+                                  <i class="fas fa-caret-square-left" style="font-size:24px; background-color:black;"></i>
+                                  <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                                    <i class="	fas fa-caret-square-right" style="font-size:24px; background-color:black;"></i>
+                                  <span class="visually-hidden">Next</span>
+                                </button>
+                              </div>
+
+
+
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
                     <h3 id="pname"> {{ $product->product_name_en }} </h3>
+                   
                     <p>
                         @if( $product->discount_price != NULL )
                             <del>₹{{$product->selling_price}}.00 </del> &nbsp; <strong class="h4">₹{{$product->discount_price}}.00 </strong>
@@ -33,27 +71,37 @@
                    
                     <ul class="list">
                         @if ($product->product_qty != NULL)
-                            <li><a href="#"><span> Availibility </span> <span> : In Stock  </span> </a></li>
+                            <li><a ><span> Availibility </span> <span> : In Stock  </span> </a></li>
                         @else
-                            <li><a href="#"><span> Availibility  </span><span> : Out of Stock  </span> </a></li>                            
+                            <li><a ><span> Availibility  </span><span> : Out of Stock  </span> </a></li>                            
                         @endif
                     </ul>
                     <p>
                          {!! $product->short_descp_en !!}  
                     </p>
                     <input type="hidden" id="product_id" value="{{$product->id}}">
-                    <div  id="colorArea">
-                        <select class="form-select" aria-label="Default select example" id="color" name="color" >
-                            @foreach ($product_color_en as $color )
-                                <option value=" {{$color}}"> {{$color}} </option>
+
+                    @if ($product->product_size_en != NULL)
+
+                    <div  id="sizeArea">
+                        <select class="form-select" aria-label="Default select example" id="size" name="size" >
+                            @foreach ($product_size_en as $size )
+                                <option value=" {{$size}}"> {{$size}} </option>
                             @endforeach
                         </select>
                     </div>
+                    @endif
+
                     <div class = "form-group my-4">
                         <input class="form-control form-control-sm" id="qty" value="1"  type="number" placeholder="Quantity" aria-label="Quantity" min="1">
                     </div>
+                    @if ($product->px != NULL)
+                    <div class = "form-group my-4">
+                    <strong class=" h4">PX is required</strong>
+                </div>
+                    @endif
                     <div class="product_count my-4">
-                        <a class="button primary-btn" onclick="addToCart()" href=""  >   Add To Cart </a>               
+                        <a class="button primary-btn" onclick="addToCart()" href="#"  >   Add To Cart </a>               
                     </div>
                     
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -73,10 +121,7 @@
             <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                 aria-selected="false">Specification</a>
-            </li>
+          
             
             <li class="nav-item">
                 <a class="nav-link " id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
@@ -89,78 +134,7 @@
                    {!! $product->long_descp_en !!} 
                 </p>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <h5>Width</h5>
-                                </td>
-                                <td>
-                                    <h5>128mm</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5>Height</h5>
-                                </td>
-                                <td>
-                                    <h5>508mm</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5>Depth</h5>
-                                </td>
-                                <td>
-                                    <h5>85mm</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5>Weight</h5>
-                                </td>
-                                <td>
-                                    <h5>52gm</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5>Quality checking</h5>
-                                </td>
-                                <td>
-                                    <h5>yes</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5>Freshness Duration</h5>
-                                </td>
-                                <td>
-                                    <h5>03days</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5>When packeting</h5>
-                                </td>
-                                <td>
-                                    <h5>Without touch of hand</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5>Each Box contains</h5>
-                                </td>
-                                <td>
-                                    <h5>60pcs</h5>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
 
 
          
@@ -181,7 +155,7 @@
                                             </div>
                                             <div class="media-body">
                                                 <h4>{{$review->users->name}}</h4>
-                                            <p >{{Carbon\Carbon::parse($review->created_at)->diffForHumans()}}  </p>
+                                            <p style="float: right;">{{Carbon\Carbon::parse($review->created_at)->diffForHumans()}}  </p>
 
                                             </div>
                                         </div>
