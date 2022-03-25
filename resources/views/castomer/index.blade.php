@@ -188,7 +188,7 @@
                   $amount = $product->selling_price - $product->discount_price;
                   $discount = ($amount/$product->selling_price) * 100;
               @endphp
-              <span class="notify-badge">{{$discount}}%</span>  
+              <span class="notify-badge">{{round($discount)}}%</span>  
             @endif
               <img class="img-fluid" src="{{asset($product->product_thumbnail)}}" alt="">
               <ul class="card-product__imgOverlay">

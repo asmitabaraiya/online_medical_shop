@@ -177,4 +177,27 @@ class SliderController extends Controller
                 return redirect()->route('manage.contact')->with($notification);
 
     }
+
+
+    public function SendEmail(){
+        return view('backend.Contact.send_email');
+    }
+
+    public function SendGmail(Request $request){
+
+        $data = [                   
+            'subject' => $request->subject,
+            'massage' => $request->massage,
+        ];
+
+        Mail::to($request->email)->send(new ContactMail($data));
+
+        $notification = array(
+            'message' => ' Massage Send Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.dashboard')->with($notification);
+
+    }
 }

@@ -162,7 +162,9 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/delete/{id}' , [SliderController::class , 'ContactDelete'])->name('contact.delete');
     
         Route::post('/email' , [SliderController::class , 'ContactEmail'])->name('contact.email');
+        Route::post('/send/email' , [SliderController::class , 'SendGmail'])->name('contact.sendemail');
 
+        Route::get('/sendemail' , [SliderController::class , 'SendEmail'])->name('send.email');
                     
     });
 

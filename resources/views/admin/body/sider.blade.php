@@ -185,14 +185,8 @@
                         </a>
 
                         <ul class="treeview-menu">
-                            <li class=" {{ ($route == 'blog.category') ? 'active' : '' }}"><a href="{{route('blog.category')}}"><i class="ti-more"></i>Blog Category</a></li>                                                                               
-                        </ul>
-
-                        <ul class="treeview-menu">
-                            <li class=" {{ ($route == 'blog.post.view') ? 'active' : '' }}"><a href="{{route('blog.post.view')}}"><i class="ti-more"></i>View Blog Post </a></li>                                                                               
-                        </ul>
-
-                        <ul class="treeview-menu">
+                            <li class=" {{ ($route == 'blog.category') ? 'active' : '' }}"><a href="{{route('blog.category')}}"><i class="ti-more"></i>Blog Category</a></li>                                                                                                                          
+                            <li class=" {{ ($route == 'blog.post.view') ? 'active' : '' }}"><a href="{{route('blog.post.view')}}"><i class="ti-more"></i>View Blog Post </a></li>                                                                                                                          
                             <li class=" {{ ($route == 'blog.post') ? 'active' : '' }}"><a href="{{route('blog.post')}}"><i class="ti-more"></i>Add Blog Post </a></li>                                                                               
                         </ul>                                                                        
                     </li>
@@ -227,9 +221,7 @@
 
                         <ul class="treeview-menu">
                             <li class=" {{ ($route == 'setting.manage') ? 'active' : '' }}"><a href="{{route('setting.manage')}}"><i class="ti-more"></i>Site Settings</a></li>                                                                               
-                        </ul>
-
-                        <ul class="treeview-menu">
+                      
                             <li class=" {{ ($route == 'setting.seo') ? 'active' : '' }}"><a href="{{route('setting.seo')}}"><i class="ti-more"></i>SEO Settings </a></li>                                                                               
                         </ul>
 
@@ -244,7 +236,7 @@
                 <a href="{{route('setting.manage')}}" class="link" data-toggle="tooltip" title="" data-original-title="Settings"
                     aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
                 <!-- item-->
-                <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i
+                <a href="{{route('send.email')}}" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i
                         class="ti-email"></i></a>
                 <!-- item-->
                 <a href="{{ route('admin.logout') }}" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i

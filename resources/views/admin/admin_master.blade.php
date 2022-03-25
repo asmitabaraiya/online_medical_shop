@@ -11,7 +11,7 @@
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
 
     <title>Easy Ecommerce Admin - Dashboard</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 
     <!-- Vendors Style-->
     <link rel="stylesheet" href=" {{ asset('backend/css/vendors_css.css') }} ">
@@ -82,7 +82,7 @@
     <script src="{{ asset('assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
     <script src="{{ asset('assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
     <script src="{{ asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 
 
    
@@ -90,6 +90,9 @@
     <!-- Sunny Admin App -->
     <script src="{{ asset('backend/js/template.js') }} "></script>
     <script src="{{ asset('backend/js/pages/dashboard.js') }} "></script>
+
+
+   
 
     <!-- toster -->
      {{-- <script rel="stylesheet" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>  --}}
@@ -107,20 +110,17 @@
     <script src="{{ asset('backend/js/pages/data-table.js')}}"></script>
     <script src="{{asset('assets/vendor_components/datatable/datatables.js')}}"></script>
     
-    
 
+    
      <!-- input tags -->
-	<script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')}}"></script>
+	<script src="{{ asset('assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')}}"></script>
 
     <!-- form editor -->
     <script src="{{ asset('assets/vendor_components/ckeditor/ckeditor.js')}}"></script>
 	<script src="{{ asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js')}}"></script>
 	<script src="{{ asset('backend/js/pages/editor.js')}}"></script>
 
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> --}}
-   
+  
 	
     {{-- Comment Js --}}
     <script src="{{ asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
@@ -243,7 +243,7 @@
 
 
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+{{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> --}}
     
 
 
